@@ -14,17 +14,11 @@ Both services run on Render's free tier and sleep after roughly fifteen minutes 
 
 ## Demo
 
-A short walkthrough of the deployed app — uploading a document, asking a question, streaming the cited answer, and reviewing the verification signal.
+A short walkthrough of the deployed app — uploading a document, asking a question, streaming the cited answer, and reviewing the verification signal. The GIF below auto-plays directly in the README on github.com; the MP4 link beneath it offers the full-resolution version with audio.
 
-[Watch the demo video](docs/ragapp.mp4)
+![RAG Pipeline demo](docs/ragapp.gif)
 
-<!--
-For inline playback on github.com, drag-and-drop docs/ragapp.mp4 into a new
-issue or PR comment in this repository, copy the auto-generated
-`https://github.com/user-attachments/assets/...` URL it produces, and paste
-that URL on its own line right below this comment. GitHub will then render
-the video inline.
--->
+[Watch the full-resolution video with audio](docs/ragapp.mp4)
 
 ## What the System Does
 
