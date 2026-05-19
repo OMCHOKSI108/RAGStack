@@ -4,7 +4,6 @@ Different query types benefit from different retrieval approaches.
 """
 
 import logging
-from typing import Dict
 
 from backend import llm
 
@@ -70,10 +69,10 @@ QUERY_STRATEGIES = {
 }
 
 
-def classify_query(query: str) -> Dict:
+def classify_query(query: str) -> dict:
     """
     Classify a query and return the category with recommended strategy.
-    
+
     Returns:
         {"category": str, "strategy": dict}
     """
@@ -83,29 +82,29 @@ def classify_query(query: str) -> Dict:
             "category": "conversational",
             "strategy": QUERY_STRATEGIES["conversational"],
         }
-    
+
     try:
         messages = [
             {"role": "system", "content": CLASSIFICATION_SYSTEM},
             {"role": "user", "content": CLASSIFICATION_PROMPT.format(query=query)},
         ]
-        
+
         category = llm.generate(
             messages=messages,
             max_tokens=20,
             temperature=0.0,
         ).strip().lower()
-        
+
         # Validate category
         if category not in VALID_CATEGORIES:
             logger.warning(f"Invalid category '{category}', defaulting to factual")
             category = "factual"
-        
+
         strategy = QUERY_STRATEGIES[category]
         logger.info(f"Query classified as '{category}'")
-        
+
         return {"category": category, "strategy": strategy}
-        
+
     except Exception as e:
         logger.warning(f"Query classification failed: {e}, using factual strategy")
         return {

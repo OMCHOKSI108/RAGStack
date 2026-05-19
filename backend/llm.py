@@ -7,8 +7,8 @@ from __future__ import annotations
 
 import json
 import logging
+from collections.abc import Generator
 from threading import Thread
-from typing import Dict, Generator, List
 
 import httpx
 
@@ -83,9 +83,9 @@ def is_model_available() -> bool:
 
 def build_prompt_messages(
     question: str,
-    context_chunks: List[Dict[str, str]],
-    history: List[Dict[str, str]] = None,
-) -> List[Dict[str, str]]:
+    context_chunks: list[dict[str, str]],
+    history: list[dict[str, str]] = None,
+) -> list[dict[str, str]]:
     """Build standard chat messages from context chunks and a user question."""
     context_parts = []
     for i, chunk in enumerate(context_chunks, 1):
@@ -109,7 +109,7 @@ def build_prompt_messages(
     return messages
 
 
-def _format_hf_prompt(messages: List[Dict[str, str]]) -> str:
+def _format_hf_prompt(messages: list[dict[str, str]]) -> str:
     """Format messages for TinyLlama ChatML local fallback."""
     prompt = ""
     for msg in messages:
@@ -124,7 +124,7 @@ def _format_hf_prompt(messages: List[Dict[str, str]]) -> str:
 
 
 def _generate_stream_hf_local(
-    messages: List[Dict[str, str]],
+    messages: list[dict[str, str]],
     max_tokens: int,
     temperature: float,
 ) -> Generator[str, None, None]:
@@ -157,7 +157,7 @@ def _generate_stream_hf_local(
 
 
 def _generate_stream_ollama(
-    messages: List[Dict[str, str]],
+    messages: list[dict[str, str]],
     max_tokens: int,
     temperature: float,
 ) -> Generator[str, None, None]:
@@ -187,7 +187,7 @@ def _generate_stream_ollama(
 
 
 def generate_stream(
-    messages: List[Dict[str, str]],
+    messages: list[dict[str, str]],
     max_tokens: int = LLM_MAX_TOKENS,
     temperature: float = LLM_TEMPERATURE,
 ) -> Generator[str, None, None]:
@@ -203,7 +203,7 @@ def generate_stream(
 
 
 def generate(
-    messages: List[Dict[str, str]],
+    messages: list[dict[str, str]],
     max_tokens: int = LLM_MAX_TOKENS,
     temperature: float = LLM_TEMPERATURE,
 ) -> str:

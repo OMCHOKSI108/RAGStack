@@ -13,7 +13,6 @@ Detects what the user wants to do with the document:
 
 import logging
 import re
-from typing import Dict, List
 
 from backend import llm
 
@@ -145,15 +144,15 @@ INTENT_STRATEGIES = {
 }
 
 
-def classify_intent(query: str) -> Dict:
+def classify_intent(query: str) -> dict:
     """
     Classify user intent and return recommended strategy.
-    
+
     Returns:
         {"intent": str, "strategy": dict, "extracted_params": dict, "is_out_of_scope": bool}
     """
     query_lower = query.lower()
-    
+
     # Hard rejection: check out-of-scope patterns FIRST
     for pattern, scope_type in _OUT_OF_SCOPE_PATTERNS:
         if pattern.search(query):
@@ -164,7 +163,7 @@ def classify_intent(query: str) -> Dict:
                 "params": {"scope_type": scope_type},
                 "is_out_of_scope": True,
             }
-    
+
     # Fast heuristic classification for common patterns
     if any(kw in query_lower for kw in ["extract", "list all", "get all", "pull", "give me list", "give me all"]):
         intent = "extraction"
@@ -180,7 +179,7 @@ def classify_intent(query: str) -> Dict:
         intent = "table_parsing"
     else:
         intent = "qa"
-    
+
     # For complex queries, use LLM to confirm
     if len(query.split()) > 8:
         try:
@@ -188,27 +187,27 @@ def classify_intent(query: str) -> Dict:
                 {"role": "system", "content": INTENT_SYSTEM},
                 {"role": "user", "content": INTENT_PROMPT.format(query=query)},
             ]
-            
+
             llm_intent = llm.generate(
                 messages=messages,
                 max_tokens=20,
                 temperature=0.0,
             ).strip().lower()
-            
+
             if llm_intent in VALID_INTENTS:
                 intent = llm_intent
                 logger.info(f"LLM classified intent as '{intent}'")
             else:
                 logger.info(f"LLM returned invalid intent '{llm_intent}', using heuristic '{intent}'")
-                
+
         except Exception as e:
             logger.warning(f"Intent classification failed: {e}, using heuristic '{intent}'")
-    
+
     strategy = INTENT_STRATEGIES[intent]
     extracted_params = _extract_query_params(query_lower, intent)
-    
+
     logger.info(f"Intent classified: '{intent}' (strategy: {strategy})")
-    
+
     return {
         "intent": intent,
         "strategy": strategy,
@@ -217,20 +216,20 @@ def classify_intent(query: str) -> Dict:
     }
 
 
-def _extract_query_params(query: str, intent: str) -> Dict:
+def _extract_query_params(query: str, intent: str) -> dict:
     """Extract useful parameters from the query for task pipelines."""
     params = {}
-    
+
     # Extract max limit (e.g., "maximum 40", "max 10", "up to 5")
     import re
     max_match = re.search(r'(?:maximum|max|up to|at most)\s+(\d+)', query)
     if max_match:
         params["max_limit"] = int(max_match.group(1))
-    
+
     # Extract "all" flag
     if "all" in query or "every" in query:
         params["extract_all"] = True
-    
+
     # Extract target entity for extraction/counting
     if intent in ("extraction", "counting"):
         # Simple heuristic: get the noun phrase after keywords
@@ -244,5 +243,5 @@ def _extract_query_params(query: str, intent: str) -> Dict:
                 if after:
                     params["target_entity"] = after
                     break
-    
+
     return params

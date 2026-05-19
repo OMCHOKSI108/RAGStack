@@ -240,6 +240,46 @@ The repository ships with everything Render needs to stand up both services from
 
 The two Dockerfiles ([`Dockerfile.backend`](Dockerfile.backend) and [`Dockerfile.frontend`](Dockerfile.frontend)) are minimal `python:3.11-slim` images that install `requirements.txt` and start the respective process. No GPU, no model weights, no extra build steps.
 
+## Continuous Integration
+
+The repository ships with a GitHub Actions pipeline at [`.github/workflows/ci.yml`](.github/workflows/ci.yml) that runs on every push to `main` and on every pull request. It is intentionally narrow — no secrets, no external API calls — so it gives fast feedback on the failure modes most likely to break a production deploy:
+
+1. **Lint (`ruff`)** — checks `backend/` and `frontend/` with the project's ruff configuration in [`pyproject.toml`](pyproject.toml). Catches syntax errors, unused imports, common bug patterns, and import order in a few seconds.
+2. **Import smoke test** — installs `requirements.txt` and imports every backend module with empty `HF_TOKEN` / `PINECONE_API_KEY`. This is the cheapest possible verification that a deploy will at least *boot* — it catches missing dependencies, broken imports, and config errors that would otherwise only surface at runtime in Render.
+3. **Docker build (matrix: backend, frontend)** — builds both `Dockerfile.backend` and `Dockerfile.frontend` with BuildKit cache, in parallel. Catches Dockerfile issues, missing files in the build context, and packaging regressions before Render attempts the same build.
+4. **Notify Render** — Render auto-deploys on every push to `main`, so this job is mainly a marker. If you set `RENDER_DEPLOY_HOOK_BACKEND` and/or `RENDER_DEPLOY_HOOK_FRONTEND` repository secrets (each one a deploy-hook URL from the Render service dashboard), the job will also POST to them after CI passes — useful if you ever want a manual trigger or a separate gating stage.
+
+The full deploy flow looks like this:
+
+```
+git push main
+   │
+   ▼
+GitHub Actions
+   ├── ruff lint                                ── seconds
+   ├── import smoke test (requirements + boot)  ── ~60s
+   └── docker build (backend & frontend)        ── ~90s (cached)
+   │
+   ▼  (pass)
+Render auto-deploy
+   ├── rag-pipeline-backend  (new image)        ── ~2 min
+   └── rag-pipeline-frontend (new image)        ── ~2 min
+   │
+   ▼  (health-check passes /health)
+Live traffic flips to the new revision
+```
+
+Failing CI does not, by itself, stop Render from building — Render watches the git branch independently. If you want CI to gate the deploy, change each service's deploy mode in Render from "Auto" to "Manual" and rely on the `RENDER_DEPLOY_HOOK_*` secrets above to trigger from CI only after lint/build pass.
+
+### Running CI checks locally
+
+```bash
+pip install ruff==0.6.9
+ruff check backend frontend                      # lint
+docker build -f Dockerfile.backend  -t rag-be .  # backend image build
+docker build -f Dockerfile.frontend -t rag-fe .  # frontend image build
+```
+
 ## Operational Notes
 
 - **Cold starts**: Render free-tier services sleep after fifteen minutes of inactivity. The first request after a sleep can take up to a minute to return. The frontend's health-check timeout is generous (forty-five seconds) so a normal cold start does not produce a false "offline" banner.

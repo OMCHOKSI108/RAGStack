@@ -5,15 +5,14 @@ preserving meaning and heading context.
 """
 
 import logging
-from typing import List
 
-from backend.config import CHUNK_SIZE, CHUNK_OVERLAP, CHUNK_SEPARATORS
-from backend.models import DocumentSection, DocumentChunk
+from backend.config import CHUNK_OVERLAP, CHUNK_SEPARATORS, CHUNK_SIZE
+from backend.models import DocumentChunk, DocumentSection
 
 logger = logging.getLogger(__name__)
 
 
-def _recursive_split(text: str, separators: List[str], chunk_size: int) -> List[str]:
+def _recursive_split(text: str, separators: list[str], chunk_size: int) -> list[str]:
     """
     Recursively split text using a hierarchy of separators.
     Tries the most semantically meaningful separator first,
@@ -66,7 +65,7 @@ def _recursive_split(text: str, separators: List[str], chunk_size: int) -> List[
     return chunks
 
 
-def _apply_overlap(chunks: List[str], overlap: int) -> List[str]:
+def _apply_overlap(chunks: list[str], overlap: int) -> list[str]:
     """
     Apply overlap between consecutive chunks by prepending
     the tail of the previous chunk to the current one.
@@ -87,12 +86,12 @@ def _apply_overlap(chunks: List[str], overlap: int) -> List[str]:
 
 
 def chunk_sections(
-    sections: List[DocumentSection],
+    sections: list[DocumentSection],
     doc_id: str,
     chunk_size: int = CHUNK_SIZE,
     chunk_overlap: int = CHUNK_OVERLAP,
-    separators: List[str] = None
-) -> List[DocumentChunk]:
+    separators: list[str] = None
+) -> list[DocumentChunk]:
     """
     Split document sections into semantically meaningful chunks.
     Each chunk retains metadata about its source document, page, and position.

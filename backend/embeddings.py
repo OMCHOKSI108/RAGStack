@@ -5,7 +5,6 @@ Embedding wrapper with local SentenceTransformer and Hugging Face API providers.
 from __future__ import annotations
 
 import logging
-from typing import List
 
 import numpy as np
 
@@ -33,7 +32,7 @@ def get_model():
     return _model
 
 
-def encode(texts: List[str], normalize: bool = True) -> np.ndarray:
+def encode(texts: list[str], normalize: bool = True) -> np.ndarray:
     """Encode texts into dense vectors."""
     if EMBEDDING_PROVIDER == "HUGGINGFACE_API":
         from backend.hf_api import embed_texts

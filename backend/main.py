@@ -4,32 +4,32 @@ Provides endpoints for document upload, streaming queries,
 document management, and health checks.
 """
 
+import asyncio
 import json
 import logging
-import asyncio
 from contextlib import asynccontextmanager
 
-from fastapi import FastAPI, UploadFile, File, HTTPException, Request
+from fastapi import FastAPI, File, HTTPException, Request, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
-from sse_starlette.sse import EventSourceResponse
 from slowapi import Limiter
-from slowapi.util import get_remote_address
 from slowapi.errors import RateLimitExceeded
 from slowapi.middleware import SlowAPIMiddleware
+from slowapi.util import get_remote_address
+from sse_starlette.sse import EventSourceResponse
 from starlette.responses import JSONResponse
 
 from backend.config import (
+    ALLOWED_EXTENSIONS,
     EMBEDDING_PROVIDER,
     LLM_PROVIDER,
+    QUERY_RATE_LIMIT,
     RERANK_PROVIDER,
     UPLOAD_DIR,
-    ALLOWED_EXTENSIONS,
     UPLOAD_RATE_LIMIT,
-    QUERY_RATE_LIMIT,
     VECTOR_STORE,
     VERIFICATION_PROVIDER,
 )
-from backend.models import QueryRequest, UploadResponse, HealthResponse
+from backend.models import HealthResponse, QueryRequest, UploadResponse
 from backend.rag_pipeline import RAGPipeline
 
 # ── Logging ───────────────────────────────────────────────────────────────────

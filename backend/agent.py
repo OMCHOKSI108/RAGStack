@@ -10,16 +10,17 @@ Features:
 - LLM-based verification fallback after NLI check
 """
 
-import logging
 import json
+import logging
 import re
-from typing import AsyncGenerator, Dict, List, Optional
+from collections.abc import AsyncGenerator
+from typing import Optional
 
+from backend import llm
 from backend.intent_classifier import classify_intent
 from backend.task_prompts import build_task_prompt
-from backend.validators import create_not_found_response, validate_structured_output
-from backend.verification import verify_extraction, verify_answer, verify_count, validate_citations
-from backend import llm
+from backend.validators import validate_structured_output
+from backend.verification import verify_answer, verify_count, verify_extraction
 
 logger = logging.getLogger(__name__)
 
@@ -37,19 +38,19 @@ class ReasoningAgent:
     Agentic orchestrator for intelligent document reasoning.
     Manages the full reasoning pipeline with verification and validation.
     """
-    
+
     def __init__(self):
-        self.intent_cache: Dict[str, Dict] = {}
-    
+        self.intent_cache: dict[str, dict] = {}
+
     async def process(
         self,
         query: str,
-        context_chunks: List[Dict[str, str]],
-        history: Optional[List[Dict]] = None,
-    ) -> AsyncGenerator[Dict, None]:
+        context_chunks: list[dict[str, str]],
+        history: Optional[list[dict]] = None,
+    ) -> AsyncGenerator[dict, None]:
         """
         Process a query through the full reasoning pipeline.
-        
+
         Yields SSE events:
         - intent: detected intent
         - token: streaming tokens
@@ -63,9 +64,9 @@ class ReasoningAgent:
         intent = intent_info["intent"]
         strategy = intent_info["strategy"]
         params = intent_info["params"]
-        
+
         yield {"event": "intent", "data": {"intent": intent, "strategy": strategy}}
-        
+
         # ── Step 1b: Hard rejection for out-of-scope queries ─────────────
         if intent == "out_of_scope":
             scope_type = params.get("scope_type", "unknown")
@@ -87,34 +88,34 @@ class ReasoningAgent:
             }
             yield {"event": "done", "data": {"intent": intent, "out_of_scope": True}}
             return
-        
+
         # ── Step 2: Build Context ────────────────────────────────────────
         context_text = self._format_context(context_chunks)
         context_texts = [c["text"] for c in context_chunks]
-        
+
         # ── Step 3: Build Task-Specific Prompt ───────────────────────────
         messages = build_task_prompt(intent, context_text, query, params)
-        
+
         # ── Step 4: Stream Response ──────────────────────────────────────
         full_response = ""
-        
-        from backend.config import LLM_MAX_TOKENS_COMPREHENSIVE, LLM_MAX_TOKENS
+
+        from backend.config import LLM_MAX_TOKENS, LLM_MAX_TOKENS_COMPREHENSIVE
         max_tokens = LLM_MAX_TOKENS_COMPREHENSIVE if intent in ("qa", "summarization") else LLM_MAX_TOKENS
-        
+
         for token in llm.generate_stream(messages, max_tokens=max_tokens):
             full_response += token
             yield {"event": "token", "data": {"token": token}}
-        
+
         # ── Step 5: Post-process LLM output ──────────────────────────────
         full_response = self._post_process_response(full_response)
-        
+
         # ── Step 6: Verification & Validation ────────────────────────────
         verification_result = await self._verify_response(
             intent, full_response, context_texts, params
         )
-        
+
         yield {"event": "verification", "data": verification_result}
-        
+
         # ── Step 7: Structured Output (if applicable) ────────────────────
         structured_output = None
         if strategy.get("structured_output"):
@@ -123,12 +124,12 @@ class ReasoningAgent:
             )
             if structured_output:
                 yield {"event": "structured", "data": structured_output}
-        
+
         # ── Step 8: Citations with granularity ───────────────────────────
         citations = self._extract_citations(context_chunks)
         if citations:
             yield {"event": "citations", "data": {"citations": citations}}
-        
+
         # ── Step 9: Done ─────────────────────────────────────────────────
         yield {
             "event": "done",
@@ -138,8 +139,8 @@ class ReasoningAgent:
                 "structured": structured_output,
             },
         }
-    
-    def _format_context(self, context_chunks: List[Dict[str, str]]) -> str:
+
+    def _format_context(self, context_chunks: list[dict[str, str]]) -> str:
         """Format context chunks for prompt inclusion with full granularity."""
         parts = []
         for i, chunk in enumerate(context_chunks, 1):
@@ -147,9 +148,9 @@ class ReasoningAgent:
             page = chunk.get("page_number", "?")
             text = chunk.get("text", "")
             parts.append(f"[{i}] Source: {source}, Page: {page}\n{text}")
-        
+
         return "\n\n---\n\n".join(parts)
-    
+
     def _post_process_response(self, response: str) -> str:
         """
         Post-process LLM output:
@@ -158,7 +159,7 @@ class ReasoningAgent:
         """
         lines = response.split("\n")
         cleaned_lines = []
-        
+
         for line in lines:
             is_false_not_found = any(
                 p.match(line.strip()) for p in _FALSE_NOT_FOUND_PATTERNS
@@ -167,29 +168,29 @@ class ReasoningAgent:
                 # Skip this line - it will be replaced by proper abstain message if needed
                 continue
             cleaned_lines.append(line)
-        
+
         result = "\n".join(cleaned_lines).strip()
-        
+
         # If we stripped everything, return a proper abstain message
         if not result:
             result = "The uploaded documents do not contain this information."
-        
+
         return result
-    
+
     async def _verify_response(
         self,
         intent: str,
         response: str,
-        context_texts: List[str],
-        params: Dict,
-    ) -> Dict:
+        context_texts: list[str],
+        params: dict,
+    ) -> dict:
         """Verify response against context with NLI + LLM fallback."""
         result = {
             "is_grounded": True,
             "confidence": 0.0,
             "issues": [],
         }
-        
+
         # Check for abstain responses
         if any(kw in response.lower() for kw in [
             "the uploaded documents do not contain",
@@ -200,7 +201,7 @@ class ReasoningAgent:
             result["is_grounded"] = True
             result["confidence"] = 1.0
             return result
-        
+
         # Intent-specific verification
         if intent == "extraction":
             try:
@@ -217,7 +218,7 @@ class ReasoningAgent:
                         )
             except Exception as e:
                 logger.warning(f"Extraction verification failed: {e}")
-        
+
         elif intent == "counting":
             try:
                 count = self._extract_count_from_response(response)
@@ -229,13 +230,13 @@ class ReasoningAgent:
                     result["issues"].append(message)
             except Exception as e:
                 logger.warning(f"Counting verification failed: {e}")
-        
+
         else:
             # General answer verification with NLI
             is_faithful, confidence = verify_answer(response, context_texts)
             result["is_grounded"] = is_faithful
             result["confidence"] = confidence
-            
+
             # LLM-based verification fallback
             if not is_faithful and confidence > 0.3:
                 llm_verified = await self._llm_verification_fallback(response, context_texts)
@@ -244,14 +245,14 @@ class ReasoningAgent:
                     result["confidence"] = max(confidence, 0.6)
                     result["issues"] = [i for i in result["issues"] if "not fully supported" not in i]
                     logger.info("LLM fallback verification passed, overriding NLI result")
-            
+
             if not is_faithful:
                 result["issues"].append("Answer may not be fully supported by the document")
-        
+
         return result
-    
+
     async def _llm_verification_fallback(
-        self, response: str, context_texts: List[str]
+        self, response: str, context_texts: list[str]
     ) -> bool:
         """
         Second verification check using a small LLM.
@@ -259,7 +260,7 @@ class ReasoningAgent:
         """
         try:
             full_context = "\n\n".join(context_texts[:3])  # Use top 3 chunks for speed
-            
+
             messages = [
                 {
                     "role": "system",
@@ -278,23 +279,23 @@ class ReasoningAgent:
                     )
                 }
             ]
-            
+
             result = llm.generate(messages, max_tokens=5, temperature=0.0).strip().upper()
             is_verified = "YES" in result
-            
+
             logger.info(f"LLM verification fallback: result='{result}', verified={is_verified}")
             return is_verified
-            
+
         except Exception as e:
             logger.warning(f"LLM verification fallback failed: {e}")
             return False
-    
+
     def _parse_structured_output(
         self,
         intent: str,
         response: str,
-        context_chunks: List[Dict],
-    ) -> Optional[Dict]:
+        context_chunks: list[dict],
+    ) -> Optional[dict]:
         """Parse structured output from response."""
         try:
             json_match = self._extract_json(response)
@@ -304,20 +305,20 @@ class ReasoningAgent:
                 return validated
         except Exception as e:
             logger.warning(f"Structured output parsing failed: {e}")
-        
+
         return None
-    
+
     def _extract_json(self, text: str) -> Optional[str]:
         """Extract JSON object from text."""
         start = text.find('{')
         end = text.rfind('}')
-        
+
         if start != -1 and end != -1 and end > start:
             return text[start:end+1]
-        
+
         return None
-    
-    def _extract_items_from_response(self, response: str) -> List[Dict]:
+
+    def _extract_items_from_response(self, response: str) -> list[dict]:
         """Extract items from extraction response."""
         json_str = self._extract_json(response)
         if json_str:
@@ -327,7 +328,7 @@ class ReasoningAgent:
             except json.JSONDecodeError:
                 pass
         return []
-    
+
     def _extract_count_from_response(self, response: str) -> int:
         """Extract count from counting response."""
         json_str = self._extract_json(response)
@@ -337,15 +338,15 @@ class ReasoningAgent:
                 return data.get("count", 0)
             except json.JSONDecodeError:
                 pass
-        
+
         import re
         match = re.search(r'count[:\s]*(\d+)', response.lower())
         if match:
             return int(match.group(1))
-        
+
         return 0
-    
-    def _extract_citations(self, context_chunks: List[Dict]) -> List[Dict]:
+
+    def _extract_citations(self, context_chunks: list[dict]) -> list[dict]:
         """Extract citation data with full granularity: source file, page, snippet."""
         citations = []
         for i, chunk in enumerate(context_chunks):
@@ -353,7 +354,7 @@ class ReasoningAgent:
             snippet = text[:200]
             if len(text) > 200:
                 snippet += "..."
-            
+
             citations.append({
                 "index": i + 1,
                 "source_file": chunk.get("source_file", "unknown"),
@@ -361,5 +362,5 @@ class ReasoningAgent:
                 "text_snippet": snippet,
                 "citation_label": f"(Source: {chunk.get('source_file', 'unknown')}, page {chunk.get('page_number', '?')}, snippet: \"{snippet[:100]}...\")",
             })
-        
+
         return citations

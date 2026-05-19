@@ -6,8 +6,7 @@ with full document versioning via doc_id tracking.
 
 import logging
 import pickle
-from pathlib import Path
-from typing import List, Dict, Optional
+from typing import Optional
 
 import faiss
 import numpy as np
@@ -30,11 +29,11 @@ class VectorStore:
     def __init__(self):
         self.index: faiss.IndexFlatIP = faiss.IndexFlatIP(EMBEDDING_DIMENSION)
         # Maps FAISS position -> DocumentChunk
-        self.metadata: Dict[int, DocumentChunk] = {}
+        self.metadata: dict[int, DocumentChunk] = {}
         # Maps doc_id (file hash) -> list of FAISS positions
-        self.doc_index: Dict[str, List[int]] = {}
+        self.doc_index: dict[str, list[int]] = {}
         # Maps doc_id -> filename for reverse lookup
-        self.doc_filenames: Dict[str, str] = {}
+        self.doc_filenames: dict[str, str] = {}
 
     @property
     def total_chunks(self) -> int:
@@ -47,7 +46,7 @@ class VectorStore:
     def add(
         self,
         embeddings: np.ndarray,
-        chunks: List[DocumentChunk],
+        chunks: list[DocumentChunk],
         doc_id: str
     ) -> None:
         """
@@ -93,7 +92,7 @@ class VectorStore:
         # Rebuild index without the removed positions
         new_index = faiss.IndexFlatIP(EMBEDDING_DIMENSION)
         new_metadata = {}
-        new_doc_index: Dict[str, List[int]] = {}
+        new_doc_index: dict[str, list[int]] = {}
         new_pos = 0
 
         # Reconstruct vectors one by one (IndexFlatIP supports reconstruct)
@@ -122,7 +121,7 @@ class VectorStore:
         logger.info(f"Index rebuilt: {self.index.ntotal} chunks remaining")
         return True
 
-    def search(self, query_embedding: np.ndarray, top_k: int = 20) -> List[SearchResult]:
+    def search(self, query_embedding: np.ndarray, top_k: int = 20) -> list[SearchResult]:
         """
         Search for the top-k most similar chunks to the query embedding.
         Returns SearchResult objects with chunk metadata and scores.
@@ -135,7 +134,7 @@ class VectorStore:
         scores, indices = self.index.search(query_embedding, k)
 
         results = []
-        for score, idx in zip(scores[0], indices[0]):
+        for score, idx in zip(scores[0], indices[0], strict=False):
             if idx == -1:
                 continue
             chunk = self.metadata.get(int(idx))
@@ -148,7 +147,7 @@ class VectorStore:
 
         return results
 
-    def get_document_info(self) -> Dict[str, dict]:
+    def get_document_info(self) -> dict[str, dict]:
         """Return metadata about all indexed documents."""
         info = {}
         for doc_id, positions in self.doc_index.items():

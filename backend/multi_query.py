@@ -5,7 +5,6 @@ Results are deduplicated and fused.
 """
 
 import logging
-from typing import List
 
 from backend import llm
 
@@ -33,29 +32,29 @@ Alternates:"""
 def generate_alternate_queries(
     query: str,
     num_alternates: int = 3,
-) -> List[str]:
+) -> list[str]:
     """
     Generate alternate query versions for multi-query retrieval.
-    
+
     Returns list including original query + alternates.
     """
     # Skip for very short queries
     if len(query.split()) <= 2:
         logger.info(f"Query too short for multi-query expansion: '{query}'")
         return [query]
-    
+
     try:
         messages = [
             {"role": "system", "content": MULTI_QUERY_SYSTEM},
             {"role": "user", "content": MULTI_QUERY_PROMPT.format(query=query)},
         ]
-        
+
         response = llm.generate(
             messages=messages,
             max_tokens=150,
             temperature=0.3,
         )
-        
+
         # Parse the response into individual queries
         alternates = []
         for line in response.strip().split('\n'):
@@ -66,7 +65,7 @@ def generate_alternate_queries(
                 cleaned = line.lstrip('0123456789.-) ')
                 if cleaned and cleaned.lower() != query.lower():
                     alternates.append(cleaned)
-        
+
         # Deduplicate and limit
         seen = set()
         unique_alternates = []
@@ -74,29 +73,29 @@ def generate_alternate_queries(
             if alt.lower() not in seen and len(unique_alternates) < num_alternates:
                 seen.add(alt.lower())
                 unique_alternates.append(alt)
-        
+
         queries = [query] + unique_alternates
         logger.info(
             f"Multi-query expansion: '{query}' -> {len(queries)} queries"
         )
         return queries
-        
+
     except Exception as e:
         logger.warning(f"Multi-query generation failed: {e}, using original")
         return [query]
 
 
 def fuse_multi_query_results(
-    all_results: List[List],
+    all_results: list[list],
     max_results: int = 20,
-) -> List:
+) -> list:
     """
     Fuse results from multiple queries, deduplicating by chunk ID.
     Uses a simple scoring: first appearance gets higher weight.
     """
     seen_ids = set()
     fused = []
-    
+
     for results in all_results:
         for result in results:
             chunk_id = f"{result.chunk.doc_id}_{result.chunk.chunk_index}"
@@ -107,10 +106,10 @@ def fuse_multi_query_results(
                     break
         if len(fused) >= max_results:
             break
-    
+
     logger.info(
         f"Multi-query fusion: {sum(len(r) for r in all_results)} total -> "
         f"{len(fused)} unique results"
     )
-    
+
     return fused

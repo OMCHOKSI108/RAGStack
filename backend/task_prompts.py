@@ -3,7 +3,7 @@ Task-specific prompt builders for intelligent document reasoning.
 Each intent type gets a specialized prompt with strict rules.
 """
 
-from typing import Dict, List, Optional
+from typing import Optional
 
 # ── Extraction Prompts ────────────────────────────────────────────────────────
 
@@ -200,16 +200,16 @@ def build_task_prompt(
     intent: str,
     context: str,
     query: str,
-    params: Optional[Dict] = None,
-) -> List[Dict[str, str]]:
+    params: Optional[dict] = None,
+) -> list[dict[str, str]]:
     """
     Build a task-specific prompt based on intent.
-    
+
     Returns:
         List of message dicts [{"role": "...", "content": "..."}]
     """
     params = params or {}
-    
+
     if intent == "extraction":
         target = params.get("target_entity", "requested information")
         limit_instruction = ""
@@ -217,41 +217,41 @@ def build_task_prompt(
             limit_instruction = f"IMPORTANT: Extract MAXIMUM {params['max_limit']} items. Do NOT exceed this limit."
         elif params.get("extract_all"):
             limit_instruction = "Extract ALL instances found in the document."
-        
+
         system = EXTRACTION_SYSTEM
         user = EXTRACTION_USER.format(
             target_entity=target,
             limit_instruction=limit_instruction,
             context=context,
         )
-        
+
     elif intent == "counting":
         entity = params.get("target_entity", "items")
         system = COUNTING_SYSTEM
         user = COUNTING_USER.format(entity=entity, context=context)
-        
+
     elif intent == "comparison":
         entities = params.get("entities", "the entities mentioned")
         system = COMPARISON_SYSTEM
         user = COMPARISON_USER.format(entities=entities, context=context)
-        
+
     elif intent == "summarization":
         system = SUMMARIZATION_SYSTEM
         user = SUMMARIZATION_USER.format(context=context)
-        
+
     elif intent == "verification":
         claim = query
         system = VERIFICATION_SYSTEM
         user = VERIFICATION_USER.format(claim=claim, context=context)
-        
+
     elif intent == "table_parsing":
         system = TABLE_PARSING_SYSTEM
         user = TABLE_PARSING_USER.format(context=context)
-        
+
     else:  # qa
         system = QA_SYSTEM
         user = QA_USER.format(context=context, question=query)
-    
+
     return [
         {"role": "system", "content": system},
         {"role": "user", "content": user},

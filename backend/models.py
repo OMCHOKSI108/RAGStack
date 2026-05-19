@@ -2,8 +2,9 @@
 Pydantic schemas for request/response models and internal data structures.
 """
 
+from typing import Optional
+
 from pydantic import BaseModel
-from typing import Optional, List, Dict
 
 
 class DocumentChunk(BaseModel):
@@ -34,7 +35,7 @@ class UploadResponse(BaseModel):
 class QueryRequest(BaseModel):
     """Request body for querying the RAG pipeline."""
     question: str
-    history: Optional[List[Dict[str, str]]] = None  # Conversation history for context
+    history: Optional[list[dict[str, str]]] = None  # Conversation history for context
 
 
 class Citation(BaseModel):
@@ -66,4 +67,4 @@ class HealthResponse(BaseModel):
     models_loaded: bool
     document_count: int
     total_chunks: int
-    providers: Optional[Dict] = None
+    providers: Optional[dict] = None

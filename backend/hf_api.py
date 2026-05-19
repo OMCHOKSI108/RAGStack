@@ -9,7 +9,7 @@ from __future__ import annotations
 
 import json
 import logging
-from typing import Dict, Generator, Iterable, List
+from collections.abc import Generator, Iterable
 
 import httpx
 import numpy as np
@@ -38,7 +38,7 @@ def _router_base() -> str:
 logger = logging.getLogger(__name__)
 
 
-def _headers() -> Dict[str, str]:
+def _headers() -> dict[str, str]:
     headers = {"Content-Type": "application/json"}
     if HF_TOKEN:
         headers["Authorization"] = f"Bearer {HF_TOKEN}"
@@ -51,12 +51,12 @@ def _raise_for_missing_token() -> None:
 
 
 def _chat_payload(
-    messages: List[Dict[str, str]],
+    messages: list[dict[str, str]],
     model: str,
     max_tokens: int,
     temperature: float,
     stream: bool,
-) -> Dict:
+) -> dict:
     payload = {
         "model": model,
         "messages": messages,
@@ -70,7 +70,7 @@ def _chat_payload(
 
 
 def chat_stream(
-    messages: List[Dict[str, str]],
+    messages: list[dict[str, str]],
     max_tokens: int,
     temperature: float,
     model: str = HF_CHAT_MODEL_ID,
@@ -119,7 +119,7 @@ def chat_stream(
 
 
 def chat_complete(
-    messages: List[Dict[str, str]],
+    messages: list[dict[str, str]],
     max_tokens: int,
     temperature: float,
     model: str = HF_CHAT_MODEL_ID,
@@ -165,7 +165,7 @@ def _reranker_url(model: str = HF_RERANKER_MODEL_ID) -> str:
     return f"{_router_base()}/{provider}/models/{model}"
 
 
-def embed_texts(texts: List[str], normalize: bool = True) -> np.ndarray:
+def embed_texts(texts: list[str], normalize: bool = True) -> np.ndarray:
     """Generate embeddings through the HF feature extraction endpoint."""
     _raise_for_missing_token()
     response = httpx.post(
@@ -193,7 +193,7 @@ def embed_texts(texts: List[str], normalize: bool = True) -> np.ndarray:
     return arr.astype(np.float32)
 
 
-def rerank(query: str, documents: List[str]) -> List[float]:
+def rerank(query: str, documents: list[str]) -> list[float]:
     """
     Score query/document pairs through the configured HF reranker model.
     Raises on unsupported model/API shapes so callers can fall back safely.
@@ -260,7 +260,7 @@ def verify_answer_with_llm(answer: str, context_texts: Iterable[str]) -> tuple[b
     return is_grounded, 0.85 if is_grounded else 0.25
 
 
-def health_check() -> Dict[str, bool | str]:
+def health_check() -> dict[str, bool | str]:
     """Cheap configuration/reachability check for health endpoint."""
     if not HF_TOKEN:
         return {"ok": False, "detail": "HF_TOKEN is not configured"}

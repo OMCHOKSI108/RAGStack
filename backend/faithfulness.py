@@ -6,10 +6,8 @@ Dynamic threshold: entailment score > 0.70 = verified.
 """
 
 import logging
-from typing import List, Tuple
 
-from backend.config import NLI_ENTAILMENT_THRESHOLD, NLI_MODEL
-from backend.config import VERIFICATION_PROVIDER
+from backend.config import NLI_ENTAILMENT_THRESHOLD, NLI_MODEL, VERIFICATION_PROVIDER
 
 logger = logging.getLogger(__name__)
 
@@ -34,7 +32,7 @@ def get_nli_model():
     return _nli_model, _nli_tokenizer
 
 
-def _split_into_claims(answer: str) -> List[str]:
+def _split_into_claims(answer: str) -> list[str]:
     """
     Split an answer into individual claim sentences for verification.
     """
@@ -95,9 +93,9 @@ def _check_entailment(claim: str, context: str) -> float:
 
 def verify_faithfulness(
     answer: str,
-    context_texts: List[str],
+    context_texts: list[str],
     threshold: float = NLI_ENTAILMENT_THRESHOLD,
-) -> Tuple[bool, float]:
+) -> tuple[bool, float]:
     """
     Verify whether the generated answer is supported by the context.
 

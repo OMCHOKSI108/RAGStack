@@ -7,10 +7,8 @@ Preserves UTF-8 currency symbols and normalizes common OCR artifacts.
 import logging
 import re
 from pathlib import Path
-from typing import List
 
 import pymupdf  # PyMuPDF (v1.27+ uses 'pymupdf' instead of 'fitz')
-import markdown
 
 from backend.config import OCR_CORRECTIONS_ENABLED
 from backend.models import DocumentSection
@@ -44,7 +42,7 @@ def normalize_ocr_artifacts(text: str) -> str:
     return text, had_corrections
 
 
-def parse_pdf(file_path: Path) -> List[DocumentSection]:
+def parse_pdf(file_path: Path) -> list[DocumentSection]:
     """
     Extract text from a PDF file, one section per page.
     Uses PyMuPDF for fast, reliable UTF-8 text extraction.
@@ -81,7 +79,7 @@ def parse_pdf(file_path: Path) -> List[DocumentSection]:
     return sections
 
 
-def parse_markdown(file_path: Path) -> List[DocumentSection]:
+def parse_markdown(file_path: Path) -> list[DocumentSection]:
     """
     Parse a Markdown file, splitting on heading boundaries.
     Preserves heading context for each section.
@@ -128,7 +126,7 @@ def parse_markdown(file_path: Path) -> List[DocumentSection]:
     return sections
 
 
-def parse_text(file_path: Path) -> List[DocumentSection]:
+def parse_text(file_path: Path) -> list[DocumentSection]:
     """
     Parse a plain text file, splitting on double newlines (paragraphs).
     """
@@ -158,7 +156,7 @@ def parse_text(file_path: Path) -> List[DocumentSection]:
     return sections
 
 
-def parse_document(file_path: Path) -> List[DocumentSection]:
+def parse_document(file_path: Path) -> list[DocumentSection]:
     """
     Dispatch to the appropriate parser based on file extension.
     """

@@ -14,14 +14,18 @@ Production-grade features:
 - Structured output validation
 """
 
+import asyncio
 import hashlib
 import logging
-import asyncio
 import queue
 import threading
+from collections.abc import AsyncGenerator
 from pathlib import Path
-from typing import AsyncGenerator, Dict, List, Optional
 
+from backend import embeddings, llm
+from backend.agent import ReasoningAgent
+from backend.cache import get_cache
+from backend.chunker import chunk_sections
 from backend.config import (
     EMBEDDING_PROVIDER,
     LLM_PROVIDER,
@@ -31,23 +35,15 @@ from backend.config import (
     VECTOR_STORE,
     VERIFICATION_PROVIDER,
 )
-from backend.models import (
-    DocumentChunk,
-    UploadResponse,
-    Citation,
-    DocumentInfo,
-    SearchResult,
-)
-from backend.document_parser import parse_document
-from backend.chunker import chunk_sections
-from backend import embeddings
-from backend.hybrid_search import hybrid_search, multi_query_hybrid_search
-from backend import llm
-from backend.query_rewriter import rewrite_query
 from backend.context_compressor import compress_context
-from backend.cache import get_cache
-from backend.faithfulness import verify_faithfulness, UNFAITHFUL_RESPONSE
-from backend.agent import ReasoningAgent
+from backend.document_parser import parse_document
+from backend.faithfulness import verify_faithfulness
+from backend.hybrid_search import hybrid_search, multi_query_hybrid_search
+from backend.models import (
+    DocumentInfo,
+    UploadResponse,
+)
+from backend.query_rewriter import rewrite_query
 
 logger = logging.getLogger(__name__)
 
@@ -216,7 +212,7 @@ class RAGPipeline:
         logger.info(f"Deleted document: {filename}")
         return True
 
-    def get_documents(self) -> List[DocumentInfo]:
+    def get_documents(self) -> list[DocumentInfo]:
         """List all ingested documents."""
         doc_info = self.vector_store.get_document_info()
         return [
@@ -228,7 +224,7 @@ class RAGPipeline:
             for info in doc_info.values()
         ]
 
-    async def _stream_tokens_async(self, messages: List[Dict]) -> AsyncGenerator[str, None]:
+    async def _stream_tokens_async(self, messages: list[dict]) -> AsyncGenerator[str, None]:
         """
         Convert the synchronous LLM generator into a true async generator.
         Uses a thread-safe queue to bridge sync generator -> async yields.
@@ -259,8 +255,8 @@ class RAGPipeline:
             yield token
 
     async def query_stream(
-        self, question: str, history: List[Dict] = None
-    ) -> AsyncGenerator[Dict, None]:
+        self, question: str, history: list[dict] = None
+    ) -> AsyncGenerator[dict, None]:
         """
         Process a query through the INTELLIGENT RAG pipeline:
         1. Check cache for repeated questions
@@ -299,7 +295,7 @@ class RAGPipeline:
         intent = intent_info["intent"]
         strategy = intent_info["strategy"]
         params = intent_info["params"]
-        
+
         yield {"event": "intent", "data": {
             "intent": intent,
             "strategy_summary": {
@@ -347,10 +343,10 @@ class RAGPipeline:
 
         if strategy["use_multi_query"]:
             from backend.multi_query import generate_alternate_queries
-            
+
             queries = await asyncio.to_thread(generate_alternate_queries, rewritten)
             yield {"event": "rewritten_query", "data": {"query": f"Expanded to {len(queries)} search queries"}}
-            
+
             search_results = await asyncio.to_thread(
                 multi_query_hybrid_search,
                 queries,
@@ -433,7 +429,7 @@ class RAGPipeline:
         ):
             event_type = event.get("event", "message")
             event_data = event.get("data", {})
-            
+
             if event_type == "token":
                 token = event_data.get("token", "")
                 full_response += token

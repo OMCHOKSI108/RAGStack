@@ -6,7 +6,7 @@ from __future__ import annotations
 
 import logging
 import time
-from typing import Dict, List, Optional
+from typing import Optional
 
 import numpy as np
 
@@ -80,13 +80,13 @@ class PineconeVectorStore:
         return len(self.get_document_info())
 
     @property
-    def doc_index(self) -> Dict[str, List[int]]:
+    def doc_index(self) -> dict[str, list[int]]:
         return {
             doc_id: list(range(info["chunk_count"]))
             for doc_id, info in self.get_document_info().items()
         }
 
-    def _metadata_scan(self, filter: Optional[dict] = None, top_k: int = 10000) -> List[dict]:
+    def _metadata_scan(self, filter: Optional[dict] = None, top_k: int = 10000) -> list[dict]:
         if self.total_chunks == 0:
             return []
 
@@ -100,13 +100,13 @@ class PineconeVectorStore:
         matches = response.get("matches", []) if isinstance(response, dict) else getattr(response, "matches", [])
         return [match.get("metadata", {}) if isinstance(match, dict) else getattr(match, "metadata", {}) for match in matches]
 
-    def add(self, embeddings: np.ndarray, chunks: List[DocumentChunk], doc_id: str) -> None:
+    def add(self, embeddings: np.ndarray, chunks: list[DocumentChunk], doc_id: str) -> None:
         """Upsert document chunks and embeddings to Pinecone."""
         if len(embeddings) != len(chunks):
             raise ValueError("Embeddings and chunks must have the same length")
 
         vectors = []
-        for embedding, chunk in zip(embeddings, chunks):
+        for embedding, chunk in zip(embeddings, chunks, strict=False):
             vectors.append(
                 {
                     "id": self._vector_id(doc_id, chunk.chunk_index),
@@ -136,7 +136,7 @@ class PineconeVectorStore:
         logger.info("Deleted Pinecone vectors for doc_id=%s", doc_id[:12])
         return True
 
-    def search(self, query_embedding: np.ndarray, top_k: int = 20) -> List[SearchResult]:
+    def search(self, query_embedding: np.ndarray, top_k: int = 20) -> list[SearchResult]:
         """Search Pinecone and return SearchResult objects."""
         if self.total_chunks == 0:
             return []
@@ -164,9 +164,9 @@ class PineconeVectorStore:
             results.append(SearchResult(chunk=chunk, score=float(score), global_index=i))
         return results
 
-    def get_document_info(self) -> Dict[str, dict]:
+    def get_document_info(self) -> dict[str, dict]:
         """Return metadata about all indexed documents."""
-        info: Dict[str, dict] = {}
+        info: dict[str, dict] = {}
         for metadata in self._metadata_scan():
             doc_id = str(metadata.get("doc_id", ""))
             if not doc_id:

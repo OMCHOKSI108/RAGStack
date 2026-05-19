@@ -7,8 +7,7 @@ for hybrid retrieval via Reciprocal Rank Fusion.
 import logging
 import pickle
 import re
-from pathlib import Path
-from typing import List, Dict, Tuple, Optional
+from typing import Optional
 
 from rank_bm25 import BM25Okapi
 
@@ -20,7 +19,7 @@ logger = logging.getLogger(__name__)
 BM25_FILE = INDEX_DIR / "bm25.pkl"
 
 
-def _tokenize(text: str) -> List[str]:
+def _tokenize(text: str) -> list[str]:
     """Simple whitespace + punctuation tokenizer with lowercasing."""
     text = text.lower()
     tokens = re.findall(r'\b\w+\b', text)
@@ -35,9 +34,9 @@ class BM25Store:
     """
 
     def __init__(self):
-        self.corpus: List[List[str]] = []       # Tokenized texts
-        self.chunks: List[DocumentChunk] = []   # Corresponding chunk metadata
-        self.doc_index: Dict[str, List[int]] = {}  # doc_id -> corpus positions
+        self.corpus: list[list[str]] = []       # Tokenized texts
+        self.chunks: list[DocumentChunk] = []   # Corresponding chunk metadata
+        self.doc_index: dict[str, list[int]] = {}  # doc_id -> corpus positions
         self.bm25: Optional[BM25Okapi] = None
 
     @property
@@ -51,7 +50,7 @@ class BM25Store:
         else:
             self.bm25 = None
 
-    def add(self, chunks: List[DocumentChunk], doc_id: str) -> None:
+    def add(self, chunks: list[DocumentChunk], doc_id: str) -> None:
         """Add tokenized chunks to the BM25 corpus."""
         positions = []
         start_idx = len(self.corpus)
@@ -79,7 +78,7 @@ class BM25Store:
 
         new_corpus = []
         new_chunks = []
-        new_doc_index: Dict[str, List[int]] = {}
+        new_doc_index: dict[str, list[int]] = {}
 
         for old_pos in range(len(self.corpus)):
             if old_pos in positions_to_remove:
@@ -102,7 +101,7 @@ class BM25Store:
         logger.info(f"BM25: Removed doc_id={doc_id[:12]}..., {len(self.corpus)} chunks remaining")
         return True
 
-    def search(self, query: str, top_k: int = 20) -> List[Tuple[int, float, DocumentChunk]]:
+    def search(self, query: str, top_k: int = 20) -> list[tuple[int, float, DocumentChunk]]:
         """
         Search for the top-k most relevant chunks using BM25 scoring.
         Returns list of (corpus_index, score, chunk) tuples.

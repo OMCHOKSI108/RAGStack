@@ -3,8 +3,9 @@ Pydantic validators for structured output from intelligent RAG pipelines.
 Enforces strict response formats and validation rules.
 """
 
+from typing import Any, Optional
+
 from pydantic import BaseModel, Field, validator
-from typing import List, Optional, Any, Dict
 
 
 class SourceReference(BaseModel):
@@ -18,7 +19,7 @@ class SourceReference(BaseModel):
 
 class ExtractionResult(BaseModel):
     """Structured result for extraction tasks."""
-    items: List[Dict[str, Any]] = Field(
+    items: list[dict[str, Any]] = Field(
         default_factory=list,
         description="Extracted items from the document"
     )
@@ -30,7 +31,7 @@ class ExtractionResult(BaseModel):
         default=None,
         description="Maximum limit applied to results"
     )
-    sources: List[SourceReference] = Field(
+    sources: list[SourceReference] = Field(
         default_factory=list,
         description="Source references for extracted data"
     )
@@ -56,7 +57,7 @@ class CountingResult(BaseModel):
     """Structured result for counting tasks."""
     count: int = Field(default=0, description="The counted value")
     entity: str = Field(default="", description="What was counted")
-    sources: List[SourceReference] = Field(default_factory=list)
+    sources: list[SourceReference] = Field(default_factory=list)
     confidence: float = Field(default=0.0, ge=0.0, le=1.0)
     verification_status: str = Field(
         default="verified",
@@ -69,25 +70,25 @@ class VerificationResult(BaseModel):
     claim: str = Field(default="", description="The claim being verified")
     is_true: bool = Field(default=False, description="Whether the claim is supported")
     evidence: str = Field(default="", description="Supporting evidence from document")
-    sources: List[SourceReference] = Field(default_factory=list)
+    sources: list[SourceReference] = Field(default_factory=list)
     confidence: float = Field(default=0.0, ge=0.0, le=1.0)
 
 
 class ComparisonResult(BaseModel):
     """Structured result for comparison tasks."""
-    entities: List[str] = Field(default_factory=list, description="Entities being compared")
-    comparison_points: List[Dict[str, Any]] = Field(
+    entities: list[str] = Field(default_factory=list, description="Entities being compared")
+    comparison_points: list[dict[str, Any]] = Field(
         default_factory=list,
         description="Points of comparison with values for each entity"
     )
-    sources: List[SourceReference] = Field(default_factory=list)
+    sources: list[SourceReference] = Field(default_factory=list)
     confidence: float = Field(default=0.0, ge=0.0, le=1.0)
 
 
 class QAResult(BaseModel):
     """Structured result for QA tasks."""
     answer: str = Field(default="", description="The answer to the question")
-    sources: List[SourceReference] = Field(default_factory=list)
+    sources: list[SourceReference] = Field(default_factory=list)
     confidence: float = Field(default=0.0, ge=0.0, le=1.0)
     is_grounded: bool = Field(
         default=True,
@@ -97,13 +98,13 @@ class QAResult(BaseModel):
 
 class TableExtractionResult(BaseModel):
     """Structured result for table parsing tasks."""
-    headers: List[str] = Field(default_factory=list, description="Table column headers")
-    rows: List[List[str]] = Field(default_factory=list, description="Table rows")
+    headers: list[str] = Field(default_factory=list, description="Table column headers")
+    rows: list[list[str]] = Field(default_factory=list, description="Table rows")
     source_page: Optional[int] = Field(default=None, description="Page number where table was found")
     confidence: float = Field(default=0.0, ge=0.0, le=1.0)
 
 
-def create_not_found_response(intent: str, query: str) -> Dict:
+def create_not_found_response(intent: str, query: str) -> dict:
     """Create a standardized 'not found' response."""
     base = {
         "answer": "Not found in document",
@@ -111,7 +112,7 @@ def create_not_found_response(intent: str, query: str) -> Dict:
         "confidence": 0,
         "is_grounded": True,
     }
-    
+
     if intent == "extraction":
         return {
             "items": [],
@@ -140,7 +141,7 @@ def create_not_found_response(intent: str, query: str) -> Dict:
         return base
 
 
-def validate_structured_output(data: Dict, intent: str) -> Dict:
+def validate_structured_output(data: dict, intent: str) -> dict:
     """Validate and normalize structured output based on intent."""
     try:
         if intent == "extraction":

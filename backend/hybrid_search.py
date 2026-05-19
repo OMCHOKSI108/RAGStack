@@ -6,7 +6,6 @@ RRF fusion, MMR, and local or remote re-ranking.
 from __future__ import annotations
 
 import logging
-from typing import Dict, List
 
 from backend import embeddings
 from backend.config import (
@@ -42,10 +41,10 @@ def get_reranker():
     return _reranker
 
 
-def reciprocal_rank_fusion(ranked_lists: List[List[tuple]], k: int = RRF_K) -> List[tuple]:
+def reciprocal_rank_fusion(ranked_lists: list[list[tuple]], k: int = RRF_K) -> list[tuple]:
     """Fuse multiple ranked lists using Reciprocal Rank Fusion."""
-    fused_scores: Dict[str, float] = {}
-    fused_data: Dict[str, DocumentChunk] = {}
+    fused_scores: dict[str, float] = {}
+    fused_data: dict[str, DocumentChunk] = {}
 
     for ranked_list in ranked_lists:
         for rank, (identifier, chunk) in enumerate(ranked_list):
@@ -58,7 +57,7 @@ def reciprocal_rank_fusion(ranked_lists: List[List[tuple]], k: int = RRF_K) -> L
     return [(ident, score, fused_data[ident]) for ident, score in sorted_results]
 
 
-def _rerank_candidates(query: str, candidates: List[tuple]) -> List[float]:
+def _rerank_candidates(query: str, candidates: list[tuple]) -> list[float]:
     """Return rerank scores, falling back to existing retrieval scores on errors."""
     if not candidates:
         return []
@@ -86,7 +85,7 @@ def hybrid_search(
     use_mmr: bool = False,
     mmr_lambda: float = 0.5,
     mmr_top_k: int = None,
-) -> List[SearchResult]:
+) -> list[SearchResult]:
     """Perform dense search, optional sparse fusion, optional MMR, and reranking."""
     query_embedding = embeddings.encode_query(query)
     dense_results = vector_store.search(query_embedding, top_k=top_k)
@@ -135,12 +134,12 @@ def hybrid_search(
 
 
 def multi_query_hybrid_search(
-    queries: List[str],
+    queries: list[str],
     vector_store,
     bm25_store,
     top_k: int = RETRIEVAL_TOP_K,
     rerank_top_k: int = RERANK_TOP_K,
-) -> List[SearchResult]:
+) -> list[SearchResult]:
     """Run hybrid search for multiple queries and deduplicate final candidates."""
     all_results = []
     for i, query in enumerate(queries):
