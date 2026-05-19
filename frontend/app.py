@@ -464,11 +464,14 @@ def esc(value: Any) -> str:
 def check_backend_health() -> dict | None:
     """Check if the backend is running and return health info."""
     try:
-        response = httpx.get(health_url(), timeout=5.0)
+        response = httpx.get(health_url(), timeout=45.0)
         if response.status_code == 200:
             return response.json()
-    except (httpx.ConnectError, httpx.TimeoutException):
-        pass
+        st.session_state["_health_error"] = (
+            f"HTTP {response.status_code}: {response.text[:300]}"
+        )
+    except httpx.HTTPError as exc:
+        st.session_state["_health_error"] = f"{type(exc).__name__}: {exc}"
     return None
 
 
@@ -613,14 +616,16 @@ def render_status(health: dict | None) -> None:
         )
         return
 
+    detail = st.session_state.get("_health_error", "")
     st.markdown(
         '<div class="status-indicator">'
         '<span class="status-dot offline"></span>'
         '<span style="color: var(--text-secondary); font-size: 0.875rem;">Backend offline</span>'
         '</div>'
-        '<div style="color: var(--text-muted); font-size: 0.8rem;">'
-        'Start with <code>python run.py</code>'
-        '</div>',
+        f'<div style="color: var(--text-muted); font-size: 0.75rem; word-break: break-all;">'
+        f'Checking <code>{esc(health_url())}</code>'
+        + (f'<br>{esc(detail)}' if detail else '')
+        + '</div>',
         unsafe_allow_html=True,
     )
 
