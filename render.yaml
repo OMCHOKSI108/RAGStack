@@ -1,0 +1,48 @@
+services:
+  - type: web
+    name: rag-pipeline-backend
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile.backend
+    healthCheckPath: /health
+    envVars:
+      - key: LLM_PROVIDER
+        value: HUGGINGFACE_API
+      - key: EMBEDDING_PROVIDER
+        value: HUGGINGFACE_API
+      - key: VECTOR_STORE
+        value: PINECONE
+      - key: RERANK_PROVIDER
+        value: HUGGINGFACE_API
+      - key: VERIFICATION_PROVIDER
+        value: HUGGINGFACE_API
+      - key: SPARSE_RETRIEVAL
+        value: "false"
+      - key: HF_PROVIDER
+        value: hf-inference
+      - key: HF_CHAT_MODEL_ID
+        sync: false
+      - key: HF_TOKEN
+        sync: false
+      - key: PINECONE_API_KEY
+        sync: false
+      - key: PINECONE_INDEX
+        sync: false
+      - key: PINECONE_NAMESPACE
+        value: default
+      - key: PINECONE_CLOUD
+        value: aws
+      - key: PINECONE_REGION
+        value: us-east-1
+
+  - type: web
+    name: rag-pipeline-frontend
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile.frontend
+    envVars:
+      - key: BACKEND_URL
+        fromService:
+          type: web
+          name: rag-pipeline-backend
+          property: host

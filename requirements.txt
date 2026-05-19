@@ -1,0 +1,20 @@
+# API
+fastapi>=0.115.0
+uvicorn[standard]
+sse-starlette
+python-multipart
+slowapi
+python-dotenv
+
+# Frontend
+streamlit
+httpx
+
+# Remote providers
+pinecone
+huggingface-hub
+
+# Vector math and document parsing
+numpy
+PyMuPDF
+markdown
