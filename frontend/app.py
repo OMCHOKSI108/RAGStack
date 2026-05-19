@@ -15,13 +15,39 @@ import httpx
 import streamlit as st
 
 
-API_BASE = os.getenv("BACKEND_URL", "http://localhost:8000").rstrip("/")
-if not API_BASE.startswith(("http://", "https://")):
-    API_BASE = f"https://{API_BASE}"
-UPLOAD_URL = f"{API_BASE}/upload"
-QUERY_URL = f"{API_BASE}/query/stream"
-DOCUMENTS_URL = f"{API_BASE}/documents"
-HEALTH_URL = f"{API_BASE}/health"
+def _normalize_backend_url(raw: str) -> str:
+    raw = (raw or "").strip().rstrip("/")
+    if not raw:
+        return "http://localhost:8000"
+    if not raw.startswith(("http://", "https://")):
+        raw = f"https://{raw}"
+    return raw
+
+
+_DEFAULT_BACKEND_URL = _normalize_backend_url(
+    os.getenv("BACKEND_URL", "http://localhost:8000")
+)
+
+
+def get_backend_url() -> str:
+    """Return the active backend URL, preferring an in-page override."""
+    return st.session_state.get("api_base", _DEFAULT_BACKEND_URL)
+
+
+def health_url() -> str:
+    return f"{get_backend_url()}/health"
+
+
+def upload_url() -> str:
+    return f"{get_backend_url()}/upload"
+
+
+def query_url() -> str:
+    return f"{get_backend_url()}/query/stream"
+
+
+def documents_url() -> str:
+    return f"{get_backend_url()}/documents"
 
 
 st.set_page_config(
@@ -438,7 +464,7 @@ def esc(value: Any) -> str:
 def check_backend_health() -> dict | None:
     """Check if the backend is running and return health info."""
     try:
-        response = httpx.get(HEALTH_URL, timeout=5.0)
+        response = httpx.get(health_url(), timeout=5.0)
         if response.status_code == 200:
             return response.json()
     except (httpx.ConnectError, httpx.TimeoutException):
@@ -449,7 +475,7 @@ def check_backend_health() -> dict | None:
 def fetch_documents() -> list:
     """Fetch the list of indexed documents from the backend."""
     try:
-        response = httpx.get(DOCUMENTS_URL, timeout=10.0)
+        response = httpx.get(documents_url(), timeout=10.0)
         if response.status_code == 200:
             return response.json().get("documents", [])
     except (httpx.ConnectError, httpx.TimeoutException):
@@ -461,7 +487,7 @@ def upload_file(uploaded_file) -> dict | None:
     """Upload a file to the backend for indexing."""
     try:
         files = {"file": (uploaded_file.name, uploaded_file.getvalue())}
-        response = httpx.post(UPLOAD_URL, files=files, timeout=120.0)
+        response = httpx.post(upload_url(), files=files, timeout=120.0)
         if response.status_code == 200:
             return response.json()
         st.error(f"Upload failed: {response.text}")
@@ -473,7 +499,7 @@ def upload_file(uploaded_file) -> dict | None:
 def delete_doc(filename: str) -> bool:
     """Delete a document from the backend index."""
     try:
-        response = httpx.delete(f"{DOCUMENTS_URL}/{filename}", timeout=30.0)
+        response = httpx.delete(f"{documents_url()}/{filename}", timeout=30.0)
         return response.status_code == 200
     except (httpx.ConnectError, httpx.TimeoutException):
         return False
@@ -501,7 +527,7 @@ def stream_query_live(question: str, placeholder, conversation_history: list | N
 
         with httpx.stream(
             "POST",
-            QUERY_URL,
+            query_url(),
             json=payload,
             timeout=httpx.Timeout(connect=10.0, read=180.0, write=10.0, pool=10.0),
         ) as response:
@@ -719,6 +745,24 @@ with st.sidebar:
         '<div class="sidebar-copy">Upload source documents, monitor indexing, and keep the chat workspace tidy.</div>',
         unsafe_allow_html=True,
     )
+
+    st.markdown('<div class="section-heading"><h4>API configuration</h4></div>', unsafe_allow_html=True)
+    with st.expander(f"Backend: {get_backend_url()}", expanded=False):
+        candidate = st.text_input(
+            "Backend URL",
+            value=get_backend_url(),
+            help="Full URL of the FastAPI backend, e.g. https://rag-pipeline-backend-odlr.onrender.com",
+            key="api_base_input",
+        )
+        col_save, col_reset = st.columns(2)
+        with col_save:
+            if st.button("Save", use_container_width=True):
+                st.session_state.api_base = _normalize_backend_url(candidate)
+                st.rerun()
+        with col_reset:
+            if st.button("Reset", use_container_width=True):
+                st.session_state.api_base = _DEFAULT_BACKEND_URL
+                st.rerun()
 
     health = check_backend_health()
 

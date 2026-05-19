@@ -22,6 +22,12 @@ services:
         value: hf-inference
       - key: HF_CHAT_MODEL_ID
         sync: false
+      - key: HF_EMBEDDING_MODEL_ID
+        value: sentence-transformers/all-MiniLM-L6-v2
+      - key: HF_RERANKER_MODEL_ID
+        value: BAAI/bge-reranker-base
+      - key: HF_VERIFIER_MODEL_ID
+        sync: false
       - key: HF_TOKEN
         sync: false
       - key: PINECONE_API_KEY
@@ -42,7 +48,4 @@ services:
     dockerfilePath: ./Dockerfile.frontend
     envVars:
       - key: BACKEND_URL
-        fromService:
-          type: web
-          name: rag-pipeline-backend
-          property: host
+        sync: false
