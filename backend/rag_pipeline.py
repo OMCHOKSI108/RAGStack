@@ -379,6 +379,10 @@ class RAGPipeline:
         # ── Step 3b: No-answer threshold on retrieval score ─────────────
         from backend.config import RETRIEVAL_NO_ANSWER_THRESHOLD
         top_score = search_results[0].score if search_results else 0.0
+        logger.info(
+            "Top retrieval score=%.4f, threshold=%.4f, candidates=%d",
+            top_score, RETRIEVAL_NO_ANSWER_THRESHOLD, len(search_results),
+        )
         if top_score < RETRIEVAL_NO_ANSWER_THRESHOLD:
             yield {
                 "event": "token",

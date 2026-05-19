@@ -12,6 +12,7 @@ from typing import List
 import pymupdf  # PyMuPDF (v1.27+ uses 'pymupdf' instead of 'fitz')
 import markdown
 
+from backend.config import OCR_CORRECTIONS_ENABLED
 from backend.models import DocumentSection
 
 logger = logging.getLogger(__name__)
@@ -29,9 +30,12 @@ _OCR_CURRENCY_PATTERNS = [
 def normalize_ocr_artifacts(text: str) -> str:
     """
     Normalize common OCR artifacts in extracted text.
-    Preserves legitimate text while fixing currency symbol misreads.
+    Only runs when OCR_CORRECTIONS_ENABLED is set; the default-off behavior
+    avoids mangling technical text like "l1 regularization" or "1500 params".
     Returns (cleaned_text, had_corrections).
     """
+    if not OCR_CORRECTIONS_ENABLED:
+        return text, False
     had_corrections = False
     for pattern, replacement in _OCR_CURRENCY_PATTERNS:
         if pattern.search(text):

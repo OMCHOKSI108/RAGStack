@@ -77,6 +77,9 @@ LLM_MAX_TOKENS = int(os.getenv("LLM_MAX_TOKENS", "1024"))
 LLM_TEMPERATURE = float(os.getenv("LLM_TEMPERATURE", "0.1"))
 LLM_MAX_TOKENS_COMPREHENSIVE = int(os.getenv("LLM_MAX_TOKENS_COMPREHENSIVE", "2048"))
 
+# Document parsing
+OCR_CORRECTIONS_ENABLED = _env_bool("OCR_CORRECTIONS_ENABLED", False)
+
 # Chunking
 CHUNK_SIZE = int(os.getenv("CHUNK_SIZE", "1024"))
 CHUNK_OVERLAP = int(os.getenv("CHUNK_OVERLAP", "150"))
@@ -86,7 +89,7 @@ CHUNK_SEPARATORS = ["\n\n", "\n", ". ", " "]
 RETRIEVAL_TOP_K = int(os.getenv("RETRIEVAL_TOP_K", "20"))
 RERANK_TOP_K = int(os.getenv("RERANK_TOP_K", "5"))
 RRF_K = int(os.getenv("RRF_K", "60"))
-RETRIEVAL_NO_ANSWER_THRESHOLD = float(os.getenv("RETRIEVAL_NO_ANSWER_THRESHOLD", "0.65"))
+RETRIEVAL_NO_ANSWER_THRESHOLD = float(os.getenv("RETRIEVAL_NO_ANSWER_THRESHOLD", "0.1"))
 
 # Verification
 NLI_MODEL = os.getenv("NLI_MODEL", "microsoft/deberta-v3-base-mnli")
