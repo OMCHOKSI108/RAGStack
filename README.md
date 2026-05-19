@@ -12,6 +12,20 @@ A production-grade Retrieval-Augmented Generation system designed for fully remo
 
 Both services run on Render's free tier and sleep after roughly fifteen minutes of inactivity, so the first request after an idle period takes about thirty to sixty seconds while the container warms back up. The frontend includes an **API configuration** panel in the sidebar that lets you point the UI at a different backend (for example a local instance during development) without redeploying.
 
+## Demo
+
+A short walkthrough of the deployed app — uploading a document, asking a question, streaming the cited answer, and reviewing the verification signal.
+
+[Watch the demo video](docs/ragapp.mp4)
+
+<!--
+For inline playback on github.com, drag-and-drop docs/ragapp.mp4 into a new
+issue or PR comment in this repository, copy the auto-generated
+`https://github.com/user-attachments/assets/...` URL it produces, and paste
+that URL on its own line right below this comment. GitHub will then render
+the video inline.
+-->
+
 ## What the System Does
 
 At a high level, the pipeline performs four things in order whenever a user asks a question:
