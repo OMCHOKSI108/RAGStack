@@ -270,10 +270,7 @@ Last updated: 2026-05-19.
 
 ### Plots
 
-![Dashboard](evaluation_output/plots/evaluation_dashboard.png)
-![Latency](evaluation_output/plots/latency_histogram.png)
-![Retrieval](evaluation_output/plots/retrieval_scores.png)
-![Faithfulness](evaluation_output/plots/faithfulness_chart.png)
+![Evalutions](evaluation_output/plots/evaluation_dashboard.png)
 
 ## Repository Layout
 
