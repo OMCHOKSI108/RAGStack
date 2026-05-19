@@ -80,6 +80,9 @@ LLM_MAX_TOKENS_COMPREHENSIVE = int(os.getenv("LLM_MAX_TOKENS_COMPREHENSIVE", "20
 # Document parsing
 OCR_CORRECTIONS_ENABLED = _env_bool("OCR_CORRECTIONS_ENABLED", False)
 
+# Query preprocessing
+QUERY_REWRITE_ENABLED = _env_bool("QUERY_REWRITE_ENABLED", False)
+
 # Chunking
 CHUNK_SIZE = int(os.getenv("CHUNK_SIZE", "1024"))
 CHUNK_OVERLAP = int(os.getenv("CHUNK_OVERLAP", "150"))

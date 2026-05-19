@@ -4,8 +4,10 @@ Makes minimal, safe improvements to queries for better retrieval.
 """
 
 import logging
+import re
 
 from backend import llm
+from backend.config import QUERY_REWRITE_ENABLED
 
 logger = logging.getLogger(__name__)
 
@@ -34,6 +36,9 @@ def rewrite_query(query: str) -> str:
     Rewrite a user query to improve retrieval quality.
     Falls back to the original query on any failure.
     """
+    if not QUERY_REWRITE_ENABLED:
+        return query
+
     # Skip rewriting for very short queries
     if len(query.split()) <= 4:
         logger.info(f"Query too short, skipping rewrite: '{query}'")
@@ -62,11 +67,31 @@ def rewrite_query(query: str) -> str:
             logger.warning("Query rewriting produced invalid output, using original")
             return query
 
+        # Reject any rewrite that adds words (LLMs love to hallucinate extras).
+        original_tokens = query.split()
+        rewritten_tokens = rewritten.split()
+        if len(rewritten_tokens) > len(original_tokens):
+            logger.warning(
+                "Rewritten query adds words, using original: '%s' -> '%s'",
+                query, rewritten,
+            )
+            return query
+
+        # Reject if digits in the original disappeared (e.g. "1" -> "one").
+        original_digits = re.findall(r"\d+", query)
+        rewritten_digits = re.findall(r"\d+", rewritten)
+        if original_digits and rewritten_digits != original_digits:
+            logger.warning(
+                "Rewritten query changed digits, using original: '%s' -> '%s'",
+                query, rewritten,
+            )
+            return query
+
         # If rewritten is drastically different, reject it
         original_words = set(query.lower().split())
         rewritten_words = set(rewritten.lower().split())
         overlap = len(original_words & rewritten_words)
-        
+
         if overlap < len(original_words) * 0.7:
             logger.warning(f"Rewritten query too different from original, using original: '{rewritten}'")
             return query
