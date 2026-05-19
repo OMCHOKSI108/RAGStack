@@ -1,0 +1,5 @@
+15:48:24 | rag_eval             | INFO    | ============================================================
+15:48:24 | rag_eval             | INFO    |   RAG Pipeline Evaluation System
+15:48:24 | rag_eval             | INFO    | ============================================================
+15:48:26 | rag_eval             | ERROR   | Health check failed: All connection attempts failed
+15:48:26 | rag_eval             | ERROR   | Backend is not available. Aborting evaluation.

@@ -1,0 +1,1361 @@
+{
+  "evaluation_date": "2026-05-19T17:01:27.726859",
+  "total_queries": 10,
+  "successful_queries": 10,
+  "failed_queries": 0,
+  "metrics": {
+    "precision_at_k": 0.0,
+    "recall_at_k": 0.0,
+    "mrr": 0.0,
+    "ndcg": 0.0,
+    "context_precision": -11.173399166666666,
+    "context_recall": 0.0,
+    "answer_relevancy": 0.2954820467159152,
+    "faithfulness_score": 0.3412461401392516,
+    "hallucination_rate": 0.5,
+    "citation_accuracy": 0.8,
+    "source_grounding": 0.21336703768545257,
+    "exact_match": 0.0,
+    "f1_score": 0.0,
+    "semantic_similarity": 0.0,
+    "completeness_score": 0.76,
+    "instruction_following": 1.0,
+    "avg_retrieval_time": 8.267000889778137,
+    "avg_generation_time": 7.101683712005615,
+    "avg_total_time": 15.368684601783752,
+    "avg_tokens_per_second": 60.980560290270844,
+    "p50_latency": 16.835891723632812,
+    "p95_latency": 23.86348032951355,
+    "p99_latency": 23.86348032951355,
+    "throughput": 0.06506737732674506,
+    "cpu_usage_avg": 0.0,
+    "gpu_usage_avg": 0.0,
+    "memory_usage_avg": 0.0,
+    "peak_memory_mb": 0.0,
+    "total_queries": 10,
+    "successful_queries": 10,
+    "failed_queries": 0,
+    "unsupported_correctly_rejected": 0,
+    "unsupported_total": 2
+  },
+  "results": [
+    {
+      "query": "extract all company names from the document",
+      "intent": "extraction",
+      "expected_answer": "",
+      "retrieved_docs": [
+        {
+          "index": 1,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 1,
+          "chunk_index": 2,
+          "text_snippet": "0k\nPossible\nSparks To Ideas\nAI/ML Intern\nAhmedabad I8k\u2013I15k\nPossible\nBackend Development (Python / Node.js)\nCompany\nRole\nMode\nStipend\nPPO\nPostman\nBackend Intern\nRemote\nI25k\u2013I50k\nVery High\nRazorpay\nSof...",
+          "relevance_score": -10.8375
+        },
+        {
+          "index": 2,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 1,
+          "chunk_index": 1,
+          "text_snippet": "h demand in AI Agents, Generative AI, Backend + AI integrations Typical stipend ranges: Vadodara startups: I3k\u2013I12k/month Ahmedabad/Gujarat: I8k\u2013I25k/month\nRemote AI startups: I15k\u2013I50k/month\nAI / ML ...",
+          "relevance_score": -11.1999
+        },
+        {
+          "index": 3,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 1,
+          "chunk_index": 0,
+          "text_snippet": "Comprehensive Internship Research Report (2026) Om\nChoksi \u2013 3rd Year AIML, CHARUSAT\nExecutive Summary\nThis report compiles AI/ML, Backend, MERN Stack, NLP, AI Agents, and Automation internship opportu...",
+          "relevance_score": -11.2296
+        },
+        {
+          "index": 4,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 1,
+          "chunk_index": 3,
+          "text_snippet": "lfound Startups\nFull Stack Intern\nRemote\nI15k\u2013I30k Strong\nZithas Technologies\nMERN Developer\nVadodara\nI12k\u2013I20k\nPossible\nCareerNaksha\nFull Stack Intern\nVadodara\nI10k\u2013I15k\nPossible",
+          "relevance_score": -11.4115
+        },
+        {
+          "index": 5,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 2,
+          "chunk_index": 4,
+          "text_snippet": "Top Recommendations\nAnthropic \u2013 Excellent AI exposure and resume value Postman \u2013 Strong backend engineering learning Razorpay \u2013\nProduct engineering + PPO potential Peakflo \u2013 AI/ML startup growth expos...",
+          "relevance_score": -11.4599
+        },
+        {
+          "index": 6,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 2,
+          "chunk_index": 5,
+          "text_snippet": " Maintain a clean GitHub with deployment links Use LinkedIn daily for networking and cold outreach Apply consistently: 10\u201320 applications/week Focus on AI + Backend\ncombination for maximum opportuniti...",
+          "relevance_score": -11.473
+        }
+      ],
+      "generated_answer": "```\n{\n  \"items\": [\n    {\"name\": \"Razorpay\", \"details\": \"Software Intern, Hybrid, I20k\u2013I40k, High\", \"source_ref\": \"[1]\"},\n    {\"name\": \"Maskoid\", \"details\": \"Backend Intern, Vadodara, I15k\u2013I25k, Likely\", \"source_ref\": \"[1]\"},\n    {\"name\": \"Blattner Technologies\", \"details\": \"Backend Intern, Vadodara, I10k\u2013I20k, Likely\", \"source_ref\": \"[1]\"},\n    {\"name\": \"Cuvette Tech\", \"details\": \"MERN Intern, Remote, I20k\u2013I35k, Likely\", \"source_ref\": \"[1]\"},\n    {\"name\": \"Wellfound Startups\", \"details\": \"Full Stack Intern, Remote, I15k\u2013I30k, Strong\", \"source_ref\": \"[1]\"},\n    {\"name\": \"Zithas Technologies\", \"details\": \"MERN Developer, Vadodara, I12k\u2013I20k, Possible\", \"source_ref\": \"[1]\"},\n    {\"name\": \"CareerNaksha\", \"details\": \"Full Stack Intern, Vadodara, I10k\u2013I15k, Possible\", \"source_ref\": \"[1]\"}\n  ],\n  \"total_count\": 7,\n  \"sources\": [\n    {\"source_file\": \"Om_Choksi_Internship_Research_2026.pdf\", \"page_number\": 1, \"text_snippet\": \"\"}\n  ]\n}\n```",
+      "citations": [
+        {
+          "index": 1,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 1,
+          "chunk_index": 2,
+          "text_snippet": "0k\nPossible\nSparks To Ideas\nAI/ML Intern\nAhmedabad I8k\u2013I15k\nPossible\nBackend Development (Python / Node.js)\nCompany\nRole\nMode\nStipend\nPPO\nPostman\nBackend Intern\nRemote\nI25k\u2013I50k\nVery High\nRazorpay\nSof...",
+          "relevance_score": -10.8375
+        },
+        {
+          "index": 2,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 1,
+          "chunk_index": 1,
+          "text_snippet": "h demand in AI Agents, Generative AI, Backend + AI integrations Typical stipend ranges: Vadodara startups: I3k\u2013I12k/month Ahmedabad/Gujarat: I8k\u2013I25k/month\nRemote AI startups: I15k\u2013I50k/month\nAI / ML ...",
+          "relevance_score": -11.1999
+        },
+        {
+          "index": 3,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 1,
+          "chunk_index": 0,
+          "text_snippet": "Comprehensive Internship Research Report (2026) Om\nChoksi \u2013 3rd Year AIML, CHARUSAT\nExecutive Summary\nThis report compiles AI/ML, Backend, MERN Stack, NLP, AI Agents, and Automation internship opportu...",
+          "relevance_score": -11.2296
+        },
+        {
+          "index": 4,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 1,
+          "chunk_index": 3,
+          "text_snippet": "lfound Startups\nFull Stack Intern\nRemote\nI15k\u2013I30k Strong\nZithas Technologies\nMERN Developer\nVadodara\nI12k\u2013I20k\nPossible\nCareerNaksha\nFull Stack Intern\nVadodara\nI10k\u2013I15k\nPossible",
+          "relevance_score": -11.4115
+        },
+        {
+          "index": 5,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 2,
+          "chunk_index": 4,
+          "text_snippet": "Top Recommendations\nAnthropic \u2013 Excellent AI exposure and resume value Postman \u2013 Strong backend engineering learning Razorpay \u2013\nProduct engineering + PPO potential Peakflo \u2013 AI/ML startup growth expos...",
+          "relevance_score": -11.4599
+        },
+        {
+          "index": 6,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 2,
+          "chunk_index": 5,
+          "text_snippet": " Maintain a clean GitHub with deployment links Use LinkedIn daily for networking and cold outreach Apply consistently: 10\u201320 applications/week Focus on AI + Backend\ncombination for maximum opportuniti...",
+          "relevance_score": -11.473
+        }
+      ],
+      "verification": {
+        "is_grounded": true,
+        "confidence": 0.5,
+        "issues": []
+      },
+      "retrieval_time": 11.510524034500122,
+      "generation_time": 5.32536768913269,
+      "total_time": 16.835891723632812,
+      "tokens_generated": 330,
+      "tokens_per_second": 61.9675521510788,
+      "retrieval_scores": {
+        "precision_at_k": 0.0,
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "ndcg": 0.0,
+        "context_precision": -11.268566666666667,
+        "retrieved_count": 6
+      },
+      "generation_scores": {
+        "answer_relevancy": 0.33203423023223877,
+        "semantic_similarity": 0.0,
+        "exact_match": 0.0,
+        "f1_score": 0.0,
+        "completeness_score": 0.6000000000000001,
+        "instruction_following": 1.0,
+        "faithfulness_score": 0.5
+      },
+      "citation_scores": {
+        "citation_accuracy": 1.0,
+        "source_grounding": 0.019230769230769232
+      },
+      "hallucination_detected": true,
+      "error": null
+    },
+    {
+      "query": "list all dates mentioned in the document",
+      "intent": "extraction",
+      "expected_answer": "",
+      "retrieved_docs": [
+        {
+          "index": 1,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 1,
+          "chunk_index": 0,
+          "text_snippet": "Comprehensive Internship Research Report (2026) Om\nChoksi \u2013 3rd Year AIML, CHARUSAT\nExecutive Summary\nThis report compiles AI/ML, Backend, MERN Stack, NLP, AI Agents, and Automation internship opportu...",
+          "relevance_score": -10.4597
+        },
+        {
+          "index": 2,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 1,
+          "chunk_index": 1,
+          "text_snippet": "h demand in AI Agents, Generative AI, Backend + AI integrations Typical stipend ranges: Vadodara startups: I3k\u2013I12k/month Ahmedabad/Gujarat: I8k\u2013I25k/month\nRemote AI startups: I15k\u2013I50k/month\nAI / ML ...",
+          "relevance_score": -11.3113
+        },
+        {
+          "index": 3,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 1,
+          "chunk_index": 2,
+          "text_snippet": "0k\nPossible\nSparks To Ideas\nAI/ML Intern\nAhmedabad I8k\u2013I15k\nPossible\nBackend Development (Python / Node.js)\nCompany\nRole\nMode\nStipend\nPPO\nPostman\nBackend Intern\nRemote\nI25k\u2013I50k\nVery High\nRazorpay\nSof...",
+          "relevance_score": -11.3241
+        },
+        {
+          "index": 4,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 2,
+          "chunk_index": 5,
+          "text_snippet": " Maintain a clean GitHub with deployment links Use LinkedIn daily for networking and cold outreach Apply consistently: 10\u201320 applications/week Focus on AI + Backend\ncombination for maximum opportuniti...",
+          "relevance_score": -11.3928
+        },
+        {
+          "index": 5,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 1,
+          "chunk_index": 3,
+          "text_snippet": "lfound Startups\nFull Stack Intern\nRemote\nI15k\u2013I30k Strong\nZithas Technologies\nMERN Developer\nVadodara\nI12k\u2013I20k\nPossible\nCareerNaksha\nFull Stack Intern\nVadodara\nI10k\u2013I15k\nPossible",
+          "relevance_score": -11.4115
+        },
+        {
+          "index": 6,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 2,
+          "chunk_index": 4,
+          "text_snippet": "Top Recommendations\nAnthropic \u2013 Excellent AI exposure and resume value Postman \u2013 Strong backend engineering learning Razorpay \u2013\nProduct engineering + PPO potential Peakflo \u2013 AI/ML startup growth expos...",
+          "relevance_score": -11.413
+        }
+      ],
+      "generated_answer": "```\n{\n  \"items\": [\n    {\n      \"name\": \"2026\",\n      \"details\": \"Year of the internship research report\",\n      \"source_ref\": \"[1]\"\n    }\n  ],\n  \"total_count\": 1,\n  \"sources\": [\n    {\n      \"source_file\": \"Om_Choksi_Internship_Research_2026.pdf\",\n      \"page_number\": 1,\n      \"text_snippet\": \"\"\n    }\n  ]\n}\n```",
+      "citations": [
+        {
+          "index": 1,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 1,
+          "chunk_index": 0,
+          "text_snippet": "Comprehensive Internship Research Report (2026) Om\nChoksi \u2013 3rd Year AIML, CHARUSAT\nExecutive Summary\nThis report compiles AI/ML, Backend, MERN Stack, NLP, AI Agents, and Automation internship opportu...",
+          "relevance_score": -10.4597
+        },
+        {
+          "index": 2,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 1,
+          "chunk_index": 1,
+          "text_snippet": "h demand in AI Agents, Generative AI, Backend + AI integrations Typical stipend ranges: Vadodara startups: I3k\u2013I12k/month Ahmedabad/Gujarat: I8k\u2013I25k/month\nRemote AI startups: I15k\u2013I50k/month\nAI / ML ...",
+          "relevance_score": -11.3113
+        },
+        {
+          "index": 3,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 1,
+          "chunk_index": 2,
+          "text_snippet": "0k\nPossible\nSparks To Ideas\nAI/ML Intern\nAhmedabad I8k\u2013I15k\nPossible\nBackend Development (Python / Node.js)\nCompany\nRole\nMode\nStipend\nPPO\nPostman\nBackend Intern\nRemote\nI25k\u2013I50k\nVery High\nRazorpay\nSof...",
+          "relevance_score": -11.3241
+        },
+        {
+          "index": 4,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 2,
+          "chunk_index": 5,
+          "text_snippet": " Maintain a clean GitHub with deployment links Use LinkedIn daily for networking and cold outreach Apply consistently: 10\u201320 applications/week Focus on AI + Backend\ncombination for maximum opportuniti...",
+          "relevance_score": -11.3928
+        },
+        {
+          "index": 5,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 1,
+          "chunk_index": 3,
+          "text_snippet": "lfound Startups\nFull Stack Intern\nRemote\nI15k\u2013I30k Strong\nZithas Technologies\nMERN Developer\nVadodara\nI12k\u2013I20k\nPossible\nCareerNaksha\nFull Stack Intern\nVadodara\nI10k\u2013I15k\nPossible",
+          "relevance_score": -11.4115
+        },
+        {
+          "index": 6,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 2,
+          "chunk_index": 4,
+          "text_snippet": "Top Recommendations\nAnthropic \u2013 Excellent AI exposure and resume value Postman \u2013 Strong backend engineering learning Razorpay \u2013\nProduct engineering + PPO potential Peakflo \u2013 AI/ML startup growth expos...",
+          "relevance_score": -11.413
+        }
+      ],
+      "verification": {
+        "is_grounded": true,
+        "confidence": 0.5714285714285714,
+        "issues": []
+      },
+      "retrieval_time": 9.703502893447876,
+      "generation_time": 1.535750389099121,
+      "total_time": 11.239253282546997,
+      "tokens_generated": 99,
+      "tokens_per_second": 64.46360079262223,
+      "retrieval_scores": {
+        "precision_at_k": 0.0,
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "ndcg": 0.0,
+        "context_precision": -11.218733333333333,
+        "retrieved_count": 6
+      },
+      "generation_scores": {
+        "answer_relevancy": 0.37583422660827637,
+        "semantic_similarity": 0.0,
+        "exact_match": 0.0,
+        "f1_score": 0.0,
+        "completeness_score": 0.5,
+        "instruction_following": 1.0,
+        "faithfulness_score": 0.5714285714285714
+      },
+      "citation_scores": {
+        "citation_accuracy": 1.0,
+        "source_grounding": 0.07692307692307693
+      },
+      "hallucination_detected": true,
+      "error": null
+    },
+    {
+      "query": "summarize the main points of the document",
+      "intent": "summarization",
+      "expected_answer": "",
+      "retrieved_docs": [
+        {
+          "index": 1,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 1,
+          "chunk_index": 0,
+          "text_snippet": "Comprehensive Internship Research Report (2026) Om\nChoksi \u2013 3rd Year AIML, CHARUSAT\nExecutive Summary\nThis report compiles AI/ML, Backend, MERN Stack, NLP, AI Agents, and Automation internship opportu...",
+          "relevance_score": -11.1723
+        },
+        {
+          "index": 2,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 1,
+          "chunk_index": 2,
+          "text_snippet": "0k\nPossible\nSparks To Ideas\nAI/ML Intern\nAhmedabad I8k\u2013I15k\nPossible\nBackend Development (Python / Node.js)\nCompany\nRole\nMode\nStipend\nPPO\nPostman\nBackend Intern\nRemote\nI25k\u2013I50k\nVery High\nRazorpay\nSof...",
+          "relevance_score": -11.3701
+        },
+        {
+          "index": 3,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 1,
+          "chunk_index": 1,
+          "text_snippet": "h demand in AI Agents, Generative AI, Backend + AI integrations Typical stipend ranges: Vadodara startups: I3k\u2013I12k/month Ahmedabad/Gujarat: I8k\u2013I25k/month\nRemote AI startups: I15k\u2013I50k/month\nAI / ML ...",
+          "relevance_score": -11.3741
+        },
+        {
+          "index": 4,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 2,
+          "chunk_index": 4,
+          "text_snippet": "Top Recommendations\nAnthropic \u2013 Excellent AI exposure and resume value Postman \u2013 Strong backend engineering learning Razorpay \u2013\nProduct engineering + PPO potential Peakflo \u2013 AI/ML startup growth expos...",
+          "relevance_score": -11.4306
+        },
+        {
+          "index": 5,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 1,
+          "chunk_index": 3,
+          "text_snippet": "lfound Startups\nFull Stack Intern\nRemote\nI15k\u2013I30k Strong\nZithas Technologies\nMERN Developer\nVadodara\nI12k\u2013I20k\nPossible\nCareerNaksha\nFull Stack Intern\nVadodara\nI10k\u2013I15k\nPossible",
+          "relevance_score": -11.434
+        }
+      ],
+      "generated_answer": "**Comprehensive Internship Research Report (2026) Summary**\n\nThe Comprehensive Internship Research Report (2026) is a document compiled by Om Choksi, a 3rd-year AIML student at CHARUSAT. The report provides an overview of internship opportunities in AI/ML, Backend, MERN Stack, NLP, AI Agents, and Automation for the year 2026.\n\n**Overview**\n\nThe report aims to provide a comprehensive list of internship opportunities for Om Choksi, including Vadodara-first opportunities, Gujarat-based firms, and remote/global startup internships. The research includes over 50 companies/opportunities identified, with high demand in AI Agents, Generative AI, Backend + AI.\n\n**Key Findings**\n\n* High demand in AI Agents, Generative AI, Backend + AI (Source: [1], Page 1)\n* Typical stipend ranges:\n\t+ Vadodara startups: \u20b93k\u2013\u20b912k/month\n\t+ Ahmedabad/Gujarat: \u20b98k\u2013\u20b925k/month\n\t+ Remote AI startups: \u20b915k\u2013\u20b950k/month (Source: [3], Page 1)\n* Top recommendations for internship opportunities:\n\t+ Anthropic \u2013 Excellent AI exposure and resume value (Source: [4])\n\t+ Postman \u2013 Strong backend engineering learning\n\t+ Razorpay \u2013 Product engineering + PPO potential\n\t+ Peakflo \u2013 AI/ML startup growth exposure\n\t+ Maskoid Technologies \u2013 Good Vadodara PPO-focused option\n\t+ Logical Wings \u2013 Strong MERN + Backend fit (Source: [4])\n\n**Internship Opportunities**\n\nThe report lists the following internship opportunities:\n\n* **AI/ML Intern**\n\t+ Ahmedabad: \u20b98k\u2013\u20b915k/month, Possible (Source: [2])\n\t+ Remote: \u20b915k\u2013\u20b950k/month, Likely (Source: [3])\n* **Backend Development (Python / Node.js)**\n\t+ Postman: Backend Intern, Remote, \u20b925k\u2013\u20b950k/month, Very High (Source: [2])\n\t+ Razorpay: Software Intern, Hybrid, \u20b920k\u2013\u20b940k/month, High\n\t+ Maskoid Technologies: Backend Intern, Vadodara, \u20b915k\u2013\u20b925k/month, Likely\n* **MERN Stack / Full Stack**\n\t+ Cuvette Tech: MERN Intern, Remote, \u20b920k\u2013\u20b935k/month, Likely (Source: [2])\n\t+ Wellfound Startups: Full Stack Intern, Remote, \u20b915k\u2013\u20b930k/month\n\n**Application Success Tips**\n\nThe report provides the following tips for a successful internship application:\n\n* Build 3 strong projects: AI Agent, NLP App, Backend API System\n* Maintain a clean GitHub with deployment links (Source: [4])\n\n**Found Startups**\n\nThe report lists the following startups as potential internship opportunities:\n\n* **Full Stack Intern**\n\t+ Zithas Technologies: MERN Developer, Vadodara, \u20b912k\u2013\u20b920k/month, Possible (Source: [2])\n\t+ CareerNaksha: Full Stack Intern, Vadodara, \u20b910k\u2013\u20b915k/month, Possible",
+      "citations": [
+        {
+          "index": 1,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 1,
+          "chunk_index": 0,
+          "text_snippet": "Comprehensive Internship Research Report (2026) Om\nChoksi \u2013 3rd Year AIML, CHARUSAT\nExecutive Summary\nThis report compiles AI/ML, Backend, MERN Stack, NLP, AI Agents, and Automation internship opportu...",
+          "relevance_score": -11.1723
+        },
+        {
+          "index": 2,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 1,
+          "chunk_index": 2,
+          "text_snippet": "0k\nPossible\nSparks To Ideas\nAI/ML Intern\nAhmedabad I8k\u2013I15k\nPossible\nBackend Development (Python / Node.js)\nCompany\nRole\nMode\nStipend\nPPO\nPostman\nBackend Intern\nRemote\nI25k\u2013I50k\nVery High\nRazorpay\nSof...",
+          "relevance_score": -11.3701
+        },
+        {
+          "index": 3,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 1,
+          "chunk_index": 1,
+          "text_snippet": "h demand in AI Agents, Generative AI, Backend + AI integrations Typical stipend ranges: Vadodara startups: I3k\u2013I12k/month Ahmedabad/Gujarat: I8k\u2013I25k/month\nRemote AI startups: I15k\u2013I50k/month\nAI / ML ...",
+          "relevance_score": -11.3741
+        },
+        {
+          "index": 4,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 2,
+          "chunk_index": 4,
+          "text_snippet": "Top Recommendations\nAnthropic \u2013 Excellent AI exposure and resume value Postman \u2013 Strong backend engineering learning Razorpay \u2013\nProduct engineering + PPO potential Peakflo \u2013 AI/ML startup growth expos...",
+          "relevance_score": -11.4306
+        },
+        {
+          "index": 5,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 1,
+          "chunk_index": 3,
+          "text_snippet": "lfound Startups\nFull Stack Intern\nRemote\nI15k\u2013I30k Strong\nZithas Technologies\nMERN Developer\nVadodara\nI12k\u2013I20k\nPossible\nCareerNaksha\nFull Stack Intern\nVadodara\nI10k\u2013I15k\nPossible",
+          "relevance_score": -11.434
+        }
+      ],
+      "verification": {
+        "is_grounded": true,
+        "confidence": 0.48692897346555886,
+        "issues": []
+      },
+      "retrieval_time": 6.471454858779907,
+      "generation_time": 11.07227873802185,
+      "total_time": 17.543733596801758,
+      "tokens_generated": 659,
+      "tokens_per_second": 59.51801030234319,
+      "retrieval_scores": {
+        "precision_at_k": 0.0,
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "ndcg": 0.0,
+        "context_precision": -11.356219999999999,
+        "retrieved_count": 5
+      },
+      "generation_scores": {
+        "answer_relevancy": 0.01720421202480793,
+        "semantic_similarity": 0.0,
+        "exact_match": 0.0,
+        "f1_score": 0.0,
+        "completeness_score": 1.0,
+        "instruction_following": 1.0,
+        "faithfulness_score": 0.48692897346555886
+      },
+      "citation_scores": {
+        "citation_accuracy": 1.0,
+        "source_grounding": 0.3388888888888889
+      },
+      "hallucination_detected": false,
+      "error": null
+    },
+    {
+      "query": "compare the different projects mentioned in the document",
+      "intent": "comparison",
+      "expected_answer": "",
+      "retrieved_docs": [
+        {
+          "index": 1,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 2,
+          "chunk_index": 4,
+          "text_snippet": "Top Recommendations\nAnthropic \u2013 Excellent AI exposure and resume value Postman \u2013 Strong backend engineering learning Razorpay \u2013\nProduct engineering + PPO potential Peakflo \u2013 AI/ML startup growth expos...",
+          "relevance_score": -9.4355
+        },
+        {
+          "index": 2,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 1,
+          "chunk_index": 0,
+          "text_snippet": "Comprehensive Internship Research Report (2026) Om\nChoksi \u2013 3rd Year AIML, CHARUSAT\nExecutive Summary\nThis report compiles AI/ML, Backend, MERN Stack, NLP, AI Agents, and Automation internship opportu...",
+          "relevance_score": -10.4255
+        },
+        {
+          "index": 3,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 1,
+          "chunk_index": 2,
+          "text_snippet": "0k\nPossible\nSparks To Ideas\nAI/ML Intern\nAhmedabad I8k\u2013I15k\nPossible\nBackend Development (Python / Node.js)\nCompany\nRole\nMode\nStipend\nPPO\nPostman\nBackend Intern\nRemote\nI25k\u2013I50k\nVery High\nRazorpay\nSof...",
+          "relevance_score": -10.4429
+        },
+        {
+          "index": 4,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 1,
+          "chunk_index": 1,
+          "text_snippet": "h demand in AI Agents, Generative AI, Backend + AI integrations Typical stipend ranges: Vadodara startups: I3k\u2013I12k/month Ahmedabad/Gujarat: I8k\u2013I25k/month\nRemote AI startups: I15k\u2013I50k/month\nAI / ML ...",
+          "relevance_score": -10.9282
+        },
+        {
+          "index": 5,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 2,
+          "chunk_index": 5,
+          "text_snippet": " Maintain a clean GitHub with deployment links Use LinkedIn daily for networking and cold outreach Apply consistently: 10\u201320 applications/week Focus on AI + Backend\ncombination for maximum opportuniti...",
+          "relevance_score": -11.053
+        },
+        {
+          "index": 6,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 1,
+          "chunk_index": 3,
+          "text_snippet": "lfound Startups\nFull Stack Intern\nRemote\nI15k\u2013I30k Strong\nZithas Technologies\nMERN Developer\nVadodara\nI12k\u2013I20k\nPossible\nCareerNaksha\nFull Stack Intern\nVadodara\nI10k\u2013I15k\nPossible",
+          "relevance_score": -11.1348
+        }
+      ],
+      "generated_answer": "**Comparison of Entities**\n\nThe following entities are compared based on the provided context:\n\n1. **Postman**\n2. **Razorpay**\n3. **Peakflo**\n4. **Maskoid Technologies**\n5. **Logical Wings**\n6. **Puch AI**\n7. **AIVHUB**\n8. **TEJASKP AI**\n\n**Comparison Points:**\n\n* **Location:** \n\t+ Postman, Razorpay, Logical Wings: Vadodara\n\t+ Peakflo, Maskoid Technologies: Remote/Guaranteed\n\t+ Puch AI, AIVHUB, TEJASKP AI: Remote\n* **Stipend Range:**\n\t+ Postman: I20k\u2013I40k (Source: [3], Page: 1)\n\t+ Razorpay: I15k\u2013I25k (Source: [3], Page: 1)\n\t+ Peakflo: I25k\u2013I50k (Source: [4], Page: 1)\n\t+ Maskoid Technologies: I15k\u2013I25k (Source: [3], Page: 1)\n\t+ Logical Wings: I12k\u2013I20k (Source: [3], Page: 1)\n* **PPO Potential:** \n\t+ Postman: Strong PPO potential (Source: [1], Page: 2)\n\t+ Razorpay: Product engineering + PPO potential (Source: [1], Page: 2)\n\t+ Peakflo: Likely PPO (Source: [4], Page: 1)\n* **Company Type:** \n\t+ Postman: Backend engineering learning\n\t+ Razorpay: Product engineering\n\t+ Peakflo: AI/ML startup growth exposure\n\n**Note:** The stipend ranges for Vadodara startups and Ahmedabad/Gujarat firms are not explicitly mentioned in the provided context. However, it is stated that typical stipend ranges for remote AI startups are I15k\u2013I50k/month (Source: [4], Page: 1).",
+      "citations": [
+        {
+          "index": 1,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 2,
+          "chunk_index": 4,
+          "text_snippet": "Top Recommendations\nAnthropic \u2013 Excellent AI exposure and resume value Postman \u2013 Strong backend engineering learning Razorpay \u2013\nProduct engineering + PPO potential Peakflo \u2013 AI/ML startup growth expos...",
+          "relevance_score": -9.4355
+        },
+        {
+          "index": 2,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 1,
+          "chunk_index": 0,
+          "text_snippet": "Comprehensive Internship Research Report (2026) Om\nChoksi \u2013 3rd Year AIML, CHARUSAT\nExecutive Summary\nThis report compiles AI/ML, Backend, MERN Stack, NLP, AI Agents, and Automation internship opportu...",
+          "relevance_score": -10.4255
+        },
+        {
+          "index": 3,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 1,
+          "chunk_index": 2,
+          "text_snippet": "0k\nPossible\nSparks To Ideas\nAI/ML Intern\nAhmedabad I8k\u2013I15k\nPossible\nBackend Development (Python / Node.js)\nCompany\nRole\nMode\nStipend\nPPO\nPostman\nBackend Intern\nRemote\nI25k\u2013I50k\nVery High\nRazorpay\nSof...",
+          "relevance_score": -10.4429
+        },
+        {
+          "index": 4,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 1,
+          "chunk_index": 1,
+          "text_snippet": "h demand in AI Agents, Generative AI, Backend + AI integrations Typical stipend ranges: Vadodara startups: I3k\u2013I12k/month Ahmedabad/Gujarat: I8k\u2013I25k/month\nRemote AI startups: I15k\u2013I50k/month\nAI / ML ...",
+          "relevance_score": -10.9282
+        },
+        {
+          "index": 5,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 2,
+          "chunk_index": 5,
+          "text_snippet": " Maintain a clean GitHub with deployment links Use LinkedIn daily for networking and cold outreach Apply consistently: 10\u201320 applications/week Focus on AI + Backend\ncombination for maximum opportuniti...",
+          "relevance_score": -11.053
+        },
+        {
+          "index": 6,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 1,
+          "chunk_index": 3,
+          "text_snippet": "lfound Startups\nFull Stack Intern\nRemote\nI15k\u2013I30k Strong\nZithas Technologies\nMERN Developer\nVadodara\nI12k\u2013I20k\nPossible\nCareerNaksha\nFull Stack Intern\nVadodara\nI10k\u2013I15k\nPossible",
+          "relevance_score": -11.1348
+        }
+      ],
+      "verification": {
+        "is_grounded": false,
+        "confidence": 0.020666666666666667,
+        "issues": [
+          "Answer may not be fully supported by the document"
+        ]
+      },
+      "retrieval_time": 10.072552919387817,
+      "generation_time": 6.543043375015259,
+      "total_time": 16.615596294403076,
+      "tokens_generated": 420,
+      "tokens_per_second": 64.19031266150219,
+      "retrieval_scores": {
+        "precision_at_k": 0.0,
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "ndcg": 0.0,
+        "context_precision": -10.569983333333333,
+        "retrieved_count": 6
+      },
+      "generation_scores": {
+        "answer_relevancy": 0.33618754148483276,
+        "semantic_similarity": 0.0,
+        "exact_match": 0.0,
+        "f1_score": 0.0,
+        "completeness_score": 1.0,
+        "instruction_following": 1.0,
+        "faithfulness_score": 0.020666666666666667
+      },
+      "citation_scores": {
+        "citation_accuracy": 1.0,
+        "source_grounding": 0.25
+      },
+      "hallucination_detected": false,
+      "error": null
+    },
+    {
+      "query": "tell me about the main topic of the document",
+      "intent": "qa",
+      "expected_answer": "",
+      "retrieved_docs": [
+        {
+          "index": 1,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 1,
+          "chunk_index": 0,
+          "text_snippet": "Comprehensive Internship Research Report (2026) Om\nChoksi \u2013 3rd Year AIML, CHARUSAT\nExecutive Summary\nThis report compiles AI/ML, Backend, MERN Stack, NLP, AI Agents, and Automation internship opportu...",
+          "relevance_score": -11.334
+        },
+        {
+          "index": 2,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 1,
+          "chunk_index": 1,
+          "text_snippet": "h demand in AI Agents, Generative AI, Backend + AI integrations Typical stipend ranges: Vadodara startups: I3k\u2013I12k/month Ahmedabad/Gujarat: I8k\u2013I25k/month\nRemote AI startups: I15k\u2013I50k/month\nAI / ML ...",
+          "relevance_score": -11.3592
+        },
+        {
+          "index": 3,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 1,
+          "chunk_index": 2,
+          "text_snippet": "0k\nPossible\nSparks To Ideas\nAI/ML Intern\nAhmedabad I8k\u2013I15k\nPossible\nBackend Development (Python / Node.js)\nCompany\nRole\nMode\nStipend\nPPO\nPostman\nBackend Intern\nRemote\nI25k\u2013I50k\nVery High\nRazorpay\nSof...",
+          "relevance_score": -11.3834
+        },
+        {
+          "index": 4,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 1,
+          "chunk_index": 3,
+          "text_snippet": "lfound Startups\nFull Stack Intern\nRemote\nI15k\u2013I30k Strong\nZithas Technologies\nMERN Developer\nVadodara\nI12k\u2013I20k\nPossible\nCareerNaksha\nFull Stack Intern\nVadodara\nI10k\u2013I15k\nPossible",
+          "relevance_score": -11.4363
+        },
+        {
+          "index": 5,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 2,
+          "chunk_index": 4,
+          "text_snippet": "Top Recommendations\nAnthropic \u2013 Excellent AI exposure and resume value Postman \u2013 Strong backend engineering learning Razorpay \u2013\nProduct engineering + PPO potential Peakflo \u2013 AI/ML startup growth expos...",
+          "relevance_score": -11.4436
+        }
+      ],
+      "generated_answer": "**Comprehensive Internship Research Report (2026) Summary**\n\nThe Comprehensive Internship Research Report (2026) is a document compiled by Om Choksi, a 3rd-year AIML student at CHARUSAT. The report provides an overview of AI/ML, Backend, MERN Stack, NLP, AI Agents, and Automation internship opportunities for Om Choksi.\n\n**Overview**\n\nThe report aims to provide a comprehensive list of internship opportunities for Om Choksi, including Vadodara-first opportunities, Gujarat-based firms, and remote/global startup internships. The research includes 50+ companies/opportunities identified, with high demand in AI Agents, Generative AI, Backend + AI integrations.\n\n**Key Findings**\n\n* High demand in AI Agents, Generative AI, Backend + AI integrations.\n* Typical stipend ranges:\n\t+ Vadodara startups: I3k\u2013I12k/month\n\t+ Ahmedabad/Gujarat: I8k\u2013I25k/month\n\t+ Remote AI startups: I15k\u2013I50k/month\n\n**Company List**\n\nThe report provides a list of companies offering internship opportunities, including:\n\n### AI/ML Internships\n\n* Puch AI - AI Engineering Intern (Remote) - I1L\u2013I2L\n* Peakflo - ML Engineer Intern (Remote) - I25k\u2013I50k\n* Anthropic - Applied AI Intern (Remote) - I20k\u2013I40k\n* AIVHUB - AI/NLP Intern (Vadodara) - I10k\u2013I25k\n* TEJASKP AI - AI Software Intern (Vadodara) - I10k\u2013I20k\n\n### Backend Development Internships\n\n* Postman - Backend Intern (Remote) - I25k\u2013I50k\n* Razorpay - Software Intern (Hybrid) - I20k\u2013I40k\n* Maskoid - Backend Intern (Vadodara) - I15k\u2013I25k\n* Logical Wings - Node.js Intern (Vadodara) - I12k\u2013I20k\n* Blattner Technologies - Backend Intern (Vadodara) - I10k\u2013I20k\n\n### MERN Stack/Full Stack Internships\n\n* Cuvette Tech - MERN Intern (Remote) - I20k\u2013I35k\n* Wellfound Startups - Full Stack Intern (Remote) - I15k\u2013I30k\n* Zithas Technologies - MERN Developer (Vadodara) - I12k\u2013I20k\n* CareerNaksha - Full Stack Intern (Vadodara) - I10k\u2013I15k\n\n**Top Recommendations**\n\nThe report provides top recommendations for internship opportunities, including:\n\n* Anthropic - Excellent AI exposure and resume value.\n* Postman - Strong backend engineering learning.\n* Razorpay - Product engineering + PPO potential.\n* Peakflo - AI/ML startup growth exposure.\n* Maskoid Technologies - Good Vadodara PPO-focused option.\n\n**Application Success Tips**\n\nThe report provides application success tips, including:\n\n* Build 3 strong projects: AI Agent, NLP App, Backend API System.\n* Maintain a clean GitHub with deployment links.\n* Use relevant keywords in resume and cover letter.",
+      "citations": [
+        {
+          "index": 1,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 1,
+          "chunk_index": 0,
+          "text_snippet": "Comprehensive Internship Research Report (2026) Om\nChoksi \u2013 3rd Year AIML, CHARUSAT\nExecutive Summary\nThis report compiles AI/ML, Backend, MERN Stack, NLP, AI Agents, and Automation internship opportu...",
+          "relevance_score": -11.334
+        },
+        {
+          "index": 2,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 1,
+          "chunk_index": 1,
+          "text_snippet": "h demand in AI Agents, Generative AI, Backend + AI integrations Typical stipend ranges: Vadodara startups: I3k\u2013I12k/month Ahmedabad/Gujarat: I8k\u2013I25k/month\nRemote AI startups: I15k\u2013I50k/month\nAI / ML ...",
+          "relevance_score": -11.3592
+        },
+        {
+          "index": 3,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 1,
+          "chunk_index": 2,
+          "text_snippet": "0k\nPossible\nSparks To Ideas\nAI/ML Intern\nAhmedabad I8k\u2013I15k\nPossible\nBackend Development (Python / Node.js)\nCompany\nRole\nMode\nStipend\nPPO\nPostman\nBackend Intern\nRemote\nI25k\u2013I50k\nVery High\nRazorpay\nSof...",
+          "relevance_score": -11.3834
+        },
+        {
+          "index": 4,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 1,
+          "chunk_index": 3,
+          "text_snippet": "lfound Startups\nFull Stack Intern\nRemote\nI15k\u2013I30k Strong\nZithas Technologies\nMERN Developer\nVadodara\nI12k\u2013I20k\nPossible\nCareerNaksha\nFull Stack Intern\nVadodara\nI10k\u2013I15k\nPossible",
+          "relevance_score": -11.4363
+        },
+        {
+          "index": 5,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 2,
+          "chunk_index": 4,
+          "text_snippet": "Top Recommendations\nAnthropic \u2013 Excellent AI exposure and resume value Postman \u2013 Strong backend engineering learning Razorpay \u2013\nProduct engineering + PPO potential Peakflo \u2013 AI/ML startup growth expos...",
+          "relevance_score": -11.4436
+        }
+      ],
+      "verification": {
+        "is_grounded": true,
+        "confidence": 0.4873162177517682,
+        "issues": []
+      },
+      "retrieval_time": 12.01002049446106,
+      "generation_time": 11.85345983505249,
+      "total_time": 23.86348032951355,
+      "tokens_generated": 685,
+      "tokens_per_second": 57.78903455464964,
+      "retrieval_scores": {
+        "precision_at_k": 0.0,
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "ndcg": 0.0,
+        "context_precision": -11.391300000000001,
+        "retrieved_count": 5
+      },
+      "generation_scores": {
+        "answer_relevancy": 0.11497767269611359,
+        "semantic_similarity": 0.0,
+        "exact_match": 0.0,
+        "f1_score": 0.0,
+        "completeness_score": 0.8,
+        "instruction_following": 1.0,
+        "faithfulness_score": 0.4873162177517682
+      },
+      "citation_scores": {
+        "citation_accuracy": 0.5,
+        "source_grounding": 0.3727810650887574
+      },
+      "hallucination_detected": false,
+      "error": null
+    },
+    {
+      "query": "what is discussed in this document?",
+      "intent": "qa",
+      "expected_answer": "",
+      "retrieved_docs": [
+        {
+          "index": 1,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 1,
+          "chunk_index": 0,
+          "text_snippet": "Comprehensive Internship Research Report (2026) Om\nChoksi \u2013 3rd Year AIML, CHARUSAT\nExecutive Summary\nThis report compiles AI/ML, Backend, MERN Stack, NLP, AI Agents, and Automation internship opportu...",
+          "relevance_score": -8.3919
+        },
+        {
+          "index": 2,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 2,
+          "chunk_index": 5,
+          "text_snippet": " Maintain a clean GitHub with deployment links Use LinkedIn daily for networking and cold outreach Apply consistently: 10\u201320 applications/week Focus on AI + Backend\ncombination for maximum opportuniti...",
+          "relevance_score": -10.6077
+        },
+        {
+          "index": 3,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 2,
+          "chunk_index": 4,
+          "text_snippet": "Top Recommendations\nAnthropic \u2013 Excellent AI exposure and resume value Postman \u2013 Strong backend engineering learning Razorpay \u2013\nProduct engineering + PPO potential Peakflo \u2013 AI/ML startup growth expos...",
+          "relevance_score": -10.7755
+        },
+        {
+          "index": 4,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 1,
+          "chunk_index": 2,
+          "text_snippet": "0k\nPossible\nSparks To Ideas\nAI/ML Intern\nAhmedabad I8k\u2013I15k\nPossible\nBackend Development (Python / Node.js)\nCompany\nRole\nMode\nStipend\nPPO\nPostman\nBackend Intern\nRemote\nI25k\u2013I50k\nVery High\nRazorpay\nSof...",
+          "relevance_score": -10.8596
+        },
+        {
+          "index": 5,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 1,
+          "chunk_index": 1,
+          "text_snippet": "h demand in AI Agents, Generative AI, Backend + AI integrations Typical stipend ranges: Vadodara startups: I3k\u2013I12k/month Ahmedabad/Gujarat: I8k\u2013I25k/month\nRemote AI startups: I15k\u2013I50k/month\nAI / ML ...",
+          "relevance_score": -11.0498
+        },
+        {
+          "index": 6,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 1,
+          "chunk_index": 3,
+          "text_snippet": "lfound Startups\nFull Stack Intern\nRemote\nI15k\u2013I30k Strong\nZithas Technologies\nMERN Developer\nVadodara\nI12k\u2013I20k\nPossible\nCareerNaksha\nFull Stack Intern\nVadodara\nI10k\u2013I15k\nPossible",
+          "relevance_score": -11.0876
+        }
+      ],
+      "generated_answer": "## Overview of the Document\nThe document appears to be a research report compiled by Om Choksi, a 3rd-year AIML student at CHARUSAT, titled \"Comprehensive Internship Research Report (2026)\".\n\n### Purpose and Scope\nThe purpose of this report is to compile AI/ML, Backend, MERN Stack, NLP, AI Agents, and Automation internship opportunities for Om Choksi. The scope includes Vadodara-first opportunities, Gujarat-based firms, and remote/global startup internships.\n\n## Key Findings\nThe document highlights the following key findings:\n\n* 50+ companies/opportunities identified\n* High demand in AI Agents, Generative AI, Backend + AI integrations\n\nThese findings are mentioned in [1] and [5].\n\n## Recommended Tech Stack\nAccording to the report, Om Choksi is recommended to focus on a combination of AI and Backend technologies for maximum opportunities. The recommended tech stack includes:\n\n* Python\n* FastAPI\n* Node.js\n* Express.js\n* MongoDB\n* React\n* LangChain\n* OpenAI APIs\n* Hugging Face Transformers\n\nThese recommendations are mentioned in [2].\n\n## Top Recommendations\nThe document provides the following top recommendations for internship opportunities:\n\n* Anthropic \u2013 Excellent AI exposure and resume value\n* Postman \u2013 Strong backend engineering learning\n* Razorpay \u2013 Product engineering + PPO potential\n* Peakflo \u2013 AI/ML startup growth exposure\n* Maskoid Technologies \u2013 Good Vadodara PPO-focused option\n\nThese recommendations are mentioned in [3].\n\n## Application Success Tips\nThe report provides the following application success tips:\n\n* Build 3 strong projects: AI Agent, NLP App, Backend API System\n* Maintain a clean GitHub with deployment links\n* Use LinkedIn daily for networking and cold outreach\n* Apply consistently: 10\u201320 applications/week\n\nThese tips are mentioned in [2] and [3].\n\n## List of Internship Opportunities\nThe document provides the following list of internship opportunities:\n\n### AI/ML Internships\n* Puch AI \u2013 AI Engineering Intern (Remote, I1L\u2013I2L/month)\n* Peakflo \u2013 ML Engineer Intern (Remote, I25k\u2013I50k/month)\n* Anthropic \u2013 Applied AI Intern (Remote, I20k\u2013I40k/month)\n* AIVHUB \u2013 AI/NLP Intern (Vadodara, I10k\u2013I25k/month)\n\n### Backend Internships\n* Postman \u2013 Backend Intern (Remote, I25k\u2013I50k/month)\n* Razorpay \u2013 Product engineering + PPO potential\n* Maskoid Technologies \u2013 Good Vadodara PPO-focused option\n* Logical Wings \u2013 Strong MERN + Backend fit\n\n### Full Stack Internships\n* Cuvette Tech \u2013 MERN Intern (Remote, I20k\u2013I35k/month)\n* Wellfound Startups \u2013 Full Stack Intern (Remote, I15k\u2013I30k/month)\n\nThese opportunities are mentioned in [4] and [5].\n\n## Stipend Ranges\nThe document mentions the following stipend ranges for different regions:\n\n### Vadodara Startups: I3k\u2013I12k/month\n* Blattner Technologies \u2013 Backend Intern (Vadodara, I10k\u2013I20k/month)\n* Logical Wings \u2013 Node.js Intern (Vadodara, I12k\u2013I20k/month)\n\n### Ahmedabad/Gujarat: I8k\u2013I25k/month\n* Sparks To Ideas \u2013 AI/ML Intern (Ahmedabad, I8k\u2013I15k/month)\n\n### Remote AI Startups: I15k\u2013I50k/month\n* Puch AI \u2013 AI Engineering Intern (Remote, I1L\u2013I2L/month)\n* Peakflo \u2013 ML Engineer Intern (Remote, I25k\u2013I50k/month)\n\nThese stipend ranges are mentioned in [5].\n\nThe document does not provide information about the specific requirements or qualifications for each internship opportunity.",
+      "citations": [
+        {
+          "index": 1,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 1,
+          "chunk_index": 0,
+          "text_snippet": "Comprehensive Internship Research Report (2026) Om\nChoksi \u2013 3rd Year AIML, CHARUSAT\nExecutive Summary\nThis report compiles AI/ML, Backend, MERN Stack, NLP, AI Agents, and Automation internship opportu...",
+          "relevance_score": -8.3919
+        },
+        {
+          "index": 2,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 2,
+          "chunk_index": 5,
+          "text_snippet": " Maintain a clean GitHub with deployment links Use LinkedIn daily for networking and cold outreach Apply consistently: 10\u201320 applications/week Focus on AI + Backend\ncombination for maximum opportuniti...",
+          "relevance_score": -10.6077
+        },
+        {
+          "index": 3,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 2,
+          "chunk_index": 4,
+          "text_snippet": "Top Recommendations\nAnthropic \u2013 Excellent AI exposure and resume value Postman \u2013 Strong backend engineering learning Razorpay \u2013\nProduct engineering + PPO potential Peakflo \u2013 AI/ML startup growth expos...",
+          "relevance_score": -10.7755
+        },
+        {
+          "index": 4,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 1,
+          "chunk_index": 2,
+          "text_snippet": "0k\nPossible\nSparks To Ideas\nAI/ML Intern\nAhmedabad I8k\u2013I15k\nPossible\nBackend Development (Python / Node.js)\nCompany\nRole\nMode\nStipend\nPPO\nPostman\nBackend Intern\nRemote\nI25k\u2013I50k\nVery High\nRazorpay\nSof...",
+          "relevance_score": -10.8596
+        },
+        {
+          "index": 5,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 1,
+          "chunk_index": 1,
+          "text_snippet": "h demand in AI Agents, Generative AI, Backend + AI integrations Typical stipend ranges: Vadodara startups: I3k\u2013I12k/month Ahmedabad/Gujarat: I8k\u2013I25k/month\nRemote AI startups: I15k\u2013I50k/month\nAI / ML ...",
+          "relevance_score": -11.0498
+        },
+        {
+          "index": 6,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 1,
+          "chunk_index": 3,
+          "text_snippet": "lfound Startups\nFull Stack Intern\nRemote\nI15k\u2013I30k Strong\nZithas Technologies\nMERN Developer\nVadodara\nI12k\u2013I20k\nPossible\nCareerNaksha\nFull Stack Intern\nVadodara\nI10k\u2013I15k\nPossible",
+          "relevance_score": -11.0876
+        }
+      ],
+      "verification": {
+        "is_grounded": true,
+        "confidence": 0.3692238978019816,
+        "issues": []
+      },
+      "retrieval_time": 3.7740964889526367,
+      "generation_time": 14.182647228240967,
+      "total_time": 17.956743717193604,
+      "tokens_generated": 819,
+      "tokens_per_second": 57.74662422464965,
+      "retrieval_scores": {
+        "precision_at_k": 0.0,
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "ndcg": 0.0,
+        "context_precision": -10.462016666666667,
+        "retrieved_count": 6
+      },
+      "generation_scores": {
+        "answer_relevancy": 0.22193790972232819,
+        "semantic_similarity": 0.0,
+        "exact_match": 0.0,
+        "f1_score": 0.0,
+        "completeness_score": 1.0,
+        "instruction_following": 1.0,
+        "faithfulness_score": 0.3692238978019816
+      },
+      "citation_scores": {
+        "citation_accuracy": 1.0,
+        "source_grounding": 0.3942307692307692
+      },
+      "hallucination_detected": false,
+      "error": null
+    },
+    {
+      "query": "what is the capital of France?",
+      "intent": "qa",
+      "expected_answer": "",
+      "retrieved_docs": [
+        {
+          "index": 1,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 1,
+          "chunk_index": 0,
+          "text_snippet": "Comprehensive Internship Research Report (2026) Om\nChoksi \u2013 3rd Year AIML, CHARUSAT\nExecutive Summary\nThis report compiles AI/ML, Backend, MERN Stack, NLP, AI Agents, and Automation internship opportu...",
+          "relevance_score": -11.2062
+        },
+        {
+          "index": 2,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 2,
+          "chunk_index": 5,
+          "text_snippet": " Maintain a clean GitHub with deployment links Use LinkedIn daily for networking and cold outreach Apply consistently: 10\u201320 applications/week Focus on AI + Backend\ncombination for maximum opportuniti...",
+          "relevance_score": -11.3376
+        },
+        {
+          "index": 3,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 1,
+          "chunk_index": 1,
+          "text_snippet": "h demand in AI Agents, Generative AI, Backend + AI integrations Typical stipend ranges: Vadodara startups: I3k\u2013I12k/month Ahmedabad/Gujarat: I8k\u2013I25k/month\nRemote AI startups: I15k\u2013I50k/month\nAI / ML ...",
+          "relevance_score": -11.3553
+        },
+        {
+          "index": 4,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 1,
+          "chunk_index": 2,
+          "text_snippet": "0k\nPossible\nSparks To Ideas\nAI/ML Intern\nAhmedabad I8k\u2013I15k\nPossible\nBackend Development (Python / Node.js)\nCompany\nRole\nMode\nStipend\nPPO\nPostman\nBackend Intern\nRemote\nI25k\u2013I50k\nVery High\nRazorpay\nSof...",
+          "relevance_score": -11.3583
+        },
+        {
+          "index": 5,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 1,
+          "chunk_index": 3,
+          "text_snippet": "lfound Startups\nFull Stack Intern\nRemote\nI15k\u2013I30k Strong\nZithas Technologies\nMERN Developer\nVadodara\nI12k\u2013I20k\nPossible\nCareerNaksha\nFull Stack Intern\nVadodara\nI10k\u2013I15k\nPossible",
+          "relevance_score": -11.3746
+        },
+        {
+          "index": 6,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 2,
+          "chunk_index": 4,
+          "text_snippet": "Top Recommendations\nAnthropic \u2013 Excellent AI exposure and resume value Postman \u2013 Strong backend engineering learning Razorpay \u2013\nProduct engineering + PPO potential Peakflo \u2013 AI/ML startup growth expos...",
+          "relevance_score": -11.3902
+        }
+      ],
+      "generated_answer": "**Answering the User Question: The Capital of France**\n\nUnfortunately, the provided context passages do not mention the capital of France at all.\n\nHowever, we can gather some general information about France from the context passages:\n\n### General Information About France\n\nThe document does not provide any specific information about France. However, it mentions that Om Choksi is a 3rd-year AIML student at CHARUSAT in Vadodara, Gujarat, India.\n\n**No relevant information found in the provided context passages.**\n\nSince the question asks for the capital of France and the provided context passages do not contain any relevant information about France, we cannot provide an answer based on the given document.\n\nIf you have any other questions or need assistance with a different topic, please feel free to ask!",
+      "citations": [
+        {
+          "index": 1,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 1,
+          "chunk_index": 0,
+          "text_snippet": "Comprehensive Internship Research Report (2026) Om\nChoksi \u2013 3rd Year AIML, CHARUSAT\nExecutive Summary\nThis report compiles AI/ML, Backend, MERN Stack, NLP, AI Agents, and Automation internship opportu...",
+          "relevance_score": -11.2062
+        },
+        {
+          "index": 2,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 2,
+          "chunk_index": 5,
+          "text_snippet": " Maintain a clean GitHub with deployment links Use LinkedIn daily for networking and cold outreach Apply consistently: 10\u201320 applications/week Focus on AI + Backend\ncombination for maximum opportuniti...",
+          "relevance_score": -11.3376
+        },
+        {
+          "index": 3,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 1,
+          "chunk_index": 1,
+          "text_snippet": "h demand in AI Agents, Generative AI, Backend + AI integrations Typical stipend ranges: Vadodara startups: I3k\u2013I12k/month Ahmedabad/Gujarat: I8k\u2013I25k/month\nRemote AI startups: I15k\u2013I50k/month\nAI / ML ...",
+          "relevance_score": -11.3553
+        },
+        {
+          "index": 4,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 1,
+          "chunk_index": 2,
+          "text_snippet": "0k\nPossible\nSparks To Ideas\nAI/ML Intern\nAhmedabad I8k\u2013I15k\nPossible\nBackend Development (Python / Node.js)\nCompany\nRole\nMode\nStipend\nPPO\nPostman\nBackend Intern\nRemote\nI25k\u2013I50k\nVery High\nRazorpay\nSof...",
+          "relevance_score": -11.3583
+        },
+        {
+          "index": 5,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 1,
+          "chunk_index": 3,
+          "text_snippet": "lfound Startups\nFull Stack Intern\nRemote\nI15k\u2013I30k Strong\nZithas Technologies\nMERN Developer\nVadodara\nI12k\u2013I20k\nPossible\nCareerNaksha\nFull Stack Intern\nVadodara\nI10k\u2013I15k\nPossible",
+          "relevance_score": -11.3746
+        },
+        {
+          "index": 6,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 2,
+          "chunk_index": 4,
+          "text_snippet": "Top Recommendations\nAnthropic \u2013 Excellent AI exposure and resume value Postman \u2013 Strong backend engineering learning Razorpay \u2013\nProduct engineering + PPO potential Peakflo \u2013 AI/ML startup growth expos...",
+          "relevance_score": -11.3902
+        }
+      ],
+      "verification": {
+        "is_grounded": false,
+        "confidence": 0.06179738562091504,
+        "issues": [
+          "Answer may not be fully supported by the document"
+        ]
+      },
+      "retrieval_time": 3.617814302444458,
+      "generation_time": 2.5968539714813232,
+      "total_time": 6.214668273925781,
+      "tokens_generated": 158,
+      "tokens_per_second": 60.842851286655936,
+      "retrieval_scores": {
+        "precision_at_k": 0.0,
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "ndcg": 0.0,
+        "context_precision": -11.337033333333332,
+        "correctly_rejected": false,
+        "retrieved_count": 6
+      },
+      "generation_scores": {
+        "answer_relevancy": 0.6963724493980408,
+        "semantic_similarity": 0.0,
+        "exact_match": 0.0,
+        "f1_score": 0.0,
+        "completeness_score": 0.8,
+        "instruction_following": 1.0,
+        "faithfulness_score": 0.06179738562091504
+      },
+      "citation_scores": {
+        "citation_accuracy": 0.5,
+        "source_grounding": 0.12048192771084337
+      },
+      "hallucination_detected": true,
+      "error": null
+    },
+    {
+      "query": "what does the document say about aliens?",
+      "intent": "qa",
+      "expected_answer": "",
+      "retrieved_docs": [
+        {
+          "index": 1,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 1,
+          "chunk_index": 0,
+          "text_snippet": "Comprehensive Internship Research Report (2026) Om\nChoksi \u2013 3rd Year AIML, CHARUSAT\nExecutive Summary\nThis report compiles AI/ML, Backend, MERN Stack, NLP, AI Agents, and Automation internship opportu...",
+          "relevance_score": -11.2896
+        },
+        {
+          "index": 2,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 1,
+          "chunk_index": 2,
+          "text_snippet": "0k\nPossible\nSparks To Ideas\nAI/ML Intern\nAhmedabad I8k\u2013I15k\nPossible\nBackend Development (Python / Node.js)\nCompany\nRole\nMode\nStipend\nPPO\nPostman\nBackend Intern\nRemote\nI25k\u2013I50k\nVery High\nRazorpay\nSof...",
+          "relevance_score": -11.3563
+        },
+        {
+          "index": 3,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 1,
+          "chunk_index": 1,
+          "text_snippet": "h demand in AI Agents, Generative AI, Backend + AI integrations Typical stipend ranges: Vadodara startups: I3k\u2013I12k/month Ahmedabad/Gujarat: I8k\u2013I25k/month\nRemote AI startups: I15k\u2013I50k/month\nAI / ML ...",
+          "relevance_score": -11.3736
+        },
+        {
+          "index": 4,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 2,
+          "chunk_index": 5,
+          "text_snippet": " Maintain a clean GitHub with deployment links Use LinkedIn daily for networking and cold outreach Apply consistently: 10\u201320 applications/week Focus on AI + Backend\ncombination for maximum opportuniti...",
+          "relevance_score": -11.4098
+        }
+      ],
+      "generated_answer": "{\n  \"claim\": \"what does the document say about aliens?\",\n  \"is_true\": false,\n  \"evidence\": \"No supporting evidence found\",\n  \"sources\": [\n    {\"source_file\": \"Om_Choksi_Internship_Research_2026.pdf\", \"page_number\": 1},\n    {\"source_file\": \"Om_Choksi_Internship_Research_2026.pdf\", \"page_number\": 2}\n  ]\n}",
+      "citations": [
+        {
+          "index": 1,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 1,
+          "chunk_index": 0,
+          "text_snippet": "Comprehensive Internship Research Report (2026) Om\nChoksi \u2013 3rd Year AIML, CHARUSAT\nExecutive Summary\nThis report compiles AI/ML, Backend, MERN Stack, NLP, AI Agents, and Automation internship opportu...",
+          "relevance_score": -11.2896
+        },
+        {
+          "index": 2,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 1,
+          "chunk_index": 2,
+          "text_snippet": "0k\nPossible\nSparks To Ideas\nAI/ML Intern\nAhmedabad I8k\u2013I15k\nPossible\nBackend Development (Python / Node.js)\nCompany\nRole\nMode\nStipend\nPPO\nPostman\nBackend Intern\nRemote\nI25k\u2013I50k\nVery High\nRazorpay\nSof...",
+          "relevance_score": -11.3563
+        },
+        {
+          "index": 3,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 1,
+          "chunk_index": 1,
+          "text_snippet": "h demand in AI Agents, Generative AI, Backend + AI integrations Typical stipend ranges: Vadodara startups: I3k\u2013I12k/month Ahmedabad/Gujarat: I8k\u2013I25k/month\nRemote AI startups: I15k\u2013I50k/month\nAI / ML ...",
+          "relevance_score": -11.3736
+        },
+        {
+          "index": 4,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 2,
+          "chunk_index": 5,
+          "text_snippet": " Maintain a clean GitHub with deployment links Use LinkedIn daily for networking and cold outreach Apply consistently: 10\u201320 applications/week Focus on AI + Backend\ncombination for maximum opportuniti...",
+          "relevance_score": -11.4098
+        }
+      ],
+      "verification": {
+        "is_grounded": false,
+        "confidence": 0.0,
+        "issues": [
+          "Answer may not be fully supported by the document"
+        ]
+      },
+      "retrieval_time": 3.559629201889038,
+      "generation_time": 1.5026865005493164,
+      "total_time": 5.0623157024383545,
+      "tokens_generated": 95,
+      "tokens_per_second": 63.22010610015606,
+      "retrieval_scores": {
+        "precision_at_k": 0.0,
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "ndcg": 0.0,
+        "context_precision": -11.357325,
+        "correctly_rejected": false,
+        "retrieved_count": 4
+      },
+      "generation_scores": {
+        "answer_relevancy": 0.5303919315338135,
+        "semantic_similarity": 0.0,
+        "exact_match": 0.0,
+        "f1_score": 0.0,
+        "completeness_score": 0.5,
+        "instruction_following": 1.0,
+        "faithfulness_score": 0.0
+      },
+      "citation_scores": {
+        "citation_accuracy": 0.5,
+        "source_grounding": 0.0
+      },
+      "hallucination_detected": true,
+      "error": null
+    },
+    {
+      "query": "what information is on page 1 of the document?",
+      "intent": "qa",
+      "expected_answer": "",
+      "retrieved_docs": [
+        {
+          "index": 1,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 1,
+          "chunk_index": 0,
+          "text_snippet": "Comprehensive Internship Research Report (2026) Om\nChoksi \u2013 3rd Year AIML, CHARUSAT\nExecutive Summary\nThis report compiles AI/ML, Backend, MERN Stack, NLP, AI Agents, and Automation internship opportu...",
+          "relevance_score": -11.2124
+        },
+        {
+          "index": 2,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 1,
+          "chunk_index": 1,
+          "text_snippet": "h demand in AI Agents, Generative AI, Backend + AI integrations Typical stipend ranges: Vadodara startups: I3k\u2013I12k/month Ahmedabad/Gujarat: I8k\u2013I25k/month\nRemote AI startups: I15k\u2013I50k/month\nAI / ML ...",
+          "relevance_score": -11.3971
+        },
+        {
+          "index": 3,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 2,
+          "chunk_index": 5,
+          "text_snippet": " Maintain a clean GitHub with deployment links Use LinkedIn daily for networking and cold outreach Apply consistently: 10\u201320 applications/week Focus on AI + Backend\ncombination for maximum opportuniti...",
+          "relevance_score": -11.4529
+        },
+        {
+          "index": 4,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 1,
+          "chunk_index": 2,
+          "text_snippet": "0k\nPossible\nSparks To Ideas\nAI/ML Intern\nAhmedabad I8k\u2013I15k\nPossible\nBackend Development (Python / Node.js)\nCompany\nRole\nMode\nStipend\nPPO\nPostman\nBackend Intern\nRemote\nI25k\u2013I50k\nVery High\nRazorpay\nSof...",
+          "relevance_score": -11.4562
+        },
+        {
+          "index": 5,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 2,
+          "chunk_index": 4,
+          "text_snippet": "Top Recommendations\nAnthropic \u2013 Excellent AI exposure and resume value Postman \u2013 Strong backend engineering learning Razorpay \u2013\nProduct engineering + PPO potential Peakflo \u2013 AI/ML startup growth expos...",
+          "relevance_score": -11.4653
+        }
+      ],
+      "generated_answer": "**Comprehensive Internship Research Report (2026) Summary**\n\nThe Comprehensive Internship Research Report (2026) is a document compiled by Om Choksi, a 3rd-year AIML student at CHARUSAT. The report provides an overview of AI/ML, Backend, MERN Stack, NLP, AI Agents, and Automation internship opportunities for Om Choksi.\n\n**Overview**\n\nThe report aims to provide a comprehensive list of internship opportunities for Om Choksi, including companies, roles, modes, stipends, and potential PPO (Post-Graduation Placement Opportunities). The research includes Vadodara-first opportunities, Gujarat-based firms, and remote/global startup internships.\n\n**Key Findings**\n\n* 50+ companies/opportunities identified\n* High demand in AI Agents, Generative AI, Backend + AI integrations\n\n**Company List with Roles, Modes, Stipends, and PPO Potential**\n\n### AI/ML Interns\n\n| Company | Role | Mode | Stipend | PPO |\n| --- | --- | --- | --- | --- |\n| Puch AI | AI Engineering Intern | Remote | I1L\u2013I2L | High |\n| Peakflo | ML Engineer Intern | Remote | I25k\u2013I50k | Likely |\n| Anthropic | Applied AI Intern | Remote | I20k\u2013I40k | Very High |\n| AIVHUB | AI/NLP Intern | Vadodara | I10k\u2013I25k | Likely |\n\n### Backend Development Interns\n\n| Company | Role | Mode | Stipend | PPO |\n| --- | --- | --- | --- | --- |\n| Postman | Backend Intern | Remote | I25k\u2013I50k | Very High |\n| Razorpay | Software Intern | Hybrid | I20k\u2013I40k | High |\n| Maskoid | Backend Intern | Vadodara | I15k\u2013I25k | Likely |\n| Logical Wings | Node.js Intern | Vadodara | I12k\u2013I20k | Possible |\n\n### MERN Stack/Full Stack Interns\n\n| Company | Role | Mode | Stipend | PPO |\n| --- | --- | --- | --- | --- |\n| Cuvette Tech | MERN Intern | Remote | I20k\u2013I35k | Likely |\n| Wellfound Startups | Full Stack Intern | Remote | I15k\u2013I30k | Possible |\n\n**Top Recommendations**\n\n* Anthropic \u2013 Excellent AI exposure and resume value\n* Postman \u2013 Strong backend engineering learning\n* Razorpay \u2013 Product engineering + PPO potential\n* Peakflo \u2013 AI/ML startup growth exposure\n* Maskoid Technologies \u2013 Good Vadodara PPO-focused option\n* Logical Wings \u2013 Strong MERN + Backend fit\n\n**Application Success Tips**\n\n* Build 3 strong projects: AI Agent, NLP App, Backend API System\n* Maintain a clean GitHub with deployment links\n* Use LinkedIn daily for networking and cold outreach\n* Apply consistently: 10\u201320 applications/week\n* Focus on AI + Backend combination for maximum opportunities\n\n**Recommended Tech Stack**\n\n* Python\n* FastAPI\n* Node.js\n* Express.js\n* MongoDB\n* React\n* LangChain\n* OpenAI APIs\n* Hugging Face Transformers",
+      "citations": [
+        {
+          "index": 1,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 1,
+          "chunk_index": 0,
+          "text_snippet": "Comprehensive Internship Research Report (2026) Om\nChoksi \u2013 3rd Year AIML, CHARUSAT\nExecutive Summary\nThis report compiles AI/ML, Backend, MERN Stack, NLP, AI Agents, and Automation internship opportu...",
+          "relevance_score": -11.2124
+        },
+        {
+          "index": 2,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 1,
+          "chunk_index": 1,
+          "text_snippet": "h demand in AI Agents, Generative AI, Backend + AI integrations Typical stipend ranges: Vadodara startups: I3k\u2013I12k/month Ahmedabad/Gujarat: I8k\u2013I25k/month\nRemote AI startups: I15k\u2013I50k/month\nAI / ML ...",
+          "relevance_score": -11.3971
+        },
+        {
+          "index": 3,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 2,
+          "chunk_index": 5,
+          "text_snippet": " Maintain a clean GitHub with deployment links Use LinkedIn daily for networking and cold outreach Apply consistently: 10\u201320 applications/week Focus on AI + Backend\ncombination for maximum opportuniti...",
+          "relevance_score": -11.4529
+        },
+        {
+          "index": 4,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 1,
+          "chunk_index": 2,
+          "text_snippet": "0k\nPossible\nSparks To Ideas\nAI/ML Intern\nAhmedabad I8k\u2013I15k\nPossible\nBackend Development (Python / Node.js)\nCompany\nRole\nMode\nStipend\nPPO\nPostman\nBackend Intern\nRemote\nI25k\u2013I50k\nVery High\nRazorpay\nSof...",
+          "relevance_score": -11.4562
+        },
+        {
+          "index": 5,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 2,
+          "chunk_index": 4,
+          "text_snippet": "Top Recommendations\nAnthropic \u2013 Excellent AI exposure and resume value Postman \u2013 Strong backend engineering learning Razorpay \u2013\nProduct engineering + PPO potential Peakflo \u2013 AI/ML startup growth expos...",
+          "relevance_score": -11.4653
+        }
+      ],
+      "verification": {
+        "is_grounded": true,
+        "confidence": 0.41914009269745883,
+        "issues": []
+      },
+      "retrieval_time": 11.930414199829102,
+      "generation_time": 11.391197681427002,
+      "total_time": 23.321611881256104,
+      "tokens_generated": 677,
+      "tokens_per_second": 59.431854220546775,
+      "retrieval_scores": {
+        "precision_at_k": 0.0,
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "ndcg": 0.0,
+        "context_precision": -11.39678,
+        "retrieved_count": 5
+      },
+      "generation_scores": {
+        "answer_relevancy": 0.03068983182311058,
+        "semantic_similarity": 0.0,
+        "exact_match": 0.0,
+        "f1_score": 0.0,
+        "completeness_score": 0.8,
+        "instruction_following": 1.0,
+        "faithfulness_score": 0.41914009269745883
+      },
+      "citation_scores": {
+        "citation_accuracy": 0.5,
+        "source_grounding": 0.41530054644808745
+      },
+      "hallucination_detected": false,
+      "error": null
+    },
+    {
+      "query": "extract maximum 5 items from the document",
+      "intent": "extraction",
+      "expected_answer": "",
+      "retrieved_docs": [
+        {
+          "index": 1,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 2,
+          "chunk_index": 5,
+          "text_snippet": " Maintain a clean GitHub with deployment links Use LinkedIn daily for networking and cold outreach Apply consistently: 10\u201320 applications/week Focus on AI + Backend\ncombination for maximum opportuniti...",
+          "relevance_score": -11.1622
+        },
+        {
+          "index": 2,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 1,
+          "chunk_index": 0,
+          "text_snippet": "Comprehensive Internship Research Report (2026) Om\nChoksi \u2013 3rd Year AIML, CHARUSAT\nExecutive Summary\nThis report compiles AI/ML, Backend, MERN Stack, NLP, AI Agents, and Automation internship opportu...",
+          "relevance_score": -11.38
+        },
+        {
+          "index": 3,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 1,
+          "chunk_index": 2,
+          "text_snippet": "0k\nPossible\nSparks To Ideas\nAI/ML Intern\nAhmedabad I8k\u2013I15k\nPossible\nBackend Development (Python / Node.js)\nCompany\nRole\nMode\nStipend\nPPO\nPostman\nBackend Intern\nRemote\nI25k\u2013I50k\nVery High\nRazorpay\nSof...",
+          "relevance_score": -11.4072
+        },
+        {
+          "index": 4,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 1,
+          "chunk_index": 1,
+          "text_snippet": "h demand in AI Agents, Generative AI, Backend + AI integrations Typical stipend ranges: Vadodara startups: I3k\u2013I12k/month Ahmedabad/Gujarat: I8k\u2013I25k/month\nRemote AI startups: I15k\u2013I50k/month\nAI / ML ...",
+          "relevance_score": -11.4124
+        },
+        {
+          "index": 5,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 1,
+          "chunk_index": 3,
+          "text_snippet": "lfound Startups\nFull Stack Intern\nRemote\nI15k\u2013I30k Strong\nZithas Technologies\nMERN Developer\nVadodara\nI12k\u2013I20k\nPossible\nCareerNaksha\nFull Stack Intern\nVadodara\nI10k\u2013I15k\nPossible",
+          "relevance_score": -11.4384
+        },
+        {
+          "index": 6,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 2,
+          "chunk_index": 4,
+          "text_snippet": "Top Recommendations\nAnthropic \u2013 Excellent AI exposure and resume value Postman \u2013 Strong backend engineering learning Razorpay \u2013\nProduct engineering + PPO potential Peakflo \u2013 AI/ML startup growth expos...",
+          "relevance_score": -11.456
+        }
+      ],
+      "generated_answer": "```\n{\n  \"items\": [\n    {\n      \"name\": \"Backend Development (Python / Node.js)\",\n      \"details\": \"Company: Role: Mode: Stipend: PPO: Postman\",\n      \"source_ref\": \"[1]\"\n    },\n    {\n      \"name\": \"MERN Stack / Full Stack\",\n      \"details\": \"Company: Role: Mode: Stipend: PPO: Cuvette Tech\",\n      \"source_ref\": \"[1]\"\n    },\n    {\n      \"name\": \"AI/ML Intern\",\n      \"details\": \"Company: Role: Mode: Stipend: PPO: Ahmedabad I8k\u2013I15k\",\n      \"source_ref\": \"[1]\"\n    },\n    {\n      \"name\": \"Node.js Intern\",\n      \"details\": \"Company: Role: Mode: Stipend: PPO: Vadodara I12k\u2013I20k\",\n      \"source_ref\": \"[1]\"\n    },\n    {\n      \"name\": \"Full Stack Intern\",\n      \"details\": \"Company: Role: Mode: Stipend: PPO: Wellfound Startups\",\n      \"source_ref\": \"[1]\"\n    }\n  ],\n  \"total_count\": 5,\n  \"sources\": [\n    {\n      \"source_file\": \"Om_Choksi_Internship_Research_2026.pdf\",\n      \"page_number\": 1,\n      \"text_snippet\": \"\"\n    }\n  ]\n}\n```",
+      "citations": [
+        {
+          "index": 1,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 2,
+          "chunk_index": 5,
+          "text_snippet": " Maintain a clean GitHub with deployment links Use LinkedIn daily for networking and cold outreach Apply consistently: 10\u201320 applications/week Focus on AI + Backend\ncombination for maximum opportuniti...",
+          "relevance_score": -11.1622
+        },
+        {
+          "index": 2,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 1,
+          "chunk_index": 0,
+          "text_snippet": "Comprehensive Internship Research Report (2026) Om\nChoksi \u2013 3rd Year AIML, CHARUSAT\nExecutive Summary\nThis report compiles AI/ML, Backend, MERN Stack, NLP, AI Agents, and Automation internship opportu...",
+          "relevance_score": -11.38
+        },
+        {
+          "index": 3,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 1,
+          "chunk_index": 2,
+          "text_snippet": "0k\nPossible\nSparks To Ideas\nAI/ML Intern\nAhmedabad I8k\u2013I15k\nPossible\nBackend Development (Python / Node.js)\nCompany\nRole\nMode\nStipend\nPPO\nPostman\nBackend Intern\nRemote\nI25k\u2013I50k\nVery High\nRazorpay\nSof...",
+          "relevance_score": -11.4072
+        },
+        {
+          "index": 4,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 1,
+          "chunk_index": 1,
+          "text_snippet": "h demand in AI Agents, Generative AI, Backend + AI integrations Typical stipend ranges: Vadodara startups: I3k\u2013I12k/month Ahmedabad/Gujarat: I8k\u2013I25k/month\nRemote AI startups: I15k\u2013I50k/month\nAI / ML ...",
+          "relevance_score": -11.4124
+        },
+        {
+          "index": 5,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 1,
+          "chunk_index": 3,
+          "text_snippet": "lfound Startups\nFull Stack Intern\nRemote\nI15k\u2013I30k Strong\nZithas Technologies\nMERN Developer\nVadodara\nI12k\u2013I20k\nPossible\nCareerNaksha\nFull Stack Intern\nVadodara\nI10k\u2013I15k\nPossible",
+          "relevance_score": -11.4384
+        },
+        {
+          "index": 6,
+          "source_file": "Om_Choksi_Internship_Research_2026.pdf",
+          "page_number": 2,
+          "chunk_index": 4,
+          "text_snippet": "Top Recommendations\nAnthropic \u2013 Excellent AI exposure and resume value Postman \u2013 Strong backend engineering learning Razorpay \u2013\nProduct engineering + PPO potential Peakflo \u2013 AI/ML startup growth expos...",
+          "relevance_score": -11.456
+        }
+      ],
+      "verification": {
+        "is_grounded": true,
+        "confidence": 0.49595959595959593,
+        "issues": []
+      },
+      "retrieval_time": 10.019999504089355,
+      "generation_time": 5.013551712036133,
+      "total_time": 15.033551216125488,
+      "tokens_generated": 304,
+      "tokens_per_second": 60.63565660850394,
+      "retrieval_scores": {
+        "precision_at_k": 0.0,
+        "recall_at_k": 0.0,
+        "mrr": 0.0,
+        "ndcg": 0.0,
+        "context_precision": -11.376033333333332,
+        "retrieved_count": 6
+      },
+      "generation_scores": {
+        "answer_relevancy": 0.2991904616355896,
+        "semantic_similarity": 0.0,
+        "exact_match": 0.0,
+        "f1_score": 0.0,
+        "completeness_score": 0.6000000000000001,
+        "instruction_following": 1.0,
+        "faithfulness_score": 0.49595959595959593
+      },
+      "citation_scores": {
+        "citation_accuracy": 1.0,
+        "source_grounding": 0.14583333333333334
+      },
+      "hallucination_detected": true,
+      "error": null
+    }
+  ]
+}

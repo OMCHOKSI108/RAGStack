@@ -1,0 +1,16 @@
+16:00:23 | rag_eval             | INFO    | ============================================================
+16:00:23 | rag_eval             | INFO    |   RAG Pipeline Evaluation System
+16:00:23 | rag_eval             | INFO    | ============================================================
+16:00:23 | rag_eval             | INFO    | Backend healthy: 3 documents, 92 chunks
+16:00:25 | rag_eval             | INFO    | System: Windows-11-10.0.26200-SP0 | Python: 3.13.9
+16:00:25 | rag_eval             | INFO    | GPU: Not available
+16:00:25 | rag_eval             | INFO    | Generating 10 synthetic evaluation queries...
+16:00:25 | rag_eval             | INFO    | Generated 10 synthetic queries across 9 categories
+16:00:25 | rag_eval             | INFO    | Starting evaluation of 10 queries...
+16:00:48 | rag_eval             | INFO    | Generating reports and visualizations...
+16:00:48 | rag_eval             | INFO    | JSON report saved to D:\Deeplearning\Rag_pipeline\evaluation_output\evaluation_results.json
+16:00:48 | rag_eval             | INFO    | JSON report saved to D:\Deeplearning\Rag_pipeline\evaluation_output\metrics_summary.json
+16:00:48 | rag_eval             | INFO    | JSON report saved to D:\Deeplearning\Rag_pipeline\evaluation_output\benchmark_results.json
+16:00:48 | rag_eval             | INFO    | CSV report saved to D:\Deeplearning\Rag_pipeline\evaluation_output\evaluation_results.csv
+16:00:48 | rag_eval             | INFO    | Markdown report saved to D:\Deeplearning\Rag_pipeline\evaluation_output\reports\evaluation_report.md
+16:00:49 | rag_eval             | INFO    | Generating visualizations...

@@ -1,0 +1,44 @@
+16:01:00 | rag_eval             | INFO    | ============================================================
+16:01:00 | rag_eval             | INFO    |   RAG Pipeline Evaluation System
+16:01:00 | rag_eval             | INFO    | ============================================================
+16:01:00 | rag_eval             | INFO    | Backend healthy: 3 documents, 92 chunks
+16:01:02 | rag_eval             | INFO    | System: Windows-11-10.0.26200-SP0 | Python: 3.13.9
+16:01:02 | rag_eval             | INFO    | GPU: Not available
+16:01:02 | rag_eval             | INFO    | Generating 10 synthetic evaluation queries...
+16:01:02 | rag_eval             | INFO    | Generated 10 synthetic queries across 9 categories
+16:01:02 | rag_eval             | INFO    | Starting evaluation of 10 queries...
+16:01:23 | rag_eval             | INFO    | Generating reports and visualizations...
+16:01:23 | rag_eval             | INFO    | JSON report saved to D:\Deeplearning\Rag_pipeline\evaluation_output\evaluation_results.json
+16:01:23 | rag_eval             | INFO    | JSON report saved to D:\Deeplearning\Rag_pipeline\evaluation_output\metrics_summary.json
+16:01:23 | rag_eval             | INFO    | JSON report saved to D:\Deeplearning\Rag_pipeline\evaluation_output\benchmark_results.json
+16:01:23 | rag_eval             | INFO    | CSV report saved to D:\Deeplearning\Rag_pipeline\evaluation_output\evaluation_results.csv
+16:01:23 | rag_eval             | INFO    | Markdown report saved to D:\Deeplearning\Rag_pipeline\evaluation_output\reports\evaluation_report.md
+16:01:24 | rag_eval             | INFO    | Generating visualizations...
+16:01:25 | rag_eval             | INFO    | Visualizations saved to D:\Deeplearning\Rag_pipeline\evaluation_output\plots
+16:01:25 | rag_eval             | WARNING | README.md not found, skipping update
+16:01:25 | rag_eval             | INFO    | 
+============================================================
+16:01:25 | rag_eval             | INFO    |   EVALUATION SUMMARY
+16:01:25 | rag_eval             | INFO    | ============================================================
+16:01:25 | rag_eval             | INFO    |   Total Queries:        10
+16:01:25 | rag_eval             | INFO    |   Success Rate:         100.0%
+16:01:25 | rag_eval             | INFO    |   Avg Latency:          426ms
+16:01:25 | rag_eval             | INFO    |   P95 Latency:          500ms
+16:01:25 | rag_eval             | INFO    |   Throughput:           2.35 queries/sec
+16:01:25 | rag_eval             | INFO    |   Hallucination Rate:   50.00%
+16:01:25 | rag_eval             | INFO    |   Faithfulness:         0.3121
+16:01:25 | rag_eval             | INFO    |   Citation Accuracy:    0.8936
+16:01:25 | rag_eval             | INFO    |   Precision@K:          0.0000
+16:01:25 | rag_eval             | INFO    |   Recall@K:             0.0000
+16:01:25 | rag_eval             | INFO    |   MRR:                  0.0000
+16:01:25 | rag_eval             | INFO    |   nDCG:                 0.0000
+16:01:25 | rag_eval             | INFO    |   Tokens/sec:           13258.2
+16:01:25 | rag_eval             | INFO    |   Duration:             25s (0.4 min)
+16:01:25 | rag_eval             | INFO    | ============================================================
+16:01:25 | rag_eval             | INFO    | 
+  Reports: D:\Deeplearning\Rag_pipeline\evaluation_output
+16:01:25 | rag_eval             | INFO    |   Plots:   D:\Deeplearning\Rag_pipeline\evaluation_output\plots
+16:01:25 | rag_eval             | INFO    | ============================================================
+16:01:25 | rag_eval             | INFO    | 
+Evaluation complete in 25s (0.4 minutes)
+16:01:25 | rag_eval             | INFO    | Results saved to: D:\Deeplearning\Rag_pipeline\evaluation_output

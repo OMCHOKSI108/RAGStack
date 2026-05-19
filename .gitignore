@@ -6,7 +6,7 @@ data/uploads/*
 !data/uploads/.gitkeep
 index/
 models/
-evaluation_output/
+
 .mp4
 RAG.mp4
 

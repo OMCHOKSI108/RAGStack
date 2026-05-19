@@ -1,0 +1,10 @@
+{
+  "benchmark_date": "2026-05-19T17:01:27.732796",
+  "total_queries": 10,
+  "total_time_seconds": 153.68684601783752,
+  "queries_per_minute": 3.9040426396047034,
+  "avg_latency_ms": 15368.684601783752,
+  "p50_latency_ms": 16835.891723632812,
+  "p95_latency_ms": 23863.48032951355,
+  "p99_latency_ms": 23863.48032951355
+}
