@@ -1,22 +1,22 @@
 {
   "metrics": {
     "rerank=True_label=Rerank ON": {
-      "avg_score": 0.0,
-      "count": 7,
-      "pass_rate": 0.0,
-      "avg_semantic_score": 0.0,
-      "avg_keyword_score": 0.0,
-      "avg_source_score": 0.0,
-      "avg_latency_seconds": 3.1
+      "avg_score": 0.442,
+      "count": 19,
+      "pass_rate": 0.3684,
+      "avg_semantic_score": 0.5421,
+      "avg_keyword_score": 0.1942,
+      "avg_source_score": 0.4111,
+      "avg_latency_seconds": 0.0
     },
     "rerank=False_label=Rerank OFF": {
-      "avg_score": 0.0,
-      "count": 7,
-      "pass_rate": 0.0,
-      "avg_semantic_score": 0.0,
-      "avg_keyword_score": 0.0,
-      "avg_source_score": 0.0,
-      "avg_latency_seconds": 0.01
+      "avg_score": 0.442,
+      "count": 19,
+      "pass_rate": 0.3684,
+      "avg_semantic_score": 0.5421,
+      "avg_keyword_score": 0.1942,
+      "avg_source_score": 0.4111,
+      "avg_latency_seconds": 0.0
     }
   },
   "configs": [
@@ -24,112 +24,59 @@
       "name": "rerank=True_label=Rerank ON",
       "results": [
         {
-          "question": "How many billion?",
-          "expected_answer": "## Financial Performance\nFY 2024 revenue: $2.5 billion (35% YoY growth).",
-          "generated_answer": "No relevant information found.",
-          "sources": [],
-          "latency_seconds": 7.55,
-          "config": {
-            "rerank": true,
-            "label": "Rerank ON"
-          },
-          "status": "success",
-          "error": null,
-          "semantic_score": 0.0,
-          "keyword_score": 0.0,
-          "source_score": 0.0,
-          "eval_score": 0.0
-        },
-        {
-          "question": "Who is Overview Corporation?",
-          "expected_answer": "## Company Overview\nAcme Corporation, founded in 2010 by Jane Smith and John Doe, is a technology company specializing in AI, cloud computing, and cybersecurity.",
-          "generated_answer": "No relevant information found.",
-          "sources": [],
-          "latency_seconds": 0.36,
-          "config": {
-            "rerank": true,
-            "label": "Rerank ON"
-          },
-          "status": "success",
-          "error": null,
-          "semantic_score": 0.0,
-          "keyword_score": 0.0,
-          "source_score": 0.0,
-          "eval_score": 0.0
-        },
-        {
-          "question": "How many %?",
-          "expected_answer": "## Key Projects\n- Project Titan: AI platform launched Q3 2024, 10M requests/day, 99.9% uptime, 2,000+ enterprise customers\n- Project Nebula: Cloud security framework with CyberGuard Inc., SOC 2 Type II certified June 2024, adopted by 500+ orgs",
-          "generated_answer": "No relevant information found.",
-          "sources": [],
-          "latency_seconds": 4.27,
-          "config": {
-            "rerank": true,
-            "label": "Rerank ON"
-          },
-          "status": "success",
-          "error": null,
-          "semantic_score": 0.0,
-          "keyword_score": 0.0,
-          "source_score": 0.0,
-          "eval_score": 0.0
-        },
-        {
-          "question": "Who is San Francisco?",
-          "expected_answer": "## Offices\nSan Francisco (HQ), London, Bangalore, Tokyo, Berlin",
-          "generated_answer": "No relevant information found.",
-          "sources": [],
-          "latency_seconds": 0.37,
-          "config": {
-            "rerank": true,
-            "label": "Rerank ON"
-          },
-          "status": "success",
-          "error": null,
-          "semantic_score": 0.0,
-          "keyword_score": 0.0,
-          "source_score": 0.0,
-          "eval_score": 0.0
-        },
-        {
-          "question": "How many million?",
-          "expected_answer": "R&D spend: $380 million.",
-          "generated_answer": "No relevant information found.",
-          "sources": [],
-          "latency_seconds": 4.61,
-          "config": {
-            "rerank": true,
-            "label": "Rerank ON"
-          },
-          "status": "success",
-          "error": null,
-          "semantic_score": 0.0,
-          "keyword_score": 0.0,
-          "source_score": 0.0,
-          "eval_score": 0.0
-        },
-        {
-          "question": "How many people?",
-          "expected_answer": "Headquartered in San Francisco, the company employs over 5,000 people across 12 countries.",
-          "generated_answer": "No relevant information found.",
-          "sources": [],
-          "latency_seconds": 4.5,
-          "config": {
-            "rerank": true,
-            "label": "Rerank ON"
-          },
-          "status": "success",
-          "error": null,
-          "semantic_score": 0.0,
-          "keyword_score": 0.0,
-          "source_score": 0.0,
-          "eval_score": 0.0
-        },
-        {
-          "question": "How many million?",
-          "expected_answer": "Net profit: $420 million (16.8% margin).",
-          "generated_answer": "No relevant information found.",
-          "sources": [],
+          "question": "Who is the CFO?",
+          "expected_answer": "- Sarah Johnson: CFO, 20 yrs at Deloitte",
+          "generated_answer": "**Direct Answer**\nSarah Johnson.\n\n**Details**\nThe CFO of Acme Corporation is Sarah Johnson, who has been with Deloitte for 20 years. This information is mentioned in section [2] of the report, which provides an overview of the company's leadership team.\n\n**Summary**\nThe CEO and co-founder of Acme Corporation is Jane Smith, while John Doe serves as the CTO and former Google AI research lead. The CFO, Sarah Johnson, brings 20 years of experience from Deloitte to her role at Acme Corporation.",
+          "sources": [
+            {
+              "index": 1,
+              "source_file": "acme_report_2024.md",
+              "page_number": 5,
+              "chunk_index": 4,
+              "text_snippet": "## Leadership\n- Jane Smith: CEO (co-founder), PhD CS from Stanford\n- John Doe: CTO (co-founder), former Google AI research lead\n- Sarah Johnson: CFO, 20 yrs at Deloitte",
+              "relevance_score": 0.2533
+            },
+            {
+              "index": 2,
+              "source_file": "acme_report_2024.md",
+              "page_number": 2,
+              "chunk_index": 1,
+              "text_snippet": "## Company Overview\nAcme Corporation, founded in 2010 by Jane Smith and John Doe, is a technology company specializing in AI, cloud computing, and cybersecurity. Headquartered in San Francisco, the co...",
+              "relevance_score": 0.0089
+            },
+            {
+              "index": 3,
+              "source_file": "acme_report_2024.md",
+              "page_number": 6,
+              "chunk_index": 5,
+              "text_snippet": "## Offices\nSan Francisco (HQ), London, Bangalore, Tokyo, Berlin",
+              "relevance_score": 0.0002
+            },
+            {
+              "index": 4,
+              "source_file": "acme_report_2024.md",
+              "page_number": 3,
+              "chunk_index": 2,
+              "text_snippet": "## Financial Performance\nFY 2024 revenue: $2.5 billion (35% YoY growth). Net profit: $420 million (16.8% margin). R&D spend: $380 million.",
+              "relevance_score": 0.0002
+            },
+            {
+              "index": 5,
+              "source_file": "acme_report_2024.md",
+              "page_number": 4,
+              "chunk_index": 3,
+              "text_snippet": "## Key Projects\n- Project Titan: AI platform launched Q3 2024, 10M requests/day, 99.9% uptime, 2,000+ enterprise customers\n- Project Nebula: Cloud security framework with CyberGuard Inc., SOC 2 Type I...",
+              "relevance_score": 0.0001
+            },
+            {
+              "index": 6,
+              "source_file": "acme_report_2024.md",
+              "page_number": 1,
+              "chunk_index": 0,
+              "text_snippet": "# Acme Corporation - Annual Report 2024",
+              "relevance_score": 0.0
+            }
+          ],
           "latency_seconds": 0.01,
           "config": {
             "rerank": true,
@@ -137,10 +84,896 @@
           },
           "status": "success",
           "error": null,
-          "semantic_score": 0.0,
+          "semantic_score": 0.7203,
+          "keyword_score": 0.1017,
+          "source_score": 0.6364,
+          "eval_score": 0.5572
+        },
+        {
+          "question": "Where is the company headquartered?",
+          "expected_answer": "## Company Overview\nAcme Corporation, founded in 2010 by Jane Smith and John Doe, is a technology company specializing in AI, cloud computing, and cybersecurity. Headquartered in San Francisco, the company employs over 5,000 people across 12 countries.",
+          "generated_answer": "**Headquarters Location**\nThe company, Acme Corporation, is headquartered in **San Francisco**.\n\n**Details**\nAccording to the provided document context, page 2 of the acme_report_2024.md source, it states: \"Acme Corporation, founded in 2010 by Jane Smith and John Doe, is a technology company specializing in AI, cloud computing, and cybersecurity. Headquartered in San Francisco, the company employs over 5,000 people across 12 countries.\"\n\n**Summary**\nThe headquarters location of Acme Corporation is San Francisco, as stated on page 2 of the acme_report_2024.md source.",
+          "sources": [
+            {
+              "index": 1,
+              "source_file": "acme_report_2024.md",
+              "page_number": 2,
+              "chunk_index": 1,
+              "text_snippet": "## Company Overview\nAcme Corporation, founded in 2010 by Jane Smith and John Doe, is a technology company specializing in AI, cloud computing, and cybersecurity. Headquartered in San Francisco, the co...",
+              "relevance_score": 0.7659
+            },
+            {
+              "index": 2,
+              "source_file": "acme_report_2024.md",
+              "page_number": 6,
+              "chunk_index": 5,
+              "text_snippet": "## Offices\nSan Francisco (HQ), London, Bangalore, Tokyo, Berlin",
+              "relevance_score": 0.252
+            },
+            {
+              "index": 3,
+              "source_file": "acme_report_2024.md",
+              "page_number": 5,
+              "chunk_index": 4,
+              "text_snippet": "## Leadership\n- Jane Smith: CEO (co-founder), PhD CS from Stanford\n- John Doe: CTO (co-founder), former Google AI research lead\n- Sarah Johnson: CFO, 20 yrs at Deloitte",
+              "relevance_score": 0.0055
+            },
+            {
+              "index": 4,
+              "source_file": "acme_report_2024.md",
+              "page_number": 1,
+              "chunk_index": 0,
+              "text_snippet": "# Acme Corporation - Annual Report 2024",
+              "relevance_score": 0.0014
+            },
+            {
+              "index": 5,
+              "source_file": "acme_report_2024.md",
+              "page_number": 4,
+              "chunk_index": 3,
+              "text_snippet": "## Key Projects\n- Project Titan: AI platform launched Q3 2024, 10M requests/day, 99.9% uptime, 2,000+ enterprise customers\n- Project Nebula: Cloud security framework with CyberGuard Inc., SOC 2 Type I...",
+              "relevance_score": 0.0011
+            },
+            {
+              "index": 6,
+              "source_file": "acme_report_2024.md",
+              "page_number": 3,
+              "chunk_index": 2,
+              "text_snippet": "## Financial Performance\nFY 2024 revenue: $2.5 billion (35% YoY growth). Net profit: $420 million (16.8% margin). R&D spend: $380 million.",
+              "relevance_score": 0.001
+            }
+          ],
+          "latency_seconds": 0.0,
+          "config": {
+            "rerank": true,
+            "label": "Rerank ON"
+          },
+          "status": "success",
+          "error": null,
+          "semantic_score": 0.8293,
+          "keyword_score": 0.6038,
+          "source_score": 0.6,
+          "eval_score": 0.75
+        },
+        {
+          "question": "What is the growth percentage?",
+          "expected_answer": "## Financial Performance\nFY 2024 revenue: $2.5 billion (35% YoY growth). Net profit: $420 million (16.8% margin). R&D spend: $380 million.",
+          "generated_answer": "No relevant information found.",
+          "sources": [],
+          "latency_seconds": 0.0,
+          "config": {
+            "rerank": true,
+            "label": "Rerank ON"
+          },
+          "status": "success",
+          "error": null,
+          "semantic_score": 0.0716,
           "keyword_score": 0.0,
           "source_score": 0.0,
-          "eval_score": 0.0
+          "eval_score": 0.0465
+        },
+        {
+          "question": "What is in the section titled 'Acme Corporation - Annual Report 2024'?",
+          "expected_answer": "# Acme Corporation - Annual Report 2024",
+          "generated_answer": "**Direct Answer**\nThe section titled 'Acme Corporation - Annual Report 2024' contains information about Acme Corporation's company overview, financial performance, key projects, leadership, offices, and other relevant details.\n\n**Details**\n\n* The report provides an overview of Acme Corporation, including its founding date (2010) and founders (Jane Smith and John Doe).\n* It highlights the company's specialization in AI, cloud computing, and cybersecurity.\n* Financial performance data is presented, including revenue ($2.5 billion), net profit ($420 million), and R&D spend ($380 million).\n* Key projects are showcased, such as Project Titan (AI platform) and Project Nebula (cloud security framework).\n* Leadership information includes the CEO (Jane Smith), CTO (John Doe), and CFO (Sarah Johnson).\n* Offices are listed across 12 countries, with San Francisco serving as the headquarters.\n\n**Summary**\nThe 'Acme Corporation - Annual Report 2024' section provides a comprehensive overview of the company's history, financial performance, key projects, leadership, and offices.",
+          "sources": [
+            {
+              "index": 1,
+              "source_file": "acme_report_2024.md",
+              "page_number": 1,
+              "chunk_index": 0,
+              "text_snippet": "# Acme Corporation - Annual Report 2024",
+              "relevance_score": 0.9693
+            },
+            {
+              "index": 2,
+              "source_file": "acme_report_2024.md",
+              "page_number": 2,
+              "chunk_index": 1,
+              "text_snippet": "## Company Overview\nAcme Corporation, founded in 2010 by Jane Smith and John Doe, is a technology company specializing in AI, cloud computing, and cybersecurity. Headquartered in San Francisco, the co...",
+              "relevance_score": 0.2319
+            },
+            {
+              "index": 3,
+              "source_file": "acme_report_2024.md",
+              "page_number": 3,
+              "chunk_index": 2,
+              "text_snippet": "## Financial Performance\nFY 2024 revenue: $2.5 billion (35% YoY growth). Net profit: $420 million (16.8% margin). R&D spend: $380 million.",
+              "relevance_score": 0.0119
+            },
+            {
+              "index": 4,
+              "source_file": "acme_report_2024.md",
+              "page_number": 4,
+              "chunk_index": 3,
+              "text_snippet": "## Key Projects\n- Project Titan: AI platform launched Q3 2024, 10M requests/day, 99.9% uptime, 2,000+ enterprise customers\n- Project Nebula: Cloud security framework with CyberGuard Inc., SOC 2 Type I...",
+              "relevance_score": 0.0028
+            },
+            {
+              "index": 5,
+              "source_file": "acme_report_2024.md",
+              "page_number": 5,
+              "chunk_index": 4,
+              "text_snippet": "## Leadership\n- Jane Smith: CEO (co-founder), PhD CS from Stanford\n- John Doe: CTO (co-founder), former Google AI research lead\n- Sarah Johnson: CFO, 20 yrs at Deloitte",
+              "relevance_score": 0.0003
+            },
+            {
+              "index": 6,
+              "source_file": "acme_report_2024.md",
+              "page_number": 6,
+              "chunk_index": 5,
+              "text_snippet": "## Offices\nSan Francisco (HQ), London, Bangalore, Tokyo, Berlin",
+              "relevance_score": 0.0001
+            }
+          ],
+          "latency_seconds": 0.0,
+          "config": {
+            "rerank": true,
+            "label": "Rerank ON"
+          },
+          "status": "success",
+          "error": null,
+          "semantic_score": 0.6833,
+          "keyword_score": 0.0549,
+          "source_score": 0.8235,
+          "eval_score": 0.5402
+        },
+        {
+          "question": "What is in the section titled 'Leadership'?",
+          "expected_answer": "## Leadership\n- Jane Smith: CEO (co-founder), PhD CS from Stanford\n- John Doe: CTO (co-founder), former Google AI research lead\n- Sarah Johnson: CFO, 20 yrs at Deloitte",
+          "generated_answer": "No relevant information found.",
+          "sources": [],
+          "latency_seconds": 0.0,
+          "config": {
+            "rerank": true,
+            "label": "Rerank ON"
+          },
+          "status": "success",
+          "error": null,
+          "semantic_score": 0.141,
+          "keyword_score": 0.0,
+          "source_score": 0.0,
+          "eval_score": 0.0916
+        },
+        {
+          "question": "What is in the section titled 'Company Overview'?",
+          "expected_answer": "## Company Overview\nAcme Corporation, founded in 2010 by Jane Smith and John Doe, is a technology company specializing in AI, cloud computing, and cybersecurity. Headquartered in San Francisco, the company employs over 5,000 people across 12 countries.",
+          "generated_answer": "No relevant information found.",
+          "sources": [],
+          "latency_seconds": 0.0,
+          "config": {
+            "rerank": true,
+            "label": "Rerank ON"
+          },
+          "status": "success",
+          "error": null,
+          "semantic_score": 0.0693,
+          "keyword_score": 0.0,
+          "source_score": 0.0,
+          "eval_score": 0.0451
+        },
+        {
+          "question": "What was the revenue?",
+          "expected_answer": "## Financial Performance\nFY 2024 revenue: $2.5 billion (35% YoY growth). Net profit: $420 million (16.8% margin). R&D spend: $380 million.",
+          "generated_answer": "**Revenue**\nThe revenue for FY 2024 is $2.5 billion.\n\n**Details**\n\n* The revenue represents a 35% year-over-year (YoY) growth.\n* This indicates that the company's financial performance has been increasing significantly over the past year.\n\n**Summary**\n\nThe revenue for Acme Corporation in FY 2024 was $2.5 billion, representing a 35% YoY growth.",
+          "sources": [
+            {
+              "index": 1,
+              "source_file": "acme_report_2024.md",
+              "page_number": 3,
+              "chunk_index": 2,
+              "text_snippet": "## Financial Performance\nFY 2024 revenue: $2.5 billion (35% YoY growth). Net profit: $420 million (16.8% margin). R&D spend: $380 million.",
+              "relevance_score": 0.1342
+            },
+            {
+              "index": 2,
+              "source_file": "acme_report_2024.md",
+              "page_number": 2,
+              "chunk_index": 1,
+              "text_snippet": "## Company Overview\nAcme Corporation, founded in 2010 by Jane Smith and John Doe, is a technology company specializing in AI, cloud computing, and cybersecurity. Headquartered in San Francisco, the co...",
+              "relevance_score": 0.0001
+            },
+            {
+              "index": 3,
+              "source_file": "acme_report_2024.md",
+              "page_number": 1,
+              "chunk_index": 0,
+              "text_snippet": "# Acme Corporation - Annual Report 2024",
+              "relevance_score": 0.0001
+            },
+            {
+              "index": 4,
+              "source_file": "acme_report_2024.md",
+              "page_number": 5,
+              "chunk_index": 4,
+              "text_snippet": "## Leadership\n- Jane Smith: CEO (co-founder), PhD CS from Stanford\n- John Doe: CTO (co-founder), former Google AI research lead\n- Sarah Johnson: CFO, 20 yrs at Deloitte",
+              "relevance_score": 0.0
+            },
+            {
+              "index": 5,
+              "source_file": "acme_report_2024.md",
+              "page_number": 4,
+              "chunk_index": 3,
+              "text_snippet": "## Key Projects\n- Project Titan: AI platform launched Q3 2024, 10M requests/day, 99.9% uptime, 2,000+ enterprise customers\n- Project Nebula: Cloud security framework with CyberGuard Inc., SOC 2 Type I...",
+              "relevance_score": 0.0
+            },
+            {
+              "index": 6,
+              "source_file": "acme_report_2024.md",
+              "page_number": 6,
+              "chunk_index": 5,
+              "text_snippet": "## Offices\nSan Francisco (HQ), London, Bangalore, Tokyo, Berlin",
+              "relevance_score": 0.0
+            }
+          ],
+          "latency_seconds": 0.0,
+          "config": {
+            "rerank": true,
+            "label": "Rerank ON"
+          },
+          "status": "success",
+          "error": null,
+          "semantic_score": 0.7405,
+          "keyword_score": 0.3143,
+          "source_score": 0.5714,
+          "eval_score": 0.6171
+        },
+        {
+          "question": "Who is the CTO?",
+          "expected_answer": "- John Doe: CTO (co-founder), former Google AI research lead",
+          "generated_answer": "**Direct Answer**\nJohn Doe.\n\n**Details**\nThe answer can be found in section [2] of the document, which provides an overview of the company's leadership. Specifically, it states that John Doe is the CTO (co-founder) and former Google AI research lead.\n\n**Summary**\nAccording to the annual report 2024 of Acme Corporation, John Doe serves as the Chief Technology Officer (CTO), a position he holds alongside being one of the co-founders of the company.",
+          "sources": [
+            {
+              "index": 1,
+              "source_file": "acme_report_2024.md",
+              "page_number": 5,
+              "chunk_index": 4,
+              "text_snippet": "## Leadership\n- Jane Smith: CEO (co-founder), PhD CS from Stanford\n- John Doe: CTO (co-founder), former Google AI research lead\n- Sarah Johnson: CFO, 20 yrs at Deloitte",
+              "relevance_score": 0.6877
+            },
+            {
+              "index": 2,
+              "source_file": "acme_report_2024.md",
+              "page_number": 2,
+              "chunk_index": 1,
+              "text_snippet": "## Company Overview\nAcme Corporation, founded in 2010 by Jane Smith and John Doe, is a technology company specializing in AI, cloud computing, and cybersecurity. Headquartered in San Francisco, the co...",
+              "relevance_score": 0.0049
+            },
+            {
+              "index": 3,
+              "source_file": "acme_report_2024.md",
+              "page_number": 4,
+              "chunk_index": 3,
+              "text_snippet": "## Key Projects\n- Project Titan: AI platform launched Q3 2024, 10M requests/day, 99.9% uptime, 2,000+ enterprise customers\n- Project Nebula: Cloud security framework with CyberGuard Inc., SOC 2 Type I...",
+              "relevance_score": 0.0001
+            },
+            {
+              "index": 4,
+              "source_file": "acme_report_2024.md",
+              "page_number": 3,
+              "chunk_index": 2,
+              "text_snippet": "## Financial Performance\nFY 2024 revenue: $2.5 billion (35% YoY growth). Net profit: $420 million (16.8% margin). R&D spend: $380 million.",
+              "relevance_score": 0.0001
+            },
+            {
+              "index": 5,
+              "source_file": "acme_report_2024.md",
+              "page_number": 6,
+              "chunk_index": 5,
+              "text_snippet": "## Offices\nSan Francisco (HQ), London, Bangalore, Tokyo, Berlin",
+              "relevance_score": 0.0001
+            },
+            {
+              "index": 6,
+              "source_file": "acme_report_2024.md",
+              "page_number": 1,
+              "chunk_index": 0,
+              "text_snippet": "# Acme Corporation - Annual Report 2024",
+              "relevance_score": 0.0
+            }
+          ],
+          "latency_seconds": 0.01,
+          "config": {
+            "rerank": true,
+            "label": "Rerank ON"
+          },
+          "status": "success",
+          "error": null,
+          "semantic_score": 0.7795,
+          "keyword_score": 0.1786,
+          "source_score": 0.4,
+          "eval_score": 0.5913
+        },
+        {
+          "question": "What is in the section titled 'Offices'?",
+          "expected_answer": "## Offices\nSan Francisco (HQ), London, Bangalore, Tokyo, Berlin",
+          "generated_answer": "No relevant information found.",
+          "sources": [],
+          "latency_seconds": 0.0,
+          "config": {
+            "rerank": true,
+            "label": "Rerank ON"
+          },
+          "status": "success",
+          "error": null,
+          "semantic_score": 0.1501,
+          "keyword_score": 0.0,
+          "source_score": 0.0,
+          "eval_score": 0.0975
+        },
+        {
+          "question": "What is Project Titan?",
+          "expected_answer": "## Key Projects\n- Project Titan: AI platform launched Q3 2024, 10M requests/day, 99.9% uptime, 2,000+ enterprise customers\n- Project Nebula: Cloud security framework with CyberGuard Inc., SOC 2 Type II certified June 2024, adopted by 500+ orgs",
+          "generated_answer": "**Direct Answer**\nProject Titan is an AI platform launched by Acme Corporation in Q3 2024.\n\n**Details**\nAccording to the provided document, Project Titan is a significant project launched by Acme Corporation. The details about Project Titan are as follows:\n* It was launched in Q3 2024.\n* It has achieved 10M requests/day.\n* It has maintained a high uptime of 99.9%.\n* It serves over 2,000 enterprise customers.\n\n**Summary**\nProject Titan is an AI platform that has shown promising results since its launch in Q3 2024. With its impressive performance metrics and large customer base, it is likely to be a key contributor to Acme Corporation's growth and success.",
+          "sources": [
+            {
+              "index": 1,
+              "source_file": "acme_report_2024.md",
+              "page_number": 4,
+              "chunk_index": 3,
+              "text_snippet": "## Key Projects\n- Project Titan: AI platform launched Q3 2024, 10M requests/day, 99.9% uptime, 2,000+ enterprise customers\n- Project Nebula: Cloud security framework with CyberGuard Inc., SOC 2 Type I...",
+              "relevance_score": 0.4898
+            },
+            {
+              "index": 2,
+              "source_file": "acme_report_2024.md",
+              "page_number": 2,
+              "chunk_index": 1,
+              "text_snippet": "## Company Overview\nAcme Corporation, founded in 2010 by Jane Smith and John Doe, is a technology company specializing in AI, cloud computing, and cybersecurity. Headquartered in San Francisco, the co...",
+              "relevance_score": 0.0011
+            },
+            {
+              "index": 3,
+              "source_file": "acme_report_2024.md",
+              "page_number": 5,
+              "chunk_index": 4,
+              "text_snippet": "## Leadership\n- Jane Smith: CEO (co-founder), PhD CS from Stanford\n- John Doe: CTO (co-founder), former Google AI research lead\n- Sarah Johnson: CFO, 20 yrs at Deloitte",
+              "relevance_score": 0.0003
+            },
+            {
+              "index": 4,
+              "source_file": "acme_report_2024.md",
+              "page_number": 6,
+              "chunk_index": 5,
+              "text_snippet": "## Offices\nSan Francisco (HQ), London, Bangalore, Tokyo, Berlin",
+              "relevance_score": 0.0002
+            },
+            {
+              "index": 5,
+              "source_file": "acme_report_2024.md",
+              "page_number": 3,
+              "chunk_index": 2,
+              "text_snippet": "## Financial Performance\nFY 2024 revenue: $2.5 billion (35% YoY growth). Net profit: $420 million (16.8% margin). R&D spend: $380 million.",
+              "relevance_score": 0.0002
+            },
+            {
+              "index": 6,
+              "source_file": "acme_report_2024.md",
+              "page_number": 1,
+              "chunk_index": 0,
+              "text_snippet": "# Acme Corporation - Annual Report 2024",
+              "relevance_score": 0.0001
+            }
+          ],
+          "latency_seconds": 0.0,
+          "config": {
+            "rerank": true,
+            "label": "Rerank ON"
+          },
+          "status": "success",
+          "error": null,
+          "semantic_score": 0.7406,
+          "keyword_score": 0.2899,
+          "source_score": 0.5556,
+          "eval_score": 0.6094
+        },
+        {
+          "question": "Who is Jane Smith?",
+          "expected_answer": "## Leadership\n- Jane Smith: CEO (co-founder), PhD CS from Stanford\n- John Doe: CTO (co-founder), former Google AI research lead\n- Sarah Johnson: CFO, 20 yrs at Deloitte",
+          "generated_answer": "**Direct Answer**\nJane Smith is the CEO (co-founder) of Acme Corporation.\n\n**Details**\nAccording to the provided document context, Jane Smith holds a PhD in Computer Science from Stanford and co-founded Acme Corporation with John Doe in 2010. She serves as the company's CEO and has been instrumental in shaping its vision and strategy.\n\n**Summary**\nJane Smith is a highly accomplished individual who has played a crucial role in establishing and leading Acme Corporation, a technology company specializing in AI, cloud computing, and cybersecurity.",
+          "sources": [
+            {
+              "index": 1,
+              "source_file": "acme_report_2024.md",
+              "page_number": 5,
+              "chunk_index": 4,
+              "text_snippet": "## Leadership\n- Jane Smith: CEO (co-founder), PhD CS from Stanford\n- John Doe: CTO (co-founder), former Google AI research lead\n- Sarah Johnson: CFO, 20 yrs at Deloitte",
+              "relevance_score": 0.9861
+            },
+            {
+              "index": 2,
+              "source_file": "acme_report_2024.md",
+              "page_number": 2,
+              "chunk_index": 1,
+              "text_snippet": "## Company Overview\nAcme Corporation, founded in 2010 by Jane Smith and John Doe, is a technology company specializing in AI, cloud computing, and cybersecurity. Headquartered in San Francisco, the co...",
+              "relevance_score": 0.9447
+            },
+            {
+              "index": 3,
+              "source_file": "acme_report_2024.md",
+              "page_number": 3,
+              "chunk_index": 2,
+              "text_snippet": "## Financial Performance\nFY 2024 revenue: $2.5 billion (35% YoY growth). Net profit: $420 million (16.8% margin). R&D spend: $380 million.",
+              "relevance_score": 0.0
+            },
+            {
+              "index": 4,
+              "source_file": "acme_report_2024.md",
+              "page_number": 1,
+              "chunk_index": 0,
+              "text_snippet": "# Acme Corporation - Annual Report 2024",
+              "relevance_score": 0.0
+            },
+            {
+              "index": 5,
+              "source_file": "acme_report_2024.md",
+              "page_number": 6,
+              "chunk_index": 5,
+              "text_snippet": "## Offices\nSan Francisco (HQ), London, Bangalore, Tokyo, Berlin",
+              "relevance_score": 0.0
+            },
+            {
+              "index": 6,
+              "source_file": "acme_report_2024.md",
+              "page_number": 4,
+              "chunk_index": 3,
+              "text_snippet": "## Key Projects\n- Project Titan: AI platform launched Q3 2024, 10M requests/day, 99.9% uptime, 2,000+ enterprise customers\n- Project Nebula: Cloud security framework with CyberGuard Inc., SOC 2 Type I...",
+              "relevance_score": 0.0
+            }
+          ],
+          "latency_seconds": 0.0,
+          "config": {
+            "rerank": true,
+            "label": "Rerank ON"
+          },
+          "status": "success",
+          "error": null,
+          "semantic_score": 0.6489,
+          "keyword_score": 0.1833,
+          "source_score": 0.4545,
+          "eval_score": 0.5131
+        },
+        {
+          "question": "What was the net profit?",
+          "expected_answer": "## Financial Performance\nFY 2024 revenue: $2.5 billion (35% YoY growth). Net profit: $420 million (16.8% margin). R&D spend: $380 million.",
+          "generated_answer": "**Direct Answer**\nThe net profit for FY 2024 is $420 million.\n\n**Details**\nAccording to the provided document [1], Page 3, the financial performance section states that \"Net profit: $420 million (16.8% margin)\". This indicates that the company's net profit for the fiscal year ended in 2024 was $420 million, with a margin of 16.8%.\n\n**Summary**\nThe net profit for FY 2024 is $420 million, representing an 16.8% margin.",
+          "sources": [
+            {
+              "index": 1,
+              "source_file": "acme_report_2024.md",
+              "page_number": 3,
+              "chunk_index": 2,
+              "text_snippet": "## Financial Performance\nFY 2024 revenue: $2.5 billion (35% YoY growth). Net profit: $420 million (16.8% margin). R&D spend: $380 million.",
+              "relevance_score": 0.5289
+            },
+            {
+              "index": 2,
+              "source_file": "acme_report_2024.md",
+              "page_number": 5,
+              "chunk_index": 4,
+              "text_snippet": "## Leadership\n- Jane Smith: CEO (co-founder), PhD CS from Stanford\n- John Doe: CTO (co-founder), former Google AI research lead\n- Sarah Johnson: CFO, 20 yrs at Deloitte",
+              "relevance_score": 0.0002
+            },
+            {
+              "index": 3,
+              "source_file": "acme_report_2024.md",
+              "page_number": 2,
+              "chunk_index": 1,
+              "text_snippet": "## Company Overview\nAcme Corporation, founded in 2010 by Jane Smith and John Doe, is a technology company specializing in AI, cloud computing, and cybersecurity. Headquartered in San Francisco, the co...",
+              "relevance_score": 0.0
+            },
+            {
+              "index": 4,
+              "source_file": "acme_report_2024.md",
+              "page_number": 1,
+              "chunk_index": 0,
+              "text_snippet": "# Acme Corporation - Annual Report 2024",
+              "relevance_score": 0.0
+            },
+            {
+              "index": 5,
+              "source_file": "acme_report_2024.md",
+              "page_number": 6,
+              "chunk_index": 5,
+              "text_snippet": "## Offices\nSan Francisco (HQ), London, Bangalore, Tokyo, Berlin",
+              "relevance_score": 0.0
+            },
+            {
+              "index": 6,
+              "source_file": "acme_report_2024.md",
+              "page_number": 4,
+              "chunk_index": 3,
+              "text_snippet": "## Key Projects\n- Project Titan: AI platform launched Q3 2024, 10M requests/day, 99.9% uptime, 2,000+ enterprise customers\n- Project Nebula: Cloud security framework with CyberGuard Inc., SOC 2 Type I...",
+              "relevance_score": 0.0
+            }
+          ],
+          "latency_seconds": 0.0,
+          "config": {
+            "rerank": true,
+            "label": "Rerank ON"
+          },
+          "status": "success",
+          "error": null,
+          "semantic_score": 0.8124,
+          "keyword_score": 0.2619,
+          "source_score": 0.25,
+          "eval_score": 0.6185
+        },
+        {
+          "question": "Who is the CEO?",
+          "expected_answer": "- Jane Smith: CEO (co-founder), PhD CS from Stanford",
+          "generated_answer": "No relevant information found.",
+          "sources": [],
+          "latency_seconds": 0.0,
+          "config": {
+            "rerank": true,
+            "label": "Rerank ON"
+          },
+          "status": "success",
+          "error": null,
+          "semantic_score": 0.1179,
+          "keyword_score": 0.0,
+          "source_score": 0.0,
+          "eval_score": 0.0766
+        },
+        {
+          "question": "What is in the section titled 'Key Projects'?",
+          "expected_answer": "## Key Projects\n- Project Titan: AI platform launched Q3 2024, 10M requests/day, 99.9% uptime, 2,000+ enterprise customers\n- Project Nebula: Cloud security framework with CyberGuard Inc., SOC 2 Type II certified June 2024, adopted by 500+ orgs",
+          "generated_answer": "**Direct Answer**\nThe section titled 'Key Projects' lists two key projects: Project Titan and Project Nebula.\n\n**Details**\n\n* Project Titan is an AI platform launched in Q3 2024, with 10 million requests per day and a reported uptime of 99.9%.\n* Project Titan has been adopted by over 2,000 enterprise customers.\n* Project Nebula is a cloud security framework developed in partnership with CyberGuard Inc., which received SOC 2 Type II certification in June 2024.\n* Project Nebula has been adopted by over 500 organizations.\n\n**Summary**\nThe 'Key Projects' section highlights two significant projects launched by Acme Corporation: Project Titan, an AI platform, and Project Nebula, a cloud security framework. Both projects demonstrate the company's commitment to innovation and customer adoption in the fields of AI and cybersecurity.",
+          "sources": [
+            {
+              "index": 1,
+              "source_file": "acme_report_2024.md",
+              "page_number": 4,
+              "chunk_index": 3,
+              "text_snippet": "## Key Projects\n- Project Titan: AI platform launched Q3 2024, 10M requests/day, 99.9% uptime, 2,000+ enterprise customers\n- Project Nebula: Cloud security framework with CyberGuard Inc., SOC 2 Type I...",
+              "relevance_score": 0.5654
+            },
+            {
+              "index": 2,
+              "source_file": "acme_report_2024.md",
+              "page_number": 6,
+              "chunk_index": 5,
+              "text_snippet": "## Offices\nSan Francisco (HQ), London, Bangalore, Tokyo, Berlin",
+              "relevance_score": 0.0002
+            },
+            {
+              "index": 3,
+              "source_file": "acme_report_2024.md",
+              "page_number": 2,
+              "chunk_index": 1,
+              "text_snippet": "## Company Overview\nAcme Corporation, founded in 2010 by Jane Smith and John Doe, is a technology company specializing in AI, cloud computing, and cybersecurity. Headquartered in San Francisco, the co...",
+              "relevance_score": 0.0002
+            },
+            {
+              "index": 4,
+              "source_file": "acme_report_2024.md",
+              "page_number": 5,
+              "chunk_index": 4,
+              "text_snippet": "## Leadership\n- Jane Smith: CEO (co-founder), PhD CS from Stanford\n- John Doe: CTO (co-founder), former Google AI research lead\n- Sarah Johnson: CFO, 20 yrs at Deloitte",
+              "relevance_score": 0.0001
+            },
+            {
+              "index": 5,
+              "source_file": "acme_report_2024.md",
+              "page_number": 3,
+              "chunk_index": 2,
+              "text_snippet": "## Financial Performance\nFY 2024 revenue: $2.5 billion (35% YoY growth). Net profit: $420 million (16.8% margin). R&D spend: $380 million.",
+              "relevance_score": 0.0
+            },
+            {
+              "index": 6,
+              "source_file": "acme_report_2024.md",
+              "page_number": 1,
+              "chunk_index": 0,
+              "text_snippet": "# Acme Corporation - Annual Report 2024",
+              "relevance_score": 0.0
+            }
+          ],
+          "latency_seconds": 0.0,
+          "config": {
+            "rerank": true,
+            "label": "Rerank ON"
+          },
+          "status": "success",
+          "error": null,
+          "semantic_score": 0.8728,
+          "keyword_score": 0.4267,
+          "source_score": 0.6154,
+          "eval_score": 0.7355
+        },
+        {
+          "question": "What is Project Nebula?",
+          "expected_answer": "## Key Projects\n- Project Titan: AI platform launched Q3 2024, 10M requests/day, 99.9% uptime, 2,000+ enterprise customers\n- Project Nebula: Cloud security framework with CyberGuard Inc., SOC 2 Type II certified June 2024, adopted by 500+ orgs",
+          "generated_answer": "**Direct Answer**\nProject Nebula is a cloud security framework.\n\n**Details**\nAccording to the provided document context, Project Nebula was launched in June 2024 and is a collaboration between Acme Corporation and CyberGuard Inc. It has achieved SOC 2 Type II certification. Additionally, it has been adopted by over 500 organizations.\n\n**Summary**\nProject Nebula is a cloud security framework developed by Acme Corporation, launched in June 2024, with SOC 2 Type II certification and adoption by multiple organizations.",
+          "sources": [
+            {
+              "index": 1,
+              "source_file": "acme_report_2024.md",
+              "page_number": 4,
+              "chunk_index": 3,
+              "text_snippet": "## Key Projects\n- Project Titan: AI platform launched Q3 2024, 10M requests/day, 99.9% uptime, 2,000+ enterprise customers\n- Project Nebula: Cloud security framework with CyberGuard Inc., SOC 2 Type I...",
+              "relevance_score": 0.9157
+            },
+            {
+              "index": 2,
+              "source_file": "acme_report_2024.md",
+              "page_number": 2,
+              "chunk_index": 1,
+              "text_snippet": "## Company Overview\nAcme Corporation, founded in 2010 by Jane Smith and John Doe, is a technology company specializing in AI, cloud computing, and cybersecurity. Headquartered in San Francisco, the co...",
+              "relevance_score": 0.0004
+            },
+            {
+              "index": 3,
+              "source_file": "acme_report_2024.md",
+              "page_number": 5,
+              "chunk_index": 4,
+              "text_snippet": "## Leadership\n- Jane Smith: CEO (co-founder), PhD CS from Stanford\n- John Doe: CTO (co-founder), former Google AI research lead\n- Sarah Johnson: CFO, 20 yrs at Deloitte",
+              "relevance_score": 0.0001
+            },
+            {
+              "index": 4,
+              "source_file": "acme_report_2024.md",
+              "page_number": 3,
+              "chunk_index": 2,
+              "text_snippet": "## Financial Performance\nFY 2024 revenue: $2.5 billion (35% YoY growth). Net profit: $420 million (16.8% margin). R&D spend: $380 million.",
+              "relevance_score": 0.0001
+            },
+            {
+              "index": 5,
+              "source_file": "acme_report_2024.md",
+              "page_number": 6,
+              "chunk_index": 5,
+              "text_snippet": "## Offices\nSan Francisco (HQ), London, Bangalore, Tokyo, Berlin",
+              "relevance_score": 0.0001
+            },
+            {
+              "index": 6,
+              "source_file": "acme_report_2024.md",
+              "page_number": 1,
+              "chunk_index": 0,
+              "text_snippet": "# Acme Corporation - Annual Report 2024",
+              "relevance_score": 0.0
+            }
+          ],
+          "latency_seconds": 0.0,
+          "config": {
+            "rerank": true,
+            "label": "Rerank ON"
+          },
+          "status": "success",
+          "error": null,
+          "semantic_score": 0.6875,
+          "keyword_score": 0.375,
+          "source_score": 0.5,
+          "eval_score": 0.5906
+        },
+        {
+          "question": "What was the R&D spend?",
+          "expected_answer": "## Financial Performance\nFY 2024 revenue: $2.5 billion (35% YoY growth). Net profit: $420 million (16.8% margin). R&D spend: $380 million.",
+          "generated_answer": "**R&D Spend**\nThe R&D spend for FY 2024 is $380 million.\n\n**Details**\n\n* This information can be found in section [1] of the document, page 3.\n* The R&D spend is mentioned as part of the company's financial performance.\n* It is not explicitly stated where this amount was allocated or what specific projects it was used for.\n\n**Summary**\n\nThe R&D spend for FY 2024 at Acme Corporation was $380 million. This information can be found in section [1] of the document, page 3.",
+          "sources": [
+            {
+              "index": 1,
+              "source_file": "acme_report_2024.md",
+              "page_number": 3,
+              "chunk_index": 2,
+              "text_snippet": "## Financial Performance\nFY 2024 revenue: $2.5 billion (35% YoY growth). Net profit: $420 million (16.8% margin). R&D spend: $380 million.",
+              "relevance_score": 0.8615
+            },
+            {
+              "index": 2,
+              "source_file": "acme_report_2024.md",
+              "page_number": 2,
+              "chunk_index": 1,
+              "text_snippet": "## Company Overview\nAcme Corporation, founded in 2010 by Jane Smith and John Doe, is a technology company specializing in AI, cloud computing, and cybersecurity. Headquartered in San Francisco, the co...",
+              "relevance_score": 0.0001
+            },
+            {
+              "index": 3,
+              "source_file": "acme_report_2024.md",
+              "page_number": 5,
+              "chunk_index": 4,
+              "text_snippet": "## Leadership\n- Jane Smith: CEO (co-founder), PhD CS from Stanford\n- John Doe: CTO (co-founder), former Google AI research lead\n- Sarah Johnson: CFO, 20 yrs at Deloitte",
+              "relevance_score": 0.0
+            },
+            {
+              "index": 4,
+              "source_file": "acme_report_2024.md",
+              "page_number": 4,
+              "chunk_index": 3,
+              "text_snippet": "## Key Projects\n- Project Titan: AI platform launched Q3 2024, 10M requests/day, 99.9% uptime, 2,000+ enterprise customers\n- Project Nebula: Cloud security framework with CyberGuard Inc., SOC 2 Type I...",
+              "relevance_score": 0.0
+            },
+            {
+              "index": 5,
+              "source_file": "acme_report_2024.md",
+              "page_number": 6,
+              "chunk_index": 5,
+              "text_snippet": "## Offices\nSan Francisco (HQ), London, Bangalore, Tokyo, Berlin",
+              "relevance_score": 0.0
+            },
+            {
+              "index": 6,
+              "source_file": "acme_report_2024.md",
+              "page_number": 1,
+              "chunk_index": 0,
+              "text_snippet": "# Acme Corporation - Annual Report 2024",
+              "relevance_score": 0.0
+            }
+          ],
+          "latency_seconds": 0.0,
+          "config": {
+            "rerank": true,
+            "label": "Rerank ON"
+          },
+          "status": "success",
+          "error": null,
+          "semantic_score": 0.7183,
+          "keyword_score": 0.1915,
+          "source_score": 0.5714,
+          "eval_score": 0.5719
+        },
+        {
+          "question": "What is in the section titled 'Financial Performance'?",
+          "expected_answer": "## Financial Performance\nFY 2024 revenue: $2.5 billion (35% YoY growth). Net profit: $420 million (16.8% margin). R&D spend: $380 million.",
+          "generated_answer": "No relevant information found.",
+          "sources": [],
+          "latency_seconds": 0.0,
+          "config": {
+            "rerank": true,
+            "label": "Rerank ON"
+          },
+          "status": "success",
+          "error": null,
+          "semantic_score": 0.0716,
+          "keyword_score": 0.0,
+          "source_score": 0.0,
+          "eval_score": 0.0465
+        },
+        {
+          "question": "When was Company Overview\nAcme Corporation founded and by whom?",
+          "expected_answer": "## Company Overview\nAcme Corporation, founded in 2010 by Jane Smith and John Doe, is a technology company specializing in AI, cloud computing, and cybersecurity. Headquartered in San Francisco, the company employs over 5,000 people across 12 countries.",
+          "generated_answer": "**Acme Corporation Annual Report 2024 Summary**\n\nAcme Corporation is a technology company founded in 2010 by Jane Smith and John Doe. The company specializes in AI, cloud computing, and cybersecurity, with over 5,000 employees across 12 countries.\n\n**Leadership**\n\nThe leadership team consists of:\n\n* Jane Smith: CEO (co-founder) and PhD CS from Stanford\n* John Doe: CTO (co-founder) and former Google AI research lead\n* Sarah Johnson: CFO with 20 years of experience at Deloitte\n\n**Financial Performance**\n\nAcme Corporation achieved significant financial growth in FY 2024:\n\n* Revenue: $2.5 billion (35% YoY growth)\n* Net profit: $420 million (16.8% margin)\n* Research and Development spend: $380 million\n\n**Key Projects**\n\nThe company has launched two notable projects:\n\n* **Project Titan**: An AI platform launched in Q3 2024, with:\n\t+ 10M requests/day\n\t+ 99.9% uptime\n\t+ 2,000+ enterprise customers\n* **Project Nebula**: A cloud security framework certified by SOC 2 Type II in June 2024, adopted by 500+ organizations",
+          "sources": [
+            {
+              "index": 1,
+              "source_file": "acme_report_2024.md",
+              "page_number": 2,
+              "chunk_index": 1,
+              "text_snippet": "## Company Overview\nAcme Corporation, founded in 2010 by Jane Smith and John Doe, is a technology company specializing in AI, cloud computing, and cybersecurity. Headquartered in San Francisco, the co...",
+              "relevance_score": 0.9999
+            },
+            {
+              "index": 2,
+              "source_file": "acme_report_2024.md",
+              "page_number": 1,
+              "chunk_index": 0,
+              "text_snippet": "# Acme Corporation - Annual Report 2024",
+              "relevance_score": 0.0123
+            },
+            {
+              "index": 3,
+              "source_file": "acme_report_2024.md",
+              "page_number": 5,
+              "chunk_index": 4,
+              "text_snippet": "## Leadership\n- Jane Smith: CEO (co-founder), PhD CS from Stanford\n- John Doe: CTO (co-founder), former Google AI research lead\n- Sarah Johnson: CFO, 20 yrs at Deloitte",
+              "relevance_score": 0.0027
+            },
+            {
+              "index": 4,
+              "source_file": "acme_report_2024.md",
+              "page_number": 3,
+              "chunk_index": 2,
+              "text_snippet": "## Financial Performance\nFY 2024 revenue: $2.5 billion (35% YoY growth). Net profit: $420 million (16.8% margin). R&D spend: $380 million.",
+              "relevance_score": 0.0001
+            },
+            {
+              "index": 5,
+              "source_file": "acme_report_2024.md",
+              "page_number": 4,
+              "chunk_index": 3,
+              "text_snippet": "## Key Projects\n- Project Titan: AI platform launched Q3 2024, 10M requests/day, 99.9% uptime, 2,000+ enterprise customers\n- Project Nebula: Cloud security framework with CyberGuard Inc., SOC 2 Type I...",
+              "relevance_score": 0.0001
+            }
+          ],
+          "latency_seconds": 0.0,
+          "config": {
+            "rerank": true,
+            "label": "Rerank ON"
+          },
+          "status": "success",
+          "error": null,
+          "semantic_score": 0.7633,
+          "keyword_score": 0.2407,
+          "source_score": 0.8333,
+          "eval_score": 0.6397
+        },
+        {
+          "question": "In which cities does the company have offices?",
+          "expected_answer": "## Offices\nSan Francisco (HQ), London, Bangalore, Tokyo, Berlin",
+          "generated_answer": "The company Acme Corporation has offices in the following cities:\n\n* San Francisco\n* London\n* Bangalore\n* Tokyo\n* Berlin",
+          "sources": [
+            {
+              "index": 1,
+              "source_file": "acme_report_2024.md",
+              "page_number": 6,
+              "chunk_index": 5,
+              "text_snippet": "## Offices\nSan Francisco (HQ), London, Bangalore, Tokyo, Berlin",
+              "relevance_score": 0.9534
+            },
+            {
+              "index": 2,
+              "source_file": "acme_report_2024.md",
+              "page_number": 2,
+              "chunk_index": 1,
+              "text_snippet": "## Company Overview\nAcme Corporation, founded in 2010 by Jane Smith and John Doe, is a technology company specializing in AI, cloud computing, and cybersecurity. Headquartered in San Francisco, the co...",
+              "relevance_score": 0.2588
+            },
+            {
+              "index": 3,
+              "source_file": "acme_report_2024.md",
+              "page_number": 5,
+              "chunk_index": 4,
+              "text_snippet": "## Leadership\n- Jane Smith: CEO (co-founder), PhD CS from Stanford\n- John Doe: CTO (co-founder), former Google AI research lead\n- Sarah Johnson: CFO, 20 yrs at Deloitte",
+              "relevance_score": 0.0036
+            },
+            {
+              "index": 4,
+              "source_file": "acme_report_2024.md",
+              "page_number": 4,
+              "chunk_index": 3,
+              "text_snippet": "## Key Projects\n- Project Titan: AI platform launched Q3 2024, 10M requests/day, 99.9% uptime, 2,000+ enterprise customers\n- Project Nebula: Cloud security framework with CyberGuard Inc., SOC 2 Type I...",
+              "relevance_score": 0.0033
+            },
+            {
+              "index": 5,
+              "source_file": "acme_report_2024.md",
+              "page_number": 1,
+              "chunk_index": 0,
+              "text_snippet": "# Acme Corporation - Annual Report 2024",
+              "relevance_score": 0.0032
+            },
+            {
+              "index": 6,
+              "source_file": "acme_report_2024.md",
+              "page_number": 3,
+              "chunk_index": 2,
+              "text_snippet": "## Financial Performance\nFY 2024 revenue: $2.5 billion (35% YoY growth). Net profit: $420 million (16.8% margin). R&D spend: $380 million.",
+              "relevance_score": 0.0009
+            }
+          ],
+          "latency_seconds": 0.0,
+          "config": {
+            "rerank": true,
+            "label": "Rerank ON"
+          },
+          "status": "success",
+          "error": null,
+          "semantic_score": 0.6823,
+          "keyword_score": 0.4667,
+          "source_score": 1.0,
+          "eval_score": 0.6601
         }
       ]
     },
@@ -148,76 +981,604 @@
       "name": "rerank=False_label=Rerank OFF",
       "results": [
         {
-          "question": "How many billion?",
-          "expected_answer": "## Financial Performance\nFY 2024 revenue: $2.5 billion (35% YoY growth).",
-          "generated_answer": "No relevant information found.",
-          "sources": [],
-          "latency_seconds": 0.01,
+          "question": "Who is the CFO?",
+          "expected_answer": "- Sarah Johnson: CFO, 20 yrs at Deloitte",
+          "generated_answer": "**Direct Answer**\nSarah Johnson.\n\n**Details**\nThe CFO of Acme Corporation is Sarah Johnson, who has been with Deloitte for 20 years. This information is mentioned in section [2] of the report, which provides an overview of the company's leadership team.\n\n**Summary**\nThe CEO and co-founder of Acme Corporation is Jane Smith, while John Doe serves as the CTO and former Google AI research lead. The CFO, Sarah Johnson, brings 20 years of experience from Deloitte to her role at Acme Corporation.",
+          "sources": [
+            {
+              "index": 1,
+              "source_file": "acme_report_2024.md",
+              "page_number": 5,
+              "chunk_index": 4,
+              "text_snippet": "## Leadership\n- Jane Smith: CEO (co-founder), PhD CS from Stanford\n- John Doe: CTO (co-founder), former Google AI research lead\n- Sarah Johnson: CFO, 20 yrs at Deloitte",
+              "relevance_score": 0.2533
+            },
+            {
+              "index": 2,
+              "source_file": "acme_report_2024.md",
+              "page_number": 2,
+              "chunk_index": 1,
+              "text_snippet": "## Company Overview\nAcme Corporation, founded in 2010 by Jane Smith and John Doe, is a technology company specializing in AI, cloud computing, and cybersecurity. Headquartered in San Francisco, the co...",
+              "relevance_score": 0.0089
+            },
+            {
+              "index": 3,
+              "source_file": "acme_report_2024.md",
+              "page_number": 6,
+              "chunk_index": 5,
+              "text_snippet": "## Offices\nSan Francisco (HQ), London, Bangalore, Tokyo, Berlin",
+              "relevance_score": 0.0002
+            },
+            {
+              "index": 4,
+              "source_file": "acme_report_2024.md",
+              "page_number": 3,
+              "chunk_index": 2,
+              "text_snippet": "## Financial Performance\nFY 2024 revenue: $2.5 billion (35% YoY growth). Net profit: $420 million (16.8% margin). R&D spend: $380 million.",
+              "relevance_score": 0.0002
+            },
+            {
+              "index": 5,
+              "source_file": "acme_report_2024.md",
+              "page_number": 4,
+              "chunk_index": 3,
+              "text_snippet": "## Key Projects\n- Project Titan: AI platform launched Q3 2024, 10M requests/day, 99.9% uptime, 2,000+ enterprise customers\n- Project Nebula: Cloud security framework with CyberGuard Inc., SOC 2 Type I...",
+              "relevance_score": 0.0001
+            },
+            {
+              "index": 6,
+              "source_file": "acme_report_2024.md",
+              "page_number": 1,
+              "chunk_index": 0,
+              "text_snippet": "# Acme Corporation - Annual Report 2024",
+              "relevance_score": 0.0
+            }
+          ],
+          "latency_seconds": 0.0,
           "config": {
             "rerank": false,
             "label": "Rerank OFF"
           },
           "status": "success",
           "error": null,
-          "semantic_score": 0.0,
-          "keyword_score": 0.0,
-          "source_score": 0.0,
-          "eval_score": 0.0
+          "semantic_score": 0.7203,
+          "keyword_score": 0.1017,
+          "source_score": 0.6364,
+          "eval_score": 0.5572
         },
         {
-          "question": "Who is Overview Corporation?",
-          "expected_answer": "## Company Overview\nAcme Corporation, founded in 2010 by Jane Smith and John Doe, is a technology company specializing in AI, cloud computing, and cybersecurity.",
-          "generated_answer": "No relevant information found.",
-          "sources": [],
-          "latency_seconds": 0.01,
+          "question": "Where is the company headquartered?",
+          "expected_answer": "## Company Overview\nAcme Corporation, founded in 2010 by Jane Smith and John Doe, is a technology company specializing in AI, cloud computing, and cybersecurity. Headquartered in San Francisco, the company employs over 5,000 people across 12 countries.",
+          "generated_answer": "**Headquarters Location**\nThe company, Acme Corporation, is headquartered in **San Francisco**.\n\n**Details**\nAccording to the provided document context, page 2 of the acme_report_2024.md source, it states: \"Acme Corporation, founded in 2010 by Jane Smith and John Doe, is a technology company specializing in AI, cloud computing, and cybersecurity. Headquartered in San Francisco, the company employs over 5,000 people across 12 countries.\"\n\n**Summary**\nThe headquarters location of Acme Corporation is San Francisco, as stated on page 2 of the acme_report_2024.md source.",
+          "sources": [
+            {
+              "index": 1,
+              "source_file": "acme_report_2024.md",
+              "page_number": 2,
+              "chunk_index": 1,
+              "text_snippet": "## Company Overview\nAcme Corporation, founded in 2010 by Jane Smith and John Doe, is a technology company specializing in AI, cloud computing, and cybersecurity. Headquartered in San Francisco, the co...",
+              "relevance_score": 0.7659
+            },
+            {
+              "index": 2,
+              "source_file": "acme_report_2024.md",
+              "page_number": 6,
+              "chunk_index": 5,
+              "text_snippet": "## Offices\nSan Francisco (HQ), London, Bangalore, Tokyo, Berlin",
+              "relevance_score": 0.252
+            },
+            {
+              "index": 3,
+              "source_file": "acme_report_2024.md",
+              "page_number": 5,
+              "chunk_index": 4,
+              "text_snippet": "## Leadership\n- Jane Smith: CEO (co-founder), PhD CS from Stanford\n- John Doe: CTO (co-founder), former Google AI research lead\n- Sarah Johnson: CFO, 20 yrs at Deloitte",
+              "relevance_score": 0.0055
+            },
+            {
+              "index": 4,
+              "source_file": "acme_report_2024.md",
+              "page_number": 1,
+              "chunk_index": 0,
+              "text_snippet": "# Acme Corporation - Annual Report 2024",
+              "relevance_score": 0.0014
+            },
+            {
+              "index": 5,
+              "source_file": "acme_report_2024.md",
+              "page_number": 4,
+              "chunk_index": 3,
+              "text_snippet": "## Key Projects\n- Project Titan: AI platform launched Q3 2024, 10M requests/day, 99.9% uptime, 2,000+ enterprise customers\n- Project Nebula: Cloud security framework with CyberGuard Inc., SOC 2 Type I...",
+              "relevance_score": 0.0011
+            },
+            {
+              "index": 6,
+              "source_file": "acme_report_2024.md",
+              "page_number": 3,
+              "chunk_index": 2,
+              "text_snippet": "## Financial Performance\nFY 2024 revenue: $2.5 billion (35% YoY growth). Net profit: $420 million (16.8% margin). R&D spend: $380 million.",
+              "relevance_score": 0.001
+            }
+          ],
+          "latency_seconds": 0.0,
           "config": {
             "rerank": false,
             "label": "Rerank OFF"
           },
           "status": "success",
           "error": null,
-          "semantic_score": 0.0,
-          "keyword_score": 0.0,
-          "source_score": 0.0,
-          "eval_score": 0.0
+          "semantic_score": 0.8293,
+          "keyword_score": 0.6038,
+          "source_score": 0.6,
+          "eval_score": 0.75
         },
         {
-          "question": "How many %?",
-          "expected_answer": "## Key Projects\n- Project Titan: AI platform launched Q3 2024, 10M requests/day, 99.9% uptime, 2,000+ enterprise customers\n- Project Nebula: Cloud security framework with CyberGuard Inc., SOC 2 Type II certified June 2024, adopted by 500+ orgs",
+          "question": "What is the growth percentage?",
+          "expected_answer": "## Financial Performance\nFY 2024 revenue: $2.5 billion (35% YoY growth). Net profit: $420 million (16.8% margin). R&D spend: $380 million.",
           "generated_answer": "No relevant information found.",
           "sources": [],
-          "latency_seconds": 0.02,
+          "latency_seconds": 0.0,
           "config": {
             "rerank": false,
             "label": "Rerank OFF"
           },
           "status": "success",
           "error": null,
-          "semantic_score": 0.0,
+          "semantic_score": 0.0716,
           "keyword_score": 0.0,
           "source_score": 0.0,
-          "eval_score": 0.0
+          "eval_score": 0.0465
         },
         {
-          "question": "Who is San Francisco?",
+          "question": "What is in the section titled 'Acme Corporation - Annual Report 2024'?",
+          "expected_answer": "# Acme Corporation - Annual Report 2024",
+          "generated_answer": "**Direct Answer**\nThe section titled 'Acme Corporation - Annual Report 2024' contains information about Acme Corporation's company overview, financial performance, key projects, leadership, offices, and other relevant details.\n\n**Details**\n\n* The report provides an overview of Acme Corporation, including its founding date (2010) and founders (Jane Smith and John Doe).\n* It highlights the company's specialization in AI, cloud computing, and cybersecurity.\n* Financial performance data is presented, including revenue ($2.5 billion), net profit ($420 million), and R&D spend ($380 million).\n* Key projects are showcased, such as Project Titan (AI platform) and Project Nebula (cloud security framework).\n* Leadership information includes the CEO (Jane Smith), CTO (John Doe), and CFO (Sarah Johnson).\n* Offices are listed across 12 countries, with San Francisco serving as the headquarters.\n\n**Summary**\nThe 'Acme Corporation - Annual Report 2024' section provides a comprehensive overview of the company's history, financial performance, key projects, leadership, and offices.",
+          "sources": [
+            {
+              "index": 1,
+              "source_file": "acme_report_2024.md",
+              "page_number": 1,
+              "chunk_index": 0,
+              "text_snippet": "# Acme Corporation - Annual Report 2024",
+              "relevance_score": 0.9693
+            },
+            {
+              "index": 2,
+              "source_file": "acme_report_2024.md",
+              "page_number": 2,
+              "chunk_index": 1,
+              "text_snippet": "## Company Overview\nAcme Corporation, founded in 2010 by Jane Smith and John Doe, is a technology company specializing in AI, cloud computing, and cybersecurity. Headquartered in San Francisco, the co...",
+              "relevance_score": 0.2319
+            },
+            {
+              "index": 3,
+              "source_file": "acme_report_2024.md",
+              "page_number": 3,
+              "chunk_index": 2,
+              "text_snippet": "## Financial Performance\nFY 2024 revenue: $2.5 billion (35% YoY growth). Net profit: $420 million (16.8% margin). R&D spend: $380 million.",
+              "relevance_score": 0.0119
+            },
+            {
+              "index": 4,
+              "source_file": "acme_report_2024.md",
+              "page_number": 4,
+              "chunk_index": 3,
+              "text_snippet": "## Key Projects\n- Project Titan: AI platform launched Q3 2024, 10M requests/day, 99.9% uptime, 2,000+ enterprise customers\n- Project Nebula: Cloud security framework with CyberGuard Inc., SOC 2 Type I...",
+              "relevance_score": 0.0028
+            },
+            {
+              "index": 5,
+              "source_file": "acme_report_2024.md",
+              "page_number": 5,
+              "chunk_index": 4,
+              "text_snippet": "## Leadership\n- Jane Smith: CEO (co-founder), PhD CS from Stanford\n- John Doe: CTO (co-founder), former Google AI research lead\n- Sarah Johnson: CFO, 20 yrs at Deloitte",
+              "relevance_score": 0.0003
+            },
+            {
+              "index": 6,
+              "source_file": "acme_report_2024.md",
+              "page_number": 6,
+              "chunk_index": 5,
+              "text_snippet": "## Offices\nSan Francisco (HQ), London, Bangalore, Tokyo, Berlin",
+              "relevance_score": 0.0001
+            }
+          ],
+          "latency_seconds": 0.0,
+          "config": {
+            "rerank": false,
+            "label": "Rerank OFF"
+          },
+          "status": "success",
+          "error": null,
+          "semantic_score": 0.6833,
+          "keyword_score": 0.0549,
+          "source_score": 0.8235,
+          "eval_score": 0.5402
+        },
+        {
+          "question": "What is in the section titled 'Leadership'?",
+          "expected_answer": "## Leadership\n- Jane Smith: CEO (co-founder), PhD CS from Stanford\n- John Doe: CTO (co-founder), former Google AI research lead\n- Sarah Johnson: CFO, 20 yrs at Deloitte",
+          "generated_answer": "No relevant information found.",
+          "sources": [],
+          "latency_seconds": 0.0,
+          "config": {
+            "rerank": false,
+            "label": "Rerank OFF"
+          },
+          "status": "success",
+          "error": null,
+          "semantic_score": 0.141,
+          "keyword_score": 0.0,
+          "source_score": 0.0,
+          "eval_score": 0.0916
+        },
+        {
+          "question": "What is in the section titled 'Company Overview'?",
+          "expected_answer": "## Company Overview\nAcme Corporation, founded in 2010 by Jane Smith and John Doe, is a technology company specializing in AI, cloud computing, and cybersecurity. Headquartered in San Francisco, the company employs over 5,000 people across 12 countries.",
+          "generated_answer": "No relevant information found.",
+          "sources": [],
+          "latency_seconds": 0.0,
+          "config": {
+            "rerank": false,
+            "label": "Rerank OFF"
+          },
+          "status": "success",
+          "error": null,
+          "semantic_score": 0.0693,
+          "keyword_score": 0.0,
+          "source_score": 0.0,
+          "eval_score": 0.0451
+        },
+        {
+          "question": "What was the revenue?",
+          "expected_answer": "## Financial Performance\nFY 2024 revenue: $2.5 billion (35% YoY growth). Net profit: $420 million (16.8% margin). R&D spend: $380 million.",
+          "generated_answer": "**Revenue**\nThe revenue for FY 2024 is $2.5 billion.\n\n**Details**\n\n* The revenue represents a 35% year-over-year (YoY) growth.\n* This indicates that the company's financial performance has been increasing significantly over the past year.\n\n**Summary**\n\nThe revenue for Acme Corporation in FY 2024 was $2.5 billion, representing a 35% YoY growth.",
+          "sources": [
+            {
+              "index": 1,
+              "source_file": "acme_report_2024.md",
+              "page_number": 3,
+              "chunk_index": 2,
+              "text_snippet": "## Financial Performance\nFY 2024 revenue: $2.5 billion (35% YoY growth). Net profit: $420 million (16.8% margin). R&D spend: $380 million.",
+              "relevance_score": 0.1342
+            },
+            {
+              "index": 2,
+              "source_file": "acme_report_2024.md",
+              "page_number": 2,
+              "chunk_index": 1,
+              "text_snippet": "## Company Overview\nAcme Corporation, founded in 2010 by Jane Smith and John Doe, is a technology company specializing in AI, cloud computing, and cybersecurity. Headquartered in San Francisco, the co...",
+              "relevance_score": 0.0001
+            },
+            {
+              "index": 3,
+              "source_file": "acme_report_2024.md",
+              "page_number": 1,
+              "chunk_index": 0,
+              "text_snippet": "# Acme Corporation - Annual Report 2024",
+              "relevance_score": 0.0001
+            },
+            {
+              "index": 4,
+              "source_file": "acme_report_2024.md",
+              "page_number": 5,
+              "chunk_index": 4,
+              "text_snippet": "## Leadership\n- Jane Smith: CEO (co-founder), PhD CS from Stanford\n- John Doe: CTO (co-founder), former Google AI research lead\n- Sarah Johnson: CFO, 20 yrs at Deloitte",
+              "relevance_score": 0.0
+            },
+            {
+              "index": 5,
+              "source_file": "acme_report_2024.md",
+              "page_number": 4,
+              "chunk_index": 3,
+              "text_snippet": "## Key Projects\n- Project Titan: AI platform launched Q3 2024, 10M requests/day, 99.9% uptime, 2,000+ enterprise customers\n- Project Nebula: Cloud security framework with CyberGuard Inc., SOC 2 Type I...",
+              "relevance_score": 0.0
+            },
+            {
+              "index": 6,
+              "source_file": "acme_report_2024.md",
+              "page_number": 6,
+              "chunk_index": 5,
+              "text_snippet": "## Offices\nSan Francisco (HQ), London, Bangalore, Tokyo, Berlin",
+              "relevance_score": 0.0
+            }
+          ],
+          "latency_seconds": 0.0,
+          "config": {
+            "rerank": false,
+            "label": "Rerank OFF"
+          },
+          "status": "success",
+          "error": null,
+          "semantic_score": 0.7405,
+          "keyword_score": 0.3143,
+          "source_score": 0.5714,
+          "eval_score": 0.6171
+        },
+        {
+          "question": "Who is the CTO?",
+          "expected_answer": "- John Doe: CTO (co-founder), former Google AI research lead",
+          "generated_answer": "**Direct Answer**\nJohn Doe.\n\n**Details**\nThe answer can be found in section [2] of the document, which provides an overview of the company's leadership. Specifically, it states that John Doe is the CTO (co-founder) and former Google AI research lead.\n\n**Summary**\nAccording to the annual report 2024 of Acme Corporation, John Doe serves as the Chief Technology Officer (CTO), a position he holds alongside being one of the co-founders of the company.",
+          "sources": [
+            {
+              "index": 1,
+              "source_file": "acme_report_2024.md",
+              "page_number": 5,
+              "chunk_index": 4,
+              "text_snippet": "## Leadership\n- Jane Smith: CEO (co-founder), PhD CS from Stanford\n- John Doe: CTO (co-founder), former Google AI research lead\n- Sarah Johnson: CFO, 20 yrs at Deloitte",
+              "relevance_score": 0.6877
+            },
+            {
+              "index": 2,
+              "source_file": "acme_report_2024.md",
+              "page_number": 2,
+              "chunk_index": 1,
+              "text_snippet": "## Company Overview\nAcme Corporation, founded in 2010 by Jane Smith and John Doe, is a technology company specializing in AI, cloud computing, and cybersecurity. Headquartered in San Francisco, the co...",
+              "relevance_score": 0.0049
+            },
+            {
+              "index": 3,
+              "source_file": "acme_report_2024.md",
+              "page_number": 4,
+              "chunk_index": 3,
+              "text_snippet": "## Key Projects\n- Project Titan: AI platform launched Q3 2024, 10M requests/day, 99.9% uptime, 2,000+ enterprise customers\n- Project Nebula: Cloud security framework with CyberGuard Inc., SOC 2 Type I...",
+              "relevance_score": 0.0001
+            },
+            {
+              "index": 4,
+              "source_file": "acme_report_2024.md",
+              "page_number": 3,
+              "chunk_index": 2,
+              "text_snippet": "## Financial Performance\nFY 2024 revenue: $2.5 billion (35% YoY growth). Net profit: $420 million (16.8% margin). R&D spend: $380 million.",
+              "relevance_score": 0.0001
+            },
+            {
+              "index": 5,
+              "source_file": "acme_report_2024.md",
+              "page_number": 6,
+              "chunk_index": 5,
+              "text_snippet": "## Offices\nSan Francisco (HQ), London, Bangalore, Tokyo, Berlin",
+              "relevance_score": 0.0001
+            },
+            {
+              "index": 6,
+              "source_file": "acme_report_2024.md",
+              "page_number": 1,
+              "chunk_index": 0,
+              "text_snippet": "# Acme Corporation - Annual Report 2024",
+              "relevance_score": 0.0
+            }
+          ],
+          "latency_seconds": 0.0,
+          "config": {
+            "rerank": false,
+            "label": "Rerank OFF"
+          },
+          "status": "success",
+          "error": null,
+          "semantic_score": 0.7795,
+          "keyword_score": 0.1786,
+          "source_score": 0.4,
+          "eval_score": 0.5913
+        },
+        {
+          "question": "What is in the section titled 'Offices'?",
           "expected_answer": "## Offices\nSan Francisco (HQ), London, Bangalore, Tokyo, Berlin",
           "generated_answer": "No relevant information found.",
           "sources": [],
-          "latency_seconds": 0.02,
+          "latency_seconds": 0.0,
           "config": {
             "rerank": false,
             "label": "Rerank OFF"
           },
           "status": "success",
           "error": null,
-          "semantic_score": 0.0,
+          "semantic_score": 0.1501,
           "keyword_score": 0.0,
           "source_score": 0.0,
-          "eval_score": 0.0
+          "eval_score": 0.0975
         },
         {
-          "question": "How many million?",
-          "expected_answer": "R&D spend: $380 million.",
+          "question": "What is Project Titan?",
+          "expected_answer": "## Key Projects\n- Project Titan: AI platform launched Q3 2024, 10M requests/day, 99.9% uptime, 2,000+ enterprise customers\n- Project Nebula: Cloud security framework with CyberGuard Inc., SOC 2 Type II certified June 2024, adopted by 500+ orgs",
+          "generated_answer": "**Direct Answer**\nProject Titan is an AI platform launched by Acme Corporation in Q3 2024.\n\n**Details**\nAccording to the provided document, Project Titan is a significant project launched by Acme Corporation. The details about Project Titan are as follows:\n* It was launched in Q3 2024.\n* It has achieved 10M requests/day.\n* It has maintained a high uptime of 99.9%.\n* It serves over 2,000 enterprise customers.\n\n**Summary**\nProject Titan is an AI platform that has shown promising results since its launch in Q3 2024. With its impressive performance metrics and large customer base, it is likely to be a key contributor to Acme Corporation's growth and success.",
+          "sources": [
+            {
+              "index": 1,
+              "source_file": "acme_report_2024.md",
+              "page_number": 4,
+              "chunk_index": 3,
+              "text_snippet": "## Key Projects\n- Project Titan: AI platform launched Q3 2024, 10M requests/day, 99.9% uptime, 2,000+ enterprise customers\n- Project Nebula: Cloud security framework with CyberGuard Inc., SOC 2 Type I...",
+              "relevance_score": 0.4898
+            },
+            {
+              "index": 2,
+              "source_file": "acme_report_2024.md",
+              "page_number": 2,
+              "chunk_index": 1,
+              "text_snippet": "## Company Overview\nAcme Corporation, founded in 2010 by Jane Smith and John Doe, is a technology company specializing in AI, cloud computing, and cybersecurity. Headquartered in San Francisco, the co...",
+              "relevance_score": 0.0011
+            },
+            {
+              "index": 3,
+              "source_file": "acme_report_2024.md",
+              "page_number": 5,
+              "chunk_index": 4,
+              "text_snippet": "## Leadership\n- Jane Smith: CEO (co-founder), PhD CS from Stanford\n- John Doe: CTO (co-founder), former Google AI research lead\n- Sarah Johnson: CFO, 20 yrs at Deloitte",
+              "relevance_score": 0.0003
+            },
+            {
+              "index": 4,
+              "source_file": "acme_report_2024.md",
+              "page_number": 6,
+              "chunk_index": 5,
+              "text_snippet": "## Offices\nSan Francisco (HQ), London, Bangalore, Tokyo, Berlin",
+              "relevance_score": 0.0002
+            },
+            {
+              "index": 5,
+              "source_file": "acme_report_2024.md",
+              "page_number": 3,
+              "chunk_index": 2,
+              "text_snippet": "## Financial Performance\nFY 2024 revenue: $2.5 billion (35% YoY growth). Net profit: $420 million (16.8% margin). R&D spend: $380 million.",
+              "relevance_score": 0.0002
+            },
+            {
+              "index": 6,
+              "source_file": "acme_report_2024.md",
+              "page_number": 1,
+              "chunk_index": 0,
+              "text_snippet": "# Acme Corporation - Annual Report 2024",
+              "relevance_score": 0.0001
+            }
+          ],
+          "latency_seconds": 0.0,
+          "config": {
+            "rerank": false,
+            "label": "Rerank OFF"
+          },
+          "status": "success",
+          "error": null,
+          "semantic_score": 0.7406,
+          "keyword_score": 0.2899,
+          "source_score": 0.5556,
+          "eval_score": 0.6094
+        },
+        {
+          "question": "Who is Jane Smith?",
+          "expected_answer": "## Leadership\n- Jane Smith: CEO (co-founder), PhD CS from Stanford\n- John Doe: CTO (co-founder), former Google AI research lead\n- Sarah Johnson: CFO, 20 yrs at Deloitte",
+          "generated_answer": "**Direct Answer**\nJane Smith is the CEO (co-founder) of Acme Corporation.\n\n**Details**\nAccording to the provided document context, Jane Smith holds a PhD in Computer Science from Stanford and co-founded Acme Corporation with John Doe in 2010. She serves as the company's CEO and has been instrumental in shaping its vision and strategy.\n\n**Summary**\nJane Smith is a highly accomplished individual who has played a crucial role in establishing and leading Acme Corporation, a technology company specializing in AI, cloud computing, and cybersecurity.",
+          "sources": [
+            {
+              "index": 1,
+              "source_file": "acme_report_2024.md",
+              "page_number": 5,
+              "chunk_index": 4,
+              "text_snippet": "## Leadership\n- Jane Smith: CEO (co-founder), PhD CS from Stanford\n- John Doe: CTO (co-founder), former Google AI research lead\n- Sarah Johnson: CFO, 20 yrs at Deloitte",
+              "relevance_score": 0.9861
+            },
+            {
+              "index": 2,
+              "source_file": "acme_report_2024.md",
+              "page_number": 2,
+              "chunk_index": 1,
+              "text_snippet": "## Company Overview\nAcme Corporation, founded in 2010 by Jane Smith and John Doe, is a technology company specializing in AI, cloud computing, and cybersecurity. Headquartered in San Francisco, the co...",
+              "relevance_score": 0.9447
+            },
+            {
+              "index": 3,
+              "source_file": "acme_report_2024.md",
+              "page_number": 3,
+              "chunk_index": 2,
+              "text_snippet": "## Financial Performance\nFY 2024 revenue: $2.5 billion (35% YoY growth). Net profit: $420 million (16.8% margin). R&D spend: $380 million.",
+              "relevance_score": 0.0
+            },
+            {
+              "index": 4,
+              "source_file": "acme_report_2024.md",
+              "page_number": 1,
+              "chunk_index": 0,
+              "text_snippet": "# Acme Corporation - Annual Report 2024",
+              "relevance_score": 0.0
+            },
+            {
+              "index": 5,
+              "source_file": "acme_report_2024.md",
+              "page_number": 6,
+              "chunk_index": 5,
+              "text_snippet": "## Offices\nSan Francisco (HQ), London, Bangalore, Tokyo, Berlin",
+              "relevance_score": 0.0
+            },
+            {
+              "index": 6,
+              "source_file": "acme_report_2024.md",
+              "page_number": 4,
+              "chunk_index": 3,
+              "text_snippet": "## Key Projects\n- Project Titan: AI platform launched Q3 2024, 10M requests/day, 99.9% uptime, 2,000+ enterprise customers\n- Project Nebula: Cloud security framework with CyberGuard Inc., SOC 2 Type I...",
+              "relevance_score": 0.0
+            }
+          ],
+          "latency_seconds": 0.0,
+          "config": {
+            "rerank": false,
+            "label": "Rerank OFF"
+          },
+          "status": "success",
+          "error": null,
+          "semantic_score": 0.6489,
+          "keyword_score": 0.1833,
+          "source_score": 0.4545,
+          "eval_score": 0.5131
+        },
+        {
+          "question": "What was the net profit?",
+          "expected_answer": "## Financial Performance\nFY 2024 revenue: $2.5 billion (35% YoY growth). Net profit: $420 million (16.8% margin). R&D spend: $380 million.",
+          "generated_answer": "**Direct Answer**\nThe net profit for FY 2024 is $420 million.\n\n**Details**\nAccording to the provided document [1], Page 3, the financial performance section states that \"Net profit: $420 million (16.8% margin)\". This indicates that the company's net profit for the fiscal year ended in 2024 was $420 million, with a margin of 16.8%.\n\n**Summary**\nThe net profit for FY 2024 is $420 million, representing an 16.8% margin.",
+          "sources": [
+            {
+              "index": 1,
+              "source_file": "acme_report_2024.md",
+              "page_number": 3,
+              "chunk_index": 2,
+              "text_snippet": "## Financial Performance\nFY 2024 revenue: $2.5 billion (35% YoY growth). Net profit: $420 million (16.8% margin). R&D spend: $380 million.",
+              "relevance_score": 0.5289
+            },
+            {
+              "index": 2,
+              "source_file": "acme_report_2024.md",
+              "page_number": 5,
+              "chunk_index": 4,
+              "text_snippet": "## Leadership\n- Jane Smith: CEO (co-founder), PhD CS from Stanford\n- John Doe: CTO (co-founder), former Google AI research lead\n- Sarah Johnson: CFO, 20 yrs at Deloitte",
+              "relevance_score": 0.0002
+            },
+            {
+              "index": 3,
+              "source_file": "acme_report_2024.md",
+              "page_number": 2,
+              "chunk_index": 1,
+              "text_snippet": "## Company Overview\nAcme Corporation, founded in 2010 by Jane Smith and John Doe, is a technology company specializing in AI, cloud computing, and cybersecurity. Headquartered in San Francisco, the co...",
+              "relevance_score": 0.0
+            },
+            {
+              "index": 4,
+              "source_file": "acme_report_2024.md",
+              "page_number": 1,
+              "chunk_index": 0,
+              "text_snippet": "# Acme Corporation - Annual Report 2024",
+              "relevance_score": 0.0
+            },
+            {
+              "index": 5,
+              "source_file": "acme_report_2024.md",
+              "page_number": 6,
+              "chunk_index": 5,
+              "text_snippet": "## Offices\nSan Francisco (HQ), London, Bangalore, Tokyo, Berlin",
+              "relevance_score": 0.0
+            },
+            {
+              "index": 6,
+              "source_file": "acme_report_2024.md",
+              "page_number": 4,
+              "chunk_index": 3,
+              "text_snippet": "## Key Projects\n- Project Titan: AI platform launched Q3 2024, 10M requests/day, 99.9% uptime, 2,000+ enterprise customers\n- Project Nebula: Cloud security framework with CyberGuard Inc., SOC 2 Type I...",
+              "relevance_score": 0.0
+            }
+          ],
+          "latency_seconds": 0.0,
+          "config": {
+            "rerank": false,
+            "label": "Rerank OFF"
+          },
+          "status": "success",
+          "error": null,
+          "semantic_score": 0.8124,
+          "keyword_score": 0.2619,
+          "source_score": 0.25,
+          "eval_score": 0.6185
+        },
+        {
+          "question": "Who is the CEO?",
+          "expected_answer": "- Jane Smith: CEO (co-founder), PhD CS from Stanford",
           "generated_answer": "No relevant information found.",
           "sources": [],
           "latency_seconds": 0.0,
@@ -227,31 +1588,212 @@
           },
           "status": "success",
           "error": null,
-          "semantic_score": 0.0,
+          "semantic_score": 0.1179,
           "keyword_score": 0.0,
           "source_score": 0.0,
-          "eval_score": 0.0
+          "eval_score": 0.0766
         },
         {
-          "question": "How many people?",
-          "expected_answer": "Headquartered in San Francisco, the company employs over 5,000 people across 12 countries.",
-          "generated_answer": "No relevant information found.",
-          "sources": [],
-          "latency_seconds": 0.02,
+          "question": "What is in the section titled 'Key Projects'?",
+          "expected_answer": "## Key Projects\n- Project Titan: AI platform launched Q3 2024, 10M requests/day, 99.9% uptime, 2,000+ enterprise customers\n- Project Nebula: Cloud security framework with CyberGuard Inc., SOC 2 Type II certified June 2024, adopted by 500+ orgs",
+          "generated_answer": "**Direct Answer**\nThe section titled 'Key Projects' lists two key projects: Project Titan and Project Nebula.\n\n**Details**\n\n* Project Titan is an AI platform launched in Q3 2024, with 10 million requests per day and a reported uptime of 99.9%.\n* Project Titan has been adopted by over 2,000 enterprise customers.\n* Project Nebula is a cloud security framework developed in partnership with CyberGuard Inc., which received SOC 2 Type II certification in June 2024.\n* Project Nebula has been adopted by over 500 organizations.\n\n**Summary**\nThe 'Key Projects' section highlights two significant projects launched by Acme Corporation: Project Titan, an AI platform, and Project Nebula, a cloud security framework. Both projects demonstrate the company's commitment to innovation and customer adoption in the fields of AI and cybersecurity.",
+          "sources": [
+            {
+              "index": 1,
+              "source_file": "acme_report_2024.md",
+              "page_number": 4,
+              "chunk_index": 3,
+              "text_snippet": "## Key Projects\n- Project Titan: AI platform launched Q3 2024, 10M requests/day, 99.9% uptime, 2,000+ enterprise customers\n- Project Nebula: Cloud security framework with CyberGuard Inc., SOC 2 Type I...",
+              "relevance_score": 0.5654
+            },
+            {
+              "index": 2,
+              "source_file": "acme_report_2024.md",
+              "page_number": 6,
+              "chunk_index": 5,
+              "text_snippet": "## Offices\nSan Francisco (HQ), London, Bangalore, Tokyo, Berlin",
+              "relevance_score": 0.0002
+            },
+            {
+              "index": 3,
+              "source_file": "acme_report_2024.md",
+              "page_number": 2,
+              "chunk_index": 1,
+              "text_snippet": "## Company Overview\nAcme Corporation, founded in 2010 by Jane Smith and John Doe, is a technology company specializing in AI, cloud computing, and cybersecurity. Headquartered in San Francisco, the co...",
+              "relevance_score": 0.0002
+            },
+            {
+              "index": 4,
+              "source_file": "acme_report_2024.md",
+              "page_number": 5,
+              "chunk_index": 4,
+              "text_snippet": "## Leadership\n- Jane Smith: CEO (co-founder), PhD CS from Stanford\n- John Doe: CTO (co-founder), former Google AI research lead\n- Sarah Johnson: CFO, 20 yrs at Deloitte",
+              "relevance_score": 0.0001
+            },
+            {
+              "index": 5,
+              "source_file": "acme_report_2024.md",
+              "page_number": 3,
+              "chunk_index": 2,
+              "text_snippet": "## Financial Performance\nFY 2024 revenue: $2.5 billion (35% YoY growth). Net profit: $420 million (16.8% margin). R&D spend: $380 million.",
+              "relevance_score": 0.0
+            },
+            {
+              "index": 6,
+              "source_file": "acme_report_2024.md",
+              "page_number": 1,
+              "chunk_index": 0,
+              "text_snippet": "# Acme Corporation - Annual Report 2024",
+              "relevance_score": 0.0
+            }
+          ],
+          "latency_seconds": 0.0,
           "config": {
             "rerank": false,
             "label": "Rerank OFF"
           },
           "status": "success",
           "error": null,
-          "semantic_score": 0.0,
-          "keyword_score": 0.0,
-          "source_score": 0.0,
-          "eval_score": 0.0
+          "semantic_score": 0.8728,
+          "keyword_score": 0.4267,
+          "source_score": 0.6154,
+          "eval_score": 0.7355
         },
         {
-          "question": "How many million?",
-          "expected_answer": "Net profit: $420 million (16.8% margin).",
+          "question": "What is Project Nebula?",
+          "expected_answer": "## Key Projects\n- Project Titan: AI platform launched Q3 2024, 10M requests/day, 99.9% uptime, 2,000+ enterprise customers\n- Project Nebula: Cloud security framework with CyberGuard Inc., SOC 2 Type II certified June 2024, adopted by 500+ orgs",
+          "generated_answer": "**Direct Answer**\nProject Nebula is a cloud security framework.\n\n**Details**\nAccording to the provided document context, Project Nebula was launched in June 2024 and is a collaboration between Acme Corporation and CyberGuard Inc. It has achieved SOC 2 Type II certification. Additionally, it has been adopted by over 500 organizations.\n\n**Summary**\nProject Nebula is a cloud security framework developed by Acme Corporation, launched in June 2024, with SOC 2 Type II certification and adoption by multiple organizations.",
+          "sources": [
+            {
+              "index": 1,
+              "source_file": "acme_report_2024.md",
+              "page_number": 4,
+              "chunk_index": 3,
+              "text_snippet": "## Key Projects\n- Project Titan: AI platform launched Q3 2024, 10M requests/day, 99.9% uptime, 2,000+ enterprise customers\n- Project Nebula: Cloud security framework with CyberGuard Inc., SOC 2 Type I...",
+              "relevance_score": 0.9157
+            },
+            {
+              "index": 2,
+              "source_file": "acme_report_2024.md",
+              "page_number": 2,
+              "chunk_index": 1,
+              "text_snippet": "## Company Overview\nAcme Corporation, founded in 2010 by Jane Smith and John Doe, is a technology company specializing in AI, cloud computing, and cybersecurity. Headquartered in San Francisco, the co...",
+              "relevance_score": 0.0004
+            },
+            {
+              "index": 3,
+              "source_file": "acme_report_2024.md",
+              "page_number": 5,
+              "chunk_index": 4,
+              "text_snippet": "## Leadership\n- Jane Smith: CEO (co-founder), PhD CS from Stanford\n- John Doe: CTO (co-founder), former Google AI research lead\n- Sarah Johnson: CFO, 20 yrs at Deloitte",
+              "relevance_score": 0.0001
+            },
+            {
+              "index": 4,
+              "source_file": "acme_report_2024.md",
+              "page_number": 3,
+              "chunk_index": 2,
+              "text_snippet": "## Financial Performance\nFY 2024 revenue: $2.5 billion (35% YoY growth). Net profit: $420 million (16.8% margin). R&D spend: $380 million.",
+              "relevance_score": 0.0001
+            },
+            {
+              "index": 5,
+              "source_file": "acme_report_2024.md",
+              "page_number": 6,
+              "chunk_index": 5,
+              "text_snippet": "## Offices\nSan Francisco (HQ), London, Bangalore, Tokyo, Berlin",
+              "relevance_score": 0.0001
+            },
+            {
+              "index": 6,
+              "source_file": "acme_report_2024.md",
+              "page_number": 1,
+              "chunk_index": 0,
+              "text_snippet": "# Acme Corporation - Annual Report 2024",
+              "relevance_score": 0.0
+            }
+          ],
+          "latency_seconds": 0.0,
+          "config": {
+            "rerank": false,
+            "label": "Rerank OFF"
+          },
+          "status": "success",
+          "error": null,
+          "semantic_score": 0.6875,
+          "keyword_score": 0.375,
+          "source_score": 0.5,
+          "eval_score": 0.5906
+        },
+        {
+          "question": "What was the R&D spend?",
+          "expected_answer": "## Financial Performance\nFY 2024 revenue: $2.5 billion (35% YoY growth). Net profit: $420 million (16.8% margin). R&D spend: $380 million.",
+          "generated_answer": "**R&D Spend**\nThe R&D spend for FY 2024 is $380 million.\n\n**Details**\n\n* This information can be found in section [1] of the document, page 3.\n* The R&D spend is mentioned as part of the company's financial performance.\n* It is not explicitly stated where this amount was allocated or what specific projects it was used for.\n\n**Summary**\n\nThe R&D spend for FY 2024 at Acme Corporation was $380 million. This information can be found in section [1] of the document, page 3.",
+          "sources": [
+            {
+              "index": 1,
+              "source_file": "acme_report_2024.md",
+              "page_number": 3,
+              "chunk_index": 2,
+              "text_snippet": "## Financial Performance\nFY 2024 revenue: $2.5 billion (35% YoY growth). Net profit: $420 million (16.8% margin). R&D spend: $380 million.",
+              "relevance_score": 0.8615
+            },
+            {
+              "index": 2,
+              "source_file": "acme_report_2024.md",
+              "page_number": 2,
+              "chunk_index": 1,
+              "text_snippet": "## Company Overview\nAcme Corporation, founded in 2010 by Jane Smith and John Doe, is a technology company specializing in AI, cloud computing, and cybersecurity. Headquartered in San Francisco, the co...",
+              "relevance_score": 0.0001
+            },
+            {
+              "index": 3,
+              "source_file": "acme_report_2024.md",
+              "page_number": 5,
+              "chunk_index": 4,
+              "text_snippet": "## Leadership\n- Jane Smith: CEO (co-founder), PhD CS from Stanford\n- John Doe: CTO (co-founder), former Google AI research lead\n- Sarah Johnson: CFO, 20 yrs at Deloitte",
+              "relevance_score": 0.0
+            },
+            {
+              "index": 4,
+              "source_file": "acme_report_2024.md",
+              "page_number": 4,
+              "chunk_index": 3,
+              "text_snippet": "## Key Projects\n- Project Titan: AI platform launched Q3 2024, 10M requests/day, 99.9% uptime, 2,000+ enterprise customers\n- Project Nebula: Cloud security framework with CyberGuard Inc., SOC 2 Type I...",
+              "relevance_score": 0.0
+            },
+            {
+              "index": 5,
+              "source_file": "acme_report_2024.md",
+              "page_number": 6,
+              "chunk_index": 5,
+              "text_snippet": "## Offices\nSan Francisco (HQ), London, Bangalore, Tokyo, Berlin",
+              "relevance_score": 0.0
+            },
+            {
+              "index": 6,
+              "source_file": "acme_report_2024.md",
+              "page_number": 1,
+              "chunk_index": 0,
+              "text_snippet": "# Acme Corporation - Annual Report 2024",
+              "relevance_score": 0.0
+            }
+          ],
+          "latency_seconds": 0.0,
+          "config": {
+            "rerank": false,
+            "label": "Rerank OFF"
+          },
+          "status": "success",
+          "error": null,
+          "semantic_score": 0.7183,
+          "keyword_score": 0.1915,
+          "source_score": 0.5714,
+          "eval_score": 0.5719
+        },
+        {
+          "question": "What is in the section titled 'Financial Performance'?",
+          "expected_answer": "## Financial Performance\nFY 2024 revenue: $2.5 billion (35% YoY growth). Net profit: $420 million (16.8% margin). R&D spend: $380 million.",
           "generated_answer": "No relevant information found.",
           "sources": [],
           "latency_seconds": 0.0,
@@ -261,10 +1803,134 @@
           },
           "status": "success",
           "error": null,
-          "semantic_score": 0.0,
+          "semantic_score": 0.0716,
           "keyword_score": 0.0,
           "source_score": 0.0,
-          "eval_score": 0.0
+          "eval_score": 0.0465
+        },
+        {
+          "question": "When was Company Overview\nAcme Corporation founded and by whom?",
+          "expected_answer": "## Company Overview\nAcme Corporation, founded in 2010 by Jane Smith and John Doe, is a technology company specializing in AI, cloud computing, and cybersecurity. Headquartered in San Francisco, the company employs over 5,000 people across 12 countries.",
+          "generated_answer": "**Acme Corporation Annual Report 2024 Summary**\n\nAcme Corporation is a technology company founded in 2010 by Jane Smith and John Doe. The company specializes in AI, cloud computing, and cybersecurity, with over 5,000 employees across 12 countries.\n\n**Leadership**\n\nThe leadership team consists of:\n\n* Jane Smith: CEO (co-founder) and PhD CS from Stanford\n* John Doe: CTO (co-founder) and former Google AI research lead\n* Sarah Johnson: CFO with 20 years of experience at Deloitte\n\n**Financial Performance**\n\nAcme Corporation achieved significant financial growth in FY 2024:\n\n* Revenue: $2.5 billion (35% YoY growth)\n* Net profit: $420 million (16.8% margin)\n* Research and Development spend: $380 million\n\n**Key Projects**\n\nThe company has launched two notable projects:\n\n* **Project Titan**: An AI platform launched in Q3 2024, with:\n\t+ 10M requests/day\n\t+ 99.9% uptime\n\t+ 2,000+ enterprise customers\n* **Project Nebula**: A cloud security framework certified by SOC 2 Type II in June 2024, adopted by 500+ organizations",
+          "sources": [
+            {
+              "index": 1,
+              "source_file": "acme_report_2024.md",
+              "page_number": 2,
+              "chunk_index": 1,
+              "text_snippet": "## Company Overview\nAcme Corporation, founded in 2010 by Jane Smith and John Doe, is a technology company specializing in AI, cloud computing, and cybersecurity. Headquartered in San Francisco, the co...",
+              "relevance_score": 0.9999
+            },
+            {
+              "index": 2,
+              "source_file": "acme_report_2024.md",
+              "page_number": 1,
+              "chunk_index": 0,
+              "text_snippet": "# Acme Corporation - Annual Report 2024",
+              "relevance_score": 0.0123
+            },
+            {
+              "index": 3,
+              "source_file": "acme_report_2024.md",
+              "page_number": 5,
+              "chunk_index": 4,
+              "text_snippet": "## Leadership\n- Jane Smith: CEO (co-founder), PhD CS from Stanford\n- John Doe: CTO (co-founder), former Google AI research lead\n- Sarah Johnson: CFO, 20 yrs at Deloitte",
+              "relevance_score": 0.0027
+            },
+            {
+              "index": 4,
+              "source_file": "acme_report_2024.md",
+              "page_number": 3,
+              "chunk_index": 2,
+              "text_snippet": "## Financial Performance\nFY 2024 revenue: $2.5 billion (35% YoY growth). Net profit: $420 million (16.8% margin). R&D spend: $380 million.",
+              "relevance_score": 0.0001
+            },
+            {
+              "index": 5,
+              "source_file": "acme_report_2024.md",
+              "page_number": 4,
+              "chunk_index": 3,
+              "text_snippet": "## Key Projects\n- Project Titan: AI platform launched Q3 2024, 10M requests/day, 99.9% uptime, 2,000+ enterprise customers\n- Project Nebula: Cloud security framework with CyberGuard Inc., SOC 2 Type I...",
+              "relevance_score": 0.0001
+            }
+          ],
+          "latency_seconds": 0.0,
+          "config": {
+            "rerank": false,
+            "label": "Rerank OFF"
+          },
+          "status": "success",
+          "error": null,
+          "semantic_score": 0.7633,
+          "keyword_score": 0.2407,
+          "source_score": 0.8333,
+          "eval_score": 0.6397
+        },
+        {
+          "question": "In which cities does the company have offices?",
+          "expected_answer": "## Offices\nSan Francisco (HQ), London, Bangalore, Tokyo, Berlin",
+          "generated_answer": "The company Acme Corporation has offices in the following cities:\n\n* San Francisco\n* London\n* Bangalore\n* Tokyo\n* Berlin",
+          "sources": [
+            {
+              "index": 1,
+              "source_file": "acme_report_2024.md",
+              "page_number": 6,
+              "chunk_index": 5,
+              "text_snippet": "## Offices\nSan Francisco (HQ), London, Bangalore, Tokyo, Berlin",
+              "relevance_score": 0.9534
+            },
+            {
+              "index": 2,
+              "source_file": "acme_report_2024.md",
+              "page_number": 2,
+              "chunk_index": 1,
+              "text_snippet": "## Company Overview\nAcme Corporation, founded in 2010 by Jane Smith and John Doe, is a technology company specializing in AI, cloud computing, and cybersecurity. Headquartered in San Francisco, the co...",
+              "relevance_score": 0.2588
+            },
+            {
+              "index": 3,
+              "source_file": "acme_report_2024.md",
+              "page_number": 5,
+              "chunk_index": 4,
+              "text_snippet": "## Leadership\n- Jane Smith: CEO (co-founder), PhD CS from Stanford\n- John Doe: CTO (co-founder), former Google AI research lead\n- Sarah Johnson: CFO, 20 yrs at Deloitte",
+              "relevance_score": 0.0036
+            },
+            {
+              "index": 4,
+              "source_file": "acme_report_2024.md",
+              "page_number": 4,
+              "chunk_index": 3,
+              "text_snippet": "## Key Projects\n- Project Titan: AI platform launched Q3 2024, 10M requests/day, 99.9% uptime, 2,000+ enterprise customers\n- Project Nebula: Cloud security framework with CyberGuard Inc., SOC 2 Type I...",
+              "relevance_score": 0.0033
+            },
+            {
+              "index": 5,
+              "source_file": "acme_report_2024.md",
+              "page_number": 1,
+              "chunk_index": 0,
+              "text_snippet": "# Acme Corporation - Annual Report 2024",
+              "relevance_score": 0.0032
+            },
+            {
+              "index": 6,
+              "source_file": "acme_report_2024.md",
+              "page_number": 3,
+              "chunk_index": 2,
+              "text_snippet": "## Financial Performance\nFY 2024 revenue: $2.5 billion (35% YoY growth). Net profit: $420 million (16.8% margin). R&D spend: $380 million.",
+              "relevance_score": 0.0009
+            }
+          ],
+          "latency_seconds": 0.0,
+          "config": {
+            "rerank": false,
+            "label": "Rerank OFF"
+          },
+          "status": "success",
+          "error": null,
+          "semantic_score": 0.6823,
+          "keyword_score": 0.4667,
+          "source_score": 1.0,
+          "eval_score": 0.6601
         }
       ]
     }
