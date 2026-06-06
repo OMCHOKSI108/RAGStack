@@ -332,6 +332,8 @@ A self-contained, executable Jupyter notebook consolidating the entire RAG pipel
 
 👉 [`notebooks/rag_pipeline.ipynb`](notebooks/rag_pipeline.ipynb) — open directly in VS Code, open with Google Colab, or run locally.
 
+![RAG Evaluation Results](notebooks/evaluation_output/rag_evaluation_results.png)
+
 ## Repository Layout
 
 ```
