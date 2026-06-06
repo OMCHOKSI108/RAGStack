@@ -53,19 +53,21 @@ jobs:
 
       - name: Import backend modules without secrets
         env:
+          # Run with FAISS so module-level pipeline construction (in backend.main)
+          # doesn't require Pinecone credentials. The Docker build jobs separately
+          # validate the production image with PINECONE configured.
           LLM_PROVIDER: HUGGINGFACE_API
           EMBEDDING_PROVIDER: HUGGINGFACE_API
           RERANK_PROVIDER: HUGGINGFACE_API
           VERIFICATION_PROVIDER: HUGGINGFACE_API
-          VECTOR_STORE: PINECONE
+          VECTOR_STORE: FAISS
           SPARSE_RETRIEVAL: "false"
           HF_TOKEN: ""
-          PINECONE_API_KEY: ""
-          PINECONE_INDEX: ci-smoke
         run: |
+          pip install faiss-cpu
           python - <<'PY'
           import importlib
-          for mod in [
+          modules = [
               "backend.config",
               "backend.models",
               "backend.document_parser",
@@ -73,6 +75,8 @@ jobs:
               "backend.embeddings",
               "backend.llm",
               "backend.hf_api",
+              "backend.vector_store",
+              "backend.vector_store_pinecone",
               "backend.hybrid_search",
               "backend.mmr",
               "backend.query_rewriter",
@@ -84,8 +88,10 @@ jobs:
               "backend.verification",
               "backend.faithfulness",
               "backend.agent",
+              "backend.rag_pipeline",
               "backend.main",
-          ]:
+          ]
+          for mod in modules:
               importlib.import_module(mod)
               print(f"OK  {mod}")
           PY
