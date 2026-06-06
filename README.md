@@ -320,6 +320,18 @@ Last updated: 2026-05-19.
 
 ![Evalutions](evaluation_output/plots/evaluation_dashboard.png)
 
+## Notebook
+
+A self-contained, executable Jupyter notebook consolidating the entire RAG pipeline — all 25 backend modules, 5000+ lines — into a single file with 27 code cells and 27 documentation cells. It runs on Google Colab, Kaggle, or local Jupyter with zero dependencies beyond `pip install`.
+
+**What's included:**
+- Every core component: document parsing, semantic chunking, FAISS + BM25 + Pinecone stores, hybrid search, reranking, intent classification, query rewriting, multi-query expansion, context compression, ReasoningAgent, LLM/HF API adapter, verification, NLI faithfulness, and the full RAGPipeline orchestrator
+- RAG evaluation suite (HF cookbook style): synthetic QA generation via LLM, quality filtering, configuration sweep across chunk size / retrieval parameters, LLM-as-a-judge scoring, and metric plots
+- Provider-agnostic configuration: drop in CONFIG dict values for Ollama, HF Inference API, or local Transformers — no .env file needed
+- Pydantic-free: uses dataclasses and TypedDict so no heavy dependency is required
+
+👉 [`notebooks/rag_pipeline.ipynb`](notebooks/rag_pipeline.ipynb) — open directly in VS Code, open with Google Colab, or run locally.
+
 ## Repository Layout
 
 ```
@@ -353,6 +365,7 @@ Last updated: 2026-05-19.
 │   └── app.py                     # Streamlit chat UI
 ├── data/uploads/                  # Local upload sink (ignored in cloud)
 ├── evaluation_output/             # Plots, metrics, and reports
+├── notebooks/                     # Executable Jupyter notebooks
 ├── Dockerfile.backend             # Backend container
 ├── Dockerfile.frontend            # Frontend container
 ├── render.yaml                    # Render blueprint (two services)
